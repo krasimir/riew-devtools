@@ -1,5 +1,6 @@
-import bridge from './bridge';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-bridge(message => {
-  console.log(message);
-});
+import App from './components/App.js';
+
+ReactDOM.render(<App />, document.querySelector('#container'));

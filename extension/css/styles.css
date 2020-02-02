@@ -8,3 +8,6 @@ body, html {
 	background: #242424;
 	color: #fff;
 }
+* {
+	box-sizing: border-box;
+}

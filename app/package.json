@@ -1,8 +1,11 @@
 {
   "private": true,
   "dependencies": {
+    "prop-types": "15.7.2",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "react-key-handler": "1.2.0-beta.3",
+    "styled-components": "5.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.5.0",

@@ -1,14 +1,13 @@
 const isItDevTools =
   typeof chrome !== 'undefined' && typeof chrome.runtime !== 'undefined';
 
+let ids = 1;
+
 export default async function bridge(callback) {
   if (isItDevTools) {
-    chrome.runtime.onMessage.addListener(function(
-      message,
-      sender,
-      sendResponse
-    ) {
-      callback(message);
+    chrome.runtime.onMessage.addListener(function(event, sender, sendResponse) {
+      event.id = btoa(++ids);
+      callback(event);
       sendResponse('received');
     });
   } else {
@@ -16,8 +15,11 @@ export default async function bridge(callback) {
 
     (function push() {
       if (mockData.length > 0) {
-        callback(mockData.shift());
-        setTimeout(push, Math.random() * 500);
+        const event = mockData.shift();
+
+        event.id = btoa(++ids);
+        callback(event);
+        setTimeout(push, Math.random() * 100);
       }
     })();
   }

@@ -4,5 +4,11 @@
   ],
   "globals": {
     "chrome": true
+  },
+  "rules": {
+    "no-restricted-globals": 0,
+    "react/prop-types": 0,
+    "react/destructuring-assignment": 0,
+    "no-plusplus": 0
   }
 }
