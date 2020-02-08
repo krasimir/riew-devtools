@@ -1,96 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import RCSlider from 'rc-slider';
 import styled from 'styled-components';
-import KeyHandler, { KEYDOWN } from 'react-key-handler';
-import { MAX_EVENTS, COLORS } from '../constants';
 
-const SLIDER_HEIGHT = 14;
-
-const SliderContainer = styled.div`
-  border-bottom: solid 1px ${COLORS.grey1};
-  height: ${SLIDER_HEIGHT + 1}px;
-  overflow: hidden;
-`;
-const Frame = styled.div`
-  display: inline-block;
-  width: ${props => `${props.w}%`};
-  height: ${SLIDER_HEIGHT}px;
-  background: ${props => (props.selected ? COLORS.selected : '#000')};
-  & + & {
-    border-left: solid 1px ${COLORS.grey1};
-  }
-  cursor: pointer;
-  transition: background 250ms ease-out;
-  &:hover {
-    background: ${props => (props.selected ? COLORS.selected : COLORS.grey1)};
-  }
+const SliderWrapper = styled.div`
+  padding: 1em;
 `;
 
 export default function Slider({ events, onChange }) {
-  const [selected, select] = useState(null);
-
-  function pickPrevious(e) {
-    e.preventDefault();
-    if (selected === null) {
-      select(events[events.length - 2].id);
-    } else {
-      const idx = events.findIndex(({ id }) => id === selected);
-      if (idx > 0) {
-        select(events[idx - 1].id);
-      }
-    }
-  }
-  function pickNext(e) {
-    e.preventDefault();
-    if (selected !== null) {
-      const idx = events.findIndex(({ id }) => id === selected);
-      if (idx >= 0 && idx < events.length - 1) {
-        select(events[idx + 1].id);
-      }
-    }
-  }
+  const [sliderValue, setSliderValue] = useState(null);
+  const [snapToTheEnd, snap] = useState(true);
 
   useEffect(() => {
-    if (events.length > 0) {
-      if (select === null) {
-        onChange(events[events.length - 1]);
-      } else {
-        const event = events.find(({ id }) => id === selected);
-        onChange(event || events[events.length - 1]);
-      }
+    if (snapToTheEnd) {
+      setSliderValue(events.length);
+      onChange(events[events.length - 1]);
     }
-  }, [events, onChange, selected]);
+  }, [events, events.length, onChange, snapToTheEnd]);
 
-  if (events.length > 1) {
-    const max = events.length > MAX_EVENTS ? MAX_EVENTS : events.length;
-    return (
-      <SliderContainer>
-        <KeyHandler
-          keyEventName={KEYDOWN}
-          code="ArrowLeft"
-          onKeyHandle={pickPrevious}
-        />
-        <KeyHandler
-          keyEventName={KEYDOWN}
-          code="ArrowRight"
-          onKeyHandle={pickNext}
-        />
-        {events.map((event, idx) => (
-          <Frame
-            onClick={() => select(event.id)}
-            w={100 / max}
-            key={event.id}
-            selected={
-              selected !== null
-                ? selected === event.id
-                : idx === events.length - 1
-            }
-          />
-        ))}
-      </SliderContainer>
-    );
+  const marks = {};
+  for (let i = 0; i < events.length; i++) {
+    marks[i] = {
+      style: '',
+      label: '',
+    };
   }
-  return null;
+
+  return (
+    <SliderWrapper>
+      <RCSlider
+        min={0}
+        max={events.length}
+        value={sliderValue}
+        marks={marks}
+        onChange={v => {
+          setSliderValue(v);
+          snap(v === events.length);
+          onChange(events[v]);
+        }}
+      />
+    </SliderWrapper>
+  );
 }
 
 Slider.props = {

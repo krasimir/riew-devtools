@@ -2,7 +2,7 @@ import React, { useReducer, useEffect, useState } from 'react';
 import bridge from '../bridge';
 import Slider from './Slider';
 import reducer from '../reducer';
-import Frame from './Frame';
+import Frame from './frame';
 
 export default function App() {
   const [events, addEvent] = useReducer(reducer, []);

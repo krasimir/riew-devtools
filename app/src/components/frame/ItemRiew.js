@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { COLORS } from '../constants';
-import { Box } from './icons';
+import { COLORS } from '../../constants';
+import { Box } from '../icons';
 
 const Container = styled.div`
   padding: 0.4em 0.6em;
@@ -15,7 +15,6 @@ const Container = styled.div`
 `;
 
 export default function ItemRiew({ data }) {
-  console.log(data);
   return (
     <Container>
       <Box /> &lt;{data.name}&gt;
