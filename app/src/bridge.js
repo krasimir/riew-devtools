@@ -1,8 +1,8 @@
 const isItDevTools =
   typeof chrome !== 'undefined' && typeof chrome.runtime !== 'undefined';
 
-const DEBUG_ADD_EVENT_INTERVAL = 3000;
-let ids = 1;
+const DEBUG_ADD_EVENT_INTERVAL = 100;
+let ids = 0;
 
 export default async function bridge(callback) {
   if (isItDevTools) {

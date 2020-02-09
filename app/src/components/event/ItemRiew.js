@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { COLORS } from '../../constants';
+import { COLORS } from '../ui';
 import { Box } from '../icons';
 
 const Container = styled.div`
