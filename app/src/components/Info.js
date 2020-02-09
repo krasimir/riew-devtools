@@ -20,7 +20,7 @@ export default function Info() {
         block
         external
       >
-        Riew at GitHub
+        Documentation
       </Link>
       <Link
         href="https://krasimirtsonev.com/blog/category/Riew"
@@ -29,6 +29,14 @@ export default function Info() {
         external
       >
         Introduction series
+      </Link>
+      <Link
+        href="https://krasimirtsonev.com/blog/"
+        target="_blank"
+        block
+        external
+      >
+        Author
       </Link>
     </InfoWrapper>
   );

@@ -44,7 +44,12 @@ export default function App() {
           selected={page === 'frames'}
           onClick={() => changePage('frames')}
         >
-          Frames {current ? `(${current.id})` : ''}
+          Frames{' '}
+          {current ? (
+            <small style={{ opacity: 0.4, lineHeight: 0 }}>#{current.id}</small>
+          ) : (
+            ''
+          )}
         </PageButton>
         <PageButton
           selected={page === 'info'}

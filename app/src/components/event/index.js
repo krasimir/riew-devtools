@@ -2,18 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { TYPES } from '../../constants';
+import { TYPES, RIEW_NEW_SESSION } from '../../constants';
+import { Container } from '../ui';
+import Actions from './Actions';
 import ItemRiew from './ItemRiew';
 import ItemNewSession from './ItemNewSession';
 
-const EventWrapper = styled.div`
+const EventWrapper = styled(Container)`
   border: solid 2px #4d4d4d;
 `;
 
 export default function Event({ event }) {
   if (event.snapshot) {
-    const { state } = event.snapshot;
-    console.log(event.snapshot);
+    const { state, actions } = event.snapshot;
+    // console.log(event.snapshot);
     return (
       <EventWrapper>
         {state.map(item => {
@@ -22,11 +24,12 @@ export default function Event({ event }) {
           }
           return null;
         })}
+        <Actions actions={actions} />
       </EventWrapper>
     );
   }
   switch (event.type) {
-    case TYPES.RIEW_NEW_SESSION:
+    case RIEW_NEW_SESSION:
       return (
         <EventWrapper>
           <ItemNewSession />
