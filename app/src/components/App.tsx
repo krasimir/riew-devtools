@@ -3,32 +3,31 @@ import styled from 'styled-components';
 import bridge from '../bridge';
 import Slider from './Slider';
 import reducer from '../reducer';
-import Event from './event';
+import EventUI from './event';
 import Info from './Info';
 import { NavButton } from './ui';
+import { Event } from '../types';
 
 const Nav = styled.div`
   border-top: solid 1px #000;
 `;
-const PageButton = styled(NavButton)`
+const PageButton = styled(NavButton)<{ selected: boolean }>`
   opacity: ${props => (props.selected ? 1 : 0.4)};
 `;
 
 export default function App() {
   const [events, addEvent] = useReducer(reducer, []);
-  const [current, setCurrent] = useState(null);
-  const [page, changePage] = useState('frames');
+  const [current, setCurrent] = useState<Event|null>(null);
+  const [page, changePage] = useState<'frames'|'info'>('frames');
 
   useEffect(() => {
-    bridge(event => {
-      addEvent(event);
-    });
+    bridge((event:Event) => addEvent(event));
   }, []);
 
   const Page = () => {
     switch (page) {
       case 'frames':
-        return current ? <Event event={current} /> : null;
+        return current ? <EventUI event={current} /> : null;
       case 'info':
         return <Info />;
       default:

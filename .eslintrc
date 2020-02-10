@@ -1,6 +1,8 @@
 {
   "extends": [
-    "wesbos"
+    "wesbos",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "globals": {
     "chrome": true
@@ -9,6 +11,18 @@
     "no-restricted-globals": 0,
     "react/prop-types": 0,
     "react/destructuring-assignment": 0,
-    "no-plusplus": 0
-  }
+    "no-plusplus": 0,
+    "react/jsx-filename-extension": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ]
 }

@@ -3,13 +3,20 @@ import PropTypes from 'prop-types';
 import RCSlider from 'rc-slider';
 import styled from 'styled-components';
 
+import { Event } from '../types'
+
 const SliderWrapper = styled.div`
   padding: 1em;
 `;
 
-export default function Slider({ events, onChange }) {
-  const [sliderValue, setSliderValue] = useState(null);
-  const [snapToTheEnd, snap] = useState(true);
+interface SliderProps {
+  events: Event[],
+  onChange: (event:Event) => void
+}
+
+export default function Slider({ events, onChange }: SliderProps) {
+  const [sliderValue, setSliderValue] = useState<number|null>(null);
+  const [snapToTheEnd, snap] = useState<boolean>(true);
 
   useEffect(() => {
     if (snapToTheEnd) {
@@ -18,7 +25,7 @@ export default function Slider({ events, onChange }) {
     }
   }, [events, events.length, onChange, snapToTheEnd]);
 
-  const marks = {};
+  const marks:{[key:string]: {style:string, label:string}} = {};
   for (let i = 0; i < events.length; i++) {
     marks[i] = {
       style: '',
@@ -33,7 +40,7 @@ export default function Slider({ events, onChange }) {
         max={events.length}
         value={sliderValue}
         marks={marks}
-        onChange={v => {
+        onChange={(v:number) => {
           setSliderValue(v);
           snap(v === events.length);
           onChange(events[v]);
