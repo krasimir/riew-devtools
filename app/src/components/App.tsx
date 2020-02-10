@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import bridge from '../bridge';
 import Slider from './Slider';
 import reducer from '../reducer';
-import EventUI from './event';
+import EventUI from './event/EventUI';
 import Info from './Info';
 import { NavButton } from './ui';
 import { Event } from '../types';
@@ -24,7 +24,7 @@ export default function App() {
     bridge((event:Event) => addEvent(event));
   }, []);
 
-  const Page = () => {
+  const Page:React.FC = () => {
     switch (page) {
       case 'frames':
         return current ? <EventUI event={current} /> : null;
@@ -37,7 +37,7 @@ export default function App() {
 
   return (
     <>
-      <Slider events={events} onChange={setCurrent} />
+      <Slider events={events} onChange={setCurrent}/>
       <Nav>
         <PageButton
           selected={page === 'frames'}

@@ -13,9 +13,12 @@ interface SliderProps {
   events: Event[],
   onChange: (event:Event) => void
 }
+type Mark = {
+  [key:string]: {style:string, label:string}
+}
 
 export default function Slider({ events, onChange }: SliderProps) {
-  const [sliderValue, setSliderValue] = useState<number|null>(null);
+  const [sliderValue, setSliderValue] = useState<number|undefined>();
   const [snapToTheEnd, snap] = useState<boolean>(true);
 
   useEffect(() => {
@@ -25,7 +28,7 @@ export default function Slider({ events, onChange }: SliderProps) {
     }
   }, [events, events.length, onChange, snapToTheEnd]);
 
-  const marks:{[key:string]: {style:string, label:string}} = {};
+  const marks:Mark = {};
   for (let i = 0; i < events.length; i++) {
     marks[i] = {
       style: '',

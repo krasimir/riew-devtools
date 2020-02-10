@@ -1,13 +1,24 @@
 /* eslint-disable no-script-url */
 
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
+
+type LinkProps = {
+  block?: boolean,
+  dim?: boolean,
+  external?: boolean
+}
+
+export type ContainerProps = {
+  p?: string,
+  m?: string
+}
 
 export const COLORS = {
   grey1: '#171717',
   grey2: '#2a2a2a',
   selected: '#213651',
 };
-export const Container = styled.div`
+export const Container = styled.div<ContainerProps>`
   padding: ${props => ('p' in props ? props.p : '1em')};
   margin: ${props => ('m' in props ? props.m : 0)};
 `;
@@ -37,7 +48,7 @@ export const NavButton = styled(Button)`
 `;
 export const Link = styled.a.attrs(props => ({
   href: props.href ? props.href : 'javascript:void(0)',
-}))`
+}))<LinkProps>`
   display: ${props => (props.block ? 'block' : 'inline-block')};
   color: white;
   text-decoration: none;

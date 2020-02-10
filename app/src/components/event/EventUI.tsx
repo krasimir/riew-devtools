@@ -1,24 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 
 import { TYPES, RIEW_NEW_SESSION } from '../../constants';
 import { Container } from '../ui';
 import Actions from './Actions';
 import ItemRiew from './ItemRiew';
 import ItemNewSession from './ItemNewSession';
+import { Event } from '../../types';
 
 const EventWrapper = styled(Container)`
   border: solid 2px #4d4d4d;
 `;
 
-export default function Event({ event }) {
+interface EventProps {
+  event: Event
+}
+
+export default function EventUI({ event }:EventProps):JSX.Element {
   if (event.snapshot) {
     const { state, actions } = event.snapshot;
-    // console.log(event.snapshot);
     return (
       <EventWrapper>
-        {state.map(item => {
+        {state.map(item => { 
           if (item.type === TYPES.RIEW) {
             return <ItemRiew data={item} key={item.id} />;
           }
@@ -36,10 +40,14 @@ export default function Event({ event }) {
         </EventWrapper>
       );
     default:
-      return event.type;
+      return (
+        <EventWrapper>
+          {event.type}
+        </EventWrapper>
+      );
   }
 }
 
-Event.propTypes = {
+EventUI.propTypes = {
   event: PropTypes.object.isRequired,
 };
