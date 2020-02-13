@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 
-import { TYPES, RIEW_NEW_SESSION } from '../../constants';
 import { Container } from '../ui';
 import Actions from './Actions';
 import ItemRiew from './ItemRiew';
 import ItemNewSession from './ItemNewSession';
-import { Event } from '../../types';
+import { Event, EventType, ItemType } from '../../types';
 
 const EventWrapper = styled(Container)`
   border: solid 2px #4d4d4d;
@@ -17,13 +16,13 @@ interface EventProps {
   event: Event
 }
 
-export default function EventUI({ event }:EventProps):JSX.Element {
+export default function EventUI({ event }:EventProps) {
   if (event.snapshot) {
     const { state, actions } = event.snapshot;
     return (
       <EventWrapper>
         {state.map(item => { 
-          if (item.type === TYPES.RIEW) {
+          if (item.type === ItemType.RIEW) {
             return <ItemRiew data={item} key={item.id} />;
           }
           return null;
@@ -33,7 +32,7 @@ export default function EventUI({ event }:EventProps):JSX.Element {
     );
   }
   switch (event.type) {
-    case RIEW_NEW_SESSION:
+    case EventType.RIEW_NEW_SESSION:
       return (
         <EventWrapper>
           <ItemNewSession />

@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 
 import { Container, Link } from '../ui';
 import identify from '../../utils/identify';
+import { SnapshotAction } from '../../types'
 
-function action(data, idx) {
+function action(data:SnapshotAction, idx:number) {
   const who = identify(data.who);
-  console.log(data);
+  const key = who.id + idx;
+
   return (
-    <Container key={who.id + idx} p={0} m={0}>
+    <Container key={key} p={0} m={0}>
       {who.name ? who.name : who.type.toLowerCase()}
       {': '}
       {data.what}
@@ -15,7 +17,11 @@ function action(data, idx) {
   );
 }
 
-export default function Actions({ actions }) {
+interface ActionsProps {
+  actions: SnapshotAction[]
+}
+
+export default function Actions({ actions }: ActionsProps) {
   const [expanded, expand] = useState(false);
 
   if (!expanded) {

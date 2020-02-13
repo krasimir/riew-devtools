@@ -1,5 +1,22 @@
-export type EventType = 'RIEW_NEW_SESSION' | 'RIEW_SNAPSHOT';
-export type StateItemType = 'RIEW' | 'CHANNEL' | 'ROUTINE';
+export enum EventType {
+  RIEW_NEW_SESSION = 'RIEW_NEW_SESSION',
+  RIEW_SNAPSHOT = 'RIEW_SNAPSHOT'
+}
+
+export enum ItemType {
+  RIEW = 'RIEW',
+  CHANNEL = 'CHANNEL',
+  ROUTINE = 'ROUTINE',
+  STATE = 'STATE',
+  UNRECOGNIZED = 'UNRECOGNIZED'
+};
+
+export enum ChannelBuffers {
+  FIXED = 'FIXED',
+  SLIDING = 'SLIDING',
+  DROPPING = 'DROPPING',
+  UNRECOGNIZED = 'UNRECOGNIZED'
+}
 
 export type SnapshotAction = {
   who: string
@@ -7,34 +24,41 @@ export type SnapshotAction = {
   meta: { [key:string]: any } | null
 }
 
-export type Channel = {
-  id: string
-  type: 'CHANNEL'
-  value: any[]
-  puts: { callback: () => void, item: any }[]
-  takes: { read: boolean, listen: boolean }[]
+interface EntityInterface {
+  id: string,
+  type: string,
+  name?: string
 }
 
-export type Routine = {
-  id: string
-  type: 'ROUTINE'
-  name: string
+export type Channel = EntityInterface & {
+  type: ItemType.CHANNEL
+  puts?: { callback: () => void, item: any }[]
+  takes?: { read: boolean, listen: boolean }[]
+  buffer?: ChannelBuffers
+  value?: any[],
 }
 
-export type State = {
-  id: string
-  type: 'STATE'
-  value: any,
-  children: Channel[]
+export type Routine = EntityInterface & {
+  type: ItemType.ROUTINE
 }
 
-export type Riew = {
-  id: string
-  name: string,
+export type State = EntityInterface & {
+  type: ItemType.STATE
+  value?: any
+  children?: Channel[]
+}
+
+export type Riew = EntityInterface & {
   type: 'RIEW',
-  viewDate: { [key:string]: any },
-  children: (Channel|Routine|State)[]
+  viewDate?: { [key:string]: any },
+  children?: (Channel|Routine|State)[]
 }
+
+export type Unrecognized = EntityInterface & {
+  type: ItemType.UNRECOGNIZED
+}
+
+export type Entity = Channel | Routine | State | Riew | Unrecognized;
 
 export interface Snapshot {
   actions: SnapshotAction[]

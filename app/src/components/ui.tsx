@@ -1,6 +1,6 @@
 /* eslint-disable no-script-url */
 
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 
 type LinkProps = {
   block?: boolean,
@@ -9,8 +9,8 @@ type LinkProps = {
 }
 
 export type ContainerProps = {
-  p?: string,
-  m?: string
+  p?: string | 0,
+  m?: string | 0
 }
 
 export const COLORS = {
