@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { COLORS } from '../ui';
 import { Box } from '../icons';
+import { Riew } from '../../types';
 
 const Container = styled.div`
   padding: 0.4em 0.6em;
@@ -14,7 +15,11 @@ const Container = styled.div`
   }
 `;
 
-export default function ItemRiew({ data }) {
+interface ItemRiewProps {
+  data: Riew;
+}
+
+export default function ItemRiew({ data }: ItemRiewProps) {
   return (
     <Container>
       <Box /> &lt;{data.name}&gt;

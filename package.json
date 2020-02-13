@@ -15,6 +15,8 @@
   },
   "homepage": "https://github.com/krasimir/riew-devtools#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "2.19.2",
+    "@typescript-eslint/parser": "2.19.2",
     "babel-eslint": "9.0.0",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.1",
@@ -26,6 +28,7 @@
     "eslint-plugin-prettier": "3.1.2",
     "eslint-plugin-react": "7.18.0",
     "eslint-plugin-react-hooks": "1.7.0",
-    "prettier": "1.19.1"
+    "prettier": "1.19.1",
+    "typescript": "3.7.5"
   }
 }

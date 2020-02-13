@@ -1,6 +1,6 @@
-import { ChannelBuffers, ItemType, Entity } from '../types'
+import { ChannelBuffers, ItemType, Entity } from '../types';
 
-export default function identify(id:string): Entity {
+export default function identify(id: string): Entity {
   const parts = id.split('_');
 
   if (parts[1] === 'riew') {
@@ -10,12 +10,12 @@ export default function identify(id:string): Entity {
       name: parts[0],
     };
   }
-  if (parts[0] in ChannelBuffers) {
+  if (['ch', 'sliding', 'dropping', 'fixed'].includes(parts[0])) {
     return {
       id,
       type: ItemType.CHANNEL,
       name: 'channel',
-      buffer: (function(str) {
+      buffer: (function(str): ChannelBuffers {
         if (str === 'ch' || str === 'fixed') return ChannelBuffers.FIXED;
         if (str === 'sliding') return ChannelBuffers.SLIDING;
         if (str === 'dropping') return ChannelBuffers.DROPPING;
@@ -38,6 +38,5 @@ export default function identify(id:string): Entity {
       name: 'state',
     };
   }
-  console.warn(`Unrecognized "${id}".`);
   return { id, type: ItemType.UNRECOGNIZED, name: 'unknown' };
 }

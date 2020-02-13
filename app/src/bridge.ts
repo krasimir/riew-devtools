@@ -6,7 +6,7 @@ const isItDevTools =
 const DEBUG_ADD_EVENT_INTERVAL = 10;
 let ids = 0;
 
-export default async function bridge(callback:Function) {
+export default async function bridge(callback: Function): Promise<void> {
   if (isItDevTools) {
     chrome.runtime.onMessage.addListener(function(event, sender, sendResponse) {
       event.id = ++ids;
@@ -14,9 +14,11 @@ export default async function bridge(callback:Function) {
       sendResponse('received');
     });
   } else {
-    const mockData:Array<Event> = await fetch('_mock_/log.json').then(res => res.json());
+    const mockData: Array<Event> = await fetch('_mock_/log.json').then(res =>
+      res.json()
+    );
 
-    (function push() {
+    (function push(): void {
       if (mockData.length > 0) {
         const event = mockData.shift();
 

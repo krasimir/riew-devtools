@@ -3,15 +3,19 @@
 import styled from 'styled-components';
 
 type LinkProps = {
-  block?: boolean,
-  dim?: boolean,
-  external?: boolean
-}
+  block?: boolean;
+  dim?: boolean;
+  external?: boolean;
+};
 
 export type ContainerProps = {
-  p?: string | 0,
-  m?: string | 0
-}
+  p?: string | 0;
+  m?: string | 0;
+};
+
+export type DimProps = {
+  small?: boolean;
+};
 
 export const COLORS = {
   grey1: '#171717',
@@ -65,4 +69,8 @@ export const Text = styled.p`
   & + p {
     padding: 0 0 1em 0;
   }
+`;
+export const Dim = styled.span<DimProps>`
+  opacity: 0.5;
+  font-size: ${props => (props.small ? '0.8em' : '1em')};
 `;

@@ -1,6 +1,6 @@
 export enum EventType {
   RIEW_NEW_SESSION = 'RIEW_NEW_SESSION',
-  RIEW_SNAPSHOT = 'RIEW_SNAPSHOT'
+  RIEW_SNAPSHOT = 'RIEW_SNAPSHOT',
 }
 
 export enum ItemType {
@@ -8,68 +8,93 @@ export enum ItemType {
   CHANNEL = 'CHANNEL',
   ROUTINE = 'ROUTINE',
   STATE = 'STATE',
-  UNRECOGNIZED = 'UNRECOGNIZED'
-};
+  UNRECOGNIZED = 'UNRECOGNIZED',
+}
 
 export enum ChannelBuffers {
   FIXED = 'FIXED',
   SLIDING = 'SLIDING',
   DROPPING = 'DROPPING',
-  UNRECOGNIZED = 'UNRECOGNIZED'
+  UNRECOGNIZED = 'UNRECOGNIZED',
+}
+
+export enum What {
+  RIEW_RENDERED = 'RIEW_RENDERED',
+  RIEW_MOUNTED = 'RIEW_MOUNTED',
+  RIEW_UNMOUNTED = 'RIEW_UNMOUNTED',
+  RIEW_UPDATED = 'RIEW_UPDATED',
+  RIEW_CREATED = 'RIEW_CREATED',
+  CHANNEL_PUT_INITIATED = 'CHANNEL_PUT_INITIATED',
+  CHANNEL_PUT_RESOLVED = 'CHANNEL_PUT_RESOLVED',
+  CHANNEL_TAKE_INITIATED = 'CHANNEL_TAKE_INITIATED',
+  CHANNEL_TAKE_RESOLVED = 'CHANNEL_TAKE_RESOLVED',
+  CHANNEL_CREATED = 'CHANNEL_CREATED',
+  CHANNEL_CLOSED = 'CHANNEL_CLOSED',
+  CHANNEL_RESET = 'CHANNEL_RESET',
+  ROUTINE_STOPPED = 'ROUTINE_STOPPED',
+  ROUTINE_RERUN = 'ROUTINE_RERUN',
+  ROUTINE_END = 'ROUTINE_END',
+  ROUTINE_ASYNC_BEGIN = 'ROUTINE_ASYNC_BEGIN',
+  ROUTINE_ASYNC_END = 'ROUTINE_ASYNC_END',
+  ROUTINE_ASYNC_ERROR = 'ROUTINE_ASYNC_ERROR',
+  ROUTINE_STARTED = 'ROUTINE_STARTED',
+  STATE_VALUE_SET = 'STATE_VALUE_SET',
+  STATE_DESTROYED = 'STATE_DESTROYED',
+  STATE_CREATED = 'STATE_CREATED',
 }
 
 export type SnapshotAction = {
-  who: string
-  what: string
-  meta: { [key:string]: any } | null
-}
+  who: string;
+  what: What;
+  meta: { [key: string]: any } | null;
+};
 
 interface EntityInterface {
-  id: string,
-  type: string,
-  name?: string
+  id: string;
+  type: string;
+  name?: string;
 }
 
 export type Channel = EntityInterface & {
-  type: ItemType.CHANNEL
-  puts?: { callback: () => void, item: any }[]
-  takes?: { read: boolean, listen: boolean }[]
-  buffer?: ChannelBuffers
-  value?: any[],
-}
+  type: ItemType.CHANNEL;
+  puts?: { callback: () => void; item: any }[];
+  takes?: { read: boolean; listen: boolean }[];
+  buffer?: ChannelBuffers;
+  value?: any[];
+};
 
 export type Routine = EntityInterface & {
-  type: ItemType.ROUTINE
-}
+  type: ItemType.ROUTINE;
+};
 
 export type State = EntityInterface & {
-  type: ItemType.STATE
-  value?: any
-  children?: Channel[]
-}
+  type: ItemType.STATE;
+  value?: any;
+  children?: Channel[];
+};
 
 export type Riew = EntityInterface & {
-  type: 'RIEW',
-  viewDate?: { [key:string]: any },
-  children?: (Channel|Routine|State)[]
-}
+  type: 'RIEW';
+  viewDate?: { [key: string]: any };
+  children?: (Channel | Routine | State)[];
+};
 
 export type Unrecognized = EntityInterface & {
-  type: ItemType.UNRECOGNIZED
-}
+  type: ItemType.UNRECOGNIZED;
+};
 
 export type Entity = Channel | Routine | State | Riew | Unrecognized;
 
 export interface Snapshot {
-  actions: SnapshotAction[]
-  state: (Riew|State|Channel|Routine)[]
+  actions: SnapshotAction[];
+  state: (Riew | State | Channel | Routine)[];
 }
 
 export interface Event {
-  id: number,
-  type: EventType
-  source: 'riew'
-  origin: string
-  time: number
-  snapshot: Snapshot
+  id: number;
+  type: EventType;
+  source: 'riew';
+  origin: string;
+  time: number;
+  snapshot: Snapshot;
 }

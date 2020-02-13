@@ -17,14 +17,14 @@ const PageButton = styled(NavButton)<{ selected: boolean }>`
 
 export default function App() {
   const [events, addEvent] = useReducer(reducer, []);
-  const [current, setCurrent] = useState<Event|null>(null);
-  const [page, changePage] = useState<'frames'|'info'>('frames');
+  const [current, setCurrent] = useState<Event | null>(null);
+  const [page, changePage] = useState<'frames' | 'info'>('frames');
 
   useEffect(() => {
-    bridge((event:Event) => addEvent(event));
+    bridge((event: Event) => addEvent(event));
   }, []);
 
-  const Page:React.FC = () => {
+  const Page: React.FC = () => {
     switch (page) {
       case 'frames':
         return current ? <EventUI event={current} /> : null;
@@ -37,7 +37,7 @@ export default function App() {
 
   return (
     <>
-      <Slider events={events} onChange={setCurrent}/>
+      <Slider events={events} onChange={setCurrent} />
       <Nav>
         <PageButton
           selected={page === 'frames'}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Box:React.FC<{size?:number}> = ({ size }) => (
+export const Box: React.FC<{ size?: number }> = ({ size }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size || 14}

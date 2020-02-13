@@ -13,15 +13,15 @@ const EventWrapper = styled(Container)`
 `;
 
 interface EventProps {
-  event: Event
+  event: Event;
 }
 
-export default function EventUI({ event }:EventProps) {
+export default function EventUI({ event }: EventProps) {
   if (event.snapshot) {
     const { state, actions } = event.snapshot;
     return (
       <EventWrapper>
-        {state.map(item => { 
+        {state.map(item => {
           if (item.type === ItemType.RIEW) {
             return <ItemRiew data={item} key={item.id} />;
           }
@@ -39,11 +39,7 @@ export default function EventUI({ event }:EventProps) {
         </EventWrapper>
       );
     default:
-      return (
-        <EventWrapper>
-          {event.type}
-        </EventWrapper>
-      );
+      return <EventWrapper>{event.type}</EventWrapper>;
   }
 }
 
