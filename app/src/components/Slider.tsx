@@ -35,7 +35,6 @@ export default function Slider({ events, onChange }: SliderProps) {
       label: '',
     };
   }
-  console.log(`====${sliderValue}`);
   return (
     <SliderWrapper>
       <RCSlider
@@ -45,7 +44,7 @@ export default function Slider({ events, onChange }: SliderProps) {
         marks={marks}
         onChange={(v: number) => {
           setSliderValue(v);
-          snap(v === events.length);
+          snap(v === events.length - 1);
           onChange(events[v]);
         }}
       />

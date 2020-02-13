@@ -19,3 +19,19 @@ export const Box: React.FC<{ size?: number }> = ({ size }) => (
     <line x1="12" y1="22.08" x2="12" y2="12"></line>
   </svg>
 );
+
+export const Channel: React.FC<{ size?: number }> = ({ size }) => (
+  <svg
+    width={size || 14}
+    height={size || 14}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-activity"
+  >
+    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+  </svg>
+);

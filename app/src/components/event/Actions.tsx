@@ -4,6 +4,8 @@ import { Container, Link, Dim } from '../ui';
 import { SnapshotAction, ItemType } from '../../types';
 import identify from '../../utils/identify';
 import what2HumanReadable from '../../utils/what2HumanReadable';
+import ItemRiew from './ItemRiew';
+import ItemChannel from './ItemChannel';
 
 let actionsExpanded = false;
 
@@ -14,15 +16,15 @@ function action(data: SnapshotAction, idx: number) {
   if (who.type === ItemType.RIEW) {
     return (
       <Container key={key} p={0} m={0}>
-        &lt;{who.name}&gt; <Dim>{what2HumanReadable(data.what)}</Dim>
+        <Dim small>{what2HumanReadable(data.what)}</Dim> <ItemRiew riew={who} />
       </Container>
     );
   }
   if (who.type === ItemType.CHANNEL) {
     return (
       <Container key={key} p={0} m={0}>
-        &lt;{who.name}&gt; <Dim small>#{who.id}</Dim>{' '}
-        <Dim>{what2HumanReadable(data.what)}</Dim>
+        <Dim small>{what2HumanReadable(data.what)}</Dim>{' '}
+        <ItemChannel channel={who} />
       </Container>
     );
   }

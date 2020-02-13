@@ -1,32 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { COLORS } from '../ui';
 import { Box } from '../icons';
 import { Riew } from '../../types';
 
-const Container = styled.div`
-  padding: 0.4em 0.6em;
-  background: ${COLORS.grey2};
-  border-bottom: solid 1px ${COLORS.grey1};
-  cursor: pointer;
-  &:hover {
-    background: ${COLORS.grey1};
-  }
-`;
-
 interface ItemRiewProps {
-  data: Riew;
+  riew: Riew;
 }
 
-export default function ItemRiew({ data }: ItemRiewProps) {
+export default function ItemRiew({ riew }: ItemRiewProps) {
   return (
-    <Container>
-      <Box /> &lt;{data.name}&gt;
-    </Container>
+    <>
+      <Box /> &lt;{riew.name}&gt;
+    </>
   );
 }
 
 ItemRiew.propTypes = {
-  data: PropTypes.object.isRequired,
+  riew: PropTypes.object.isRequired,
 };

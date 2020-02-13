@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Container } from '../ui';
+import { Container, COLORS } from '../ui';
 import Actions from './Actions';
 import ItemRiew from './ItemRiew';
 import ItemNewSession from './ItemNewSession';
@@ -10,6 +10,15 @@ import { Event, EventType, ItemType } from '../../types';
 
 const EventWrapper = styled(Container)`
   border: solid 2px #4d4d4d;
+`;
+const EventItemContainer = styled.div`
+  padding: 0.4em 0.6em;
+  background: ${COLORS.grey2};
+  border-bottom: solid 1px ${COLORS.grey1};
+  cursor: pointer;
+  &:hover {
+    background: ${COLORS.grey1};
+  }
 `;
 
 interface EventProps {
@@ -23,7 +32,11 @@ export default function EventUI({ event }: EventProps) {
       <EventWrapper>
         {state.map(item => {
           if (item.type === ItemType.RIEW) {
-            return <ItemRiew data={item} key={item.id} />;
+            return (
+              <EventItemContainer key={item.id}>
+                <ItemRiew riew={item} />
+              </EventItemContainer>
+            );
           }
           return null;
         })}
@@ -35,7 +48,9 @@ export default function EventUI({ event }: EventProps) {
     case EventType.RIEW_NEW_SESSION:
       return (
         <EventWrapper>
-          <ItemNewSession />
+          <EventItemContainer>
+            <ItemNewSession />
+          </EventItemContainer>
         </EventWrapper>
       );
     default:

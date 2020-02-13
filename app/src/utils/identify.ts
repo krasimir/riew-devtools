@@ -12,7 +12,7 @@ export default function identify(id: string): Entity {
   }
   if (['ch', 'sliding', 'dropping', 'fixed'].includes(parts[0])) {
     return {
-      id,
+      id: parts[1],
       type: ItemType.CHANNEL,
       name: 'channel',
       buffer: (function(str): ChannelBuffers {
