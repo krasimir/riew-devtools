@@ -1,20 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Box } from '../icons';
-import { Riew } from '../../types';
+import { ItemProps } from '../../types';
 
-interface ItemRiewProps {
-  riew: Riew;
-}
-
-export default function ItemRiew({ riew }: ItemRiewProps) {
+export default function ItemRiew({ data }: ItemProps) {
   return (
     <>
-      <Box /> &lt;{riew.name}&gt;
+      <Box /> &lt;{data.name}&gt;{' '}
+      {data.children && data.children.length > 0 ? '...' : ''}
     </>
   );
 }
-
-ItemRiew.propTypes = {
-  riew: PropTypes.object.isRequired,
-};

@@ -1,20 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Database } from '../icons';
-import { State } from '../../types';
+import { ItemProps } from '../../types';
 
-interface ItemStateProps {
-  state: State;
-}
-
-export default function ItemState({ state }: ItemStateProps) {
+export default function ItemState({ data }: ItemProps) {
   return (
     <>
-      <Database /> {state.name}
+      <Database /> {data.name}
     </>
   );
 }
-
-ItemState.propTypes = {
-  state: PropTypes.object.isRequired,
-};

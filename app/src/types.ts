@@ -100,3 +100,7 @@ export interface Event {
   time: number;
   snapshot: Snapshot;
 }
+
+export interface ItemProps {
+  data: Entity;
+}

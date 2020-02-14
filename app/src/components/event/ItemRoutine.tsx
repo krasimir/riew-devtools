@@ -1,20 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { CPU } from '../icons';
-import { Routine } from '../../types';
+import { ItemProps } from '../../types';
 
-interface ItemRoutineProps {
-  routine: Routine;
-}
-
-export default function ItemRoutine({ routine }: ItemRoutineProps) {
+export default function ItemRoutine({ data }: ItemProps) {
   return (
     <>
-      <CPU /> {routine.name}
+      <CPU /> {data.name}
     </>
   );
 }
-
-ItemRoutine.propTypes = {
-  routine: PropTypes.object.isRequired,
-};

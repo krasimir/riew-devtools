@@ -1,27 +1,28 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Container, COLORS } from '../ui';
+import { Container } from '../ui';
 import Actions from './Actions';
 import ItemRiew from './ItemRiew';
 import ItemChannel from './ItemChannel';
 import ItemState from './ItemState';
 import ItemRoutine from './ItemRoutine';
-import ItemNewSession from './ItemNewSession';
+import ItemUnknown from './ItemUnknown';
+import NewSession from './NewSession';
+import Expander from './Expander';
 
-import { Event, EventType, ItemType, Entity } from '../../types';
+import { Event, EventType, ItemType, Entity, ItemProps } from '../../types';
 
 const EventWrapper = styled(Container)`
   border: solid 2px #4d4d4d;
 `;
-const EventItemContainer = styled.div`
-  padding: 0.4em 0.6em;
-  background: ${COLORS.grey2};
-  border-bottom: solid 1px ${COLORS.grey1};
+const EventItemContainer = styled.div<{ indent?: number }>`
+  padding: 0.4em 0.6em 0.4em
+    ${props => (props.indent ? props.indent + 0.6 : 0.6)}em;
   cursor: pointer;
   &:hover {
-    background: ${COLORS.grey1};
+    color: white;
   }
 `;
 
@@ -29,40 +30,34 @@ interface EventProps {
   event: Event;
 }
 
-function renderEntities(entities: Entity[]) {
+function renderEntities(entities: Entity[], indent = 0): React.ReactNode {
+  const getComponent = (type: ItemType): React.FC<ItemProps> =>
+    ({
+      [ItemType.RIEW]: ItemRiew,
+      [ItemType.CHANNEL]: ItemChannel,
+      [ItemType.STATE]: ItemState,
+      [ItemType.ROUTINE]: ItemRoutine,
+      [ItemType.UNRECOGNIZED]: ItemUnknown,
+    }[type] || ItemUnknown);
+
   return entities.map(item => {
-    if (item.type === ItemType.RIEW) {
-      return (
-        <EventItemContainer key={item.id}>
-          <ItemRiew riew={item} />
-          {item.children && renderEntities(item.children)}
+    const Component = getComponent(item.type);
+
+    return (
+      <Fragment key={item.id}>
+        <EventItemContainer
+          indent={indent}
+          onClick={() => Expander.toggle(item.id)}
+        >
+          <Component data={item} />
         </EventItemContainer>
-      );
-    }
-    if (item.type === ItemType.CHANNEL) {
-      return (
-        <EventItemContainer key={item.id}>
-          <ItemChannel channel={item} />
-        </EventItemContainer>
-      );
-    }
-    if (item.type === ItemType.STATE) {
-      return (
-        <EventItemContainer key={item.id}>
-          <ItemState state={item} />
-          {item.children && renderEntities(item.children)}
-        </EventItemContainer>
-      );
-    }
-    if (item.type === ItemType.ROUTINE) {
-      return (
-        <EventItemContainer key={item.id}>
-          <ItemRoutine routine={item} />
-          {item.children && renderEntities(item.children)}
-        </EventItemContainer>
-      );
-    }
-    return null;
+        {item.children && (
+          <Expander id={item.id}>
+            {renderEntities(item.children, indent + 1.4)}
+          </Expander>
+        )}
+      </Fragment>
+    );
   });
 }
 
@@ -81,7 +76,7 @@ export default function EventUI({ event }: EventProps) {
       return (
         <EventWrapper>
           <EventItemContainer>
-            <ItemNewSession />
+            <NewSession />
           </EventItemContainer>
         </EventWrapper>
       );

@@ -18,6 +18,7 @@ export type DimProps = {
 };
 
 export const COLORS = {
+  bg: '#242424',
   grey1: '#171717',
   grey2: '#2a2a2a',
   selected: '#213651',

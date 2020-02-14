@@ -17,7 +17,7 @@ function actionUI(action: SnapshotAction, idx: number) {
     return (
       <Container key={key} p={0} m={0}>
         <Dim small>{what2HumanReadable(action.what)}</Dim>{' '}
-        <ItemRiew riew={who} />
+        <ItemRiew data={who} />
       </Container>
     );
   }
@@ -25,7 +25,7 @@ function actionUI(action: SnapshotAction, idx: number) {
     return (
       <Container key={key} p={0} m={0}>
         <Dim small>{what2HumanReadable(action.what)}</Dim>{' '}
-        <ItemChannel channel={who} />
+        <ItemChannel data={who} />
       </Container>
     );
   }
