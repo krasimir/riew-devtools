@@ -2,28 +2,29 @@ import React, { useState, useEffect } from 'react';
 
 import { Container, Link, Dim } from '../ui';
 import { SnapshotAction, ItemType } from '../../types';
-import identify from '../../utils/identify';
 import what2HumanReadable from '../../utils/what2HumanReadable';
 import ItemRiew from './ItemRiew';
 import ItemChannel from './ItemChannel';
 
 let actionsExpanded = false;
 
-function action(data: SnapshotAction, idx: number) {
-  const who = identify(data.who);
+function actionUI(action: SnapshotAction, idx: number) {
+  // const who = identify(action.who);
+  const { who } = action;
   const key = who.id + idx;
 
   if (who.type === ItemType.RIEW) {
     return (
       <Container key={key} p={0} m={0}>
-        <Dim small>{what2HumanReadable(data.what)}</Dim> <ItemRiew riew={who} />
+        <Dim small>{what2HumanReadable(action.what)}</Dim>{' '}
+        <ItemRiew riew={who} />
       </Container>
     );
   }
   if (who.type === ItemType.CHANNEL) {
     return (
       <Container key={key} p={0} m={0}>
-        <Dim small>{what2HumanReadable(data.what)}</Dim>{' '}
+        <Dim small>{what2HumanReadable(action.what)}</Dim>{' '}
         <ItemChannel channel={who} />
       </Container>
     );
@@ -31,8 +32,8 @@ function action(data: SnapshotAction, idx: number) {
 
   return (
     <Container key={key} p={0} m={0}>
+      <Dim small>{what2HumanReadable(action.what)}</Dim>{' '}
       {who.name ? who.name : who.type.toLowerCase()}{' '}
-      <Dim>{what2HumanReadable(data.what)}</Dim>
     </Container>
   );
 }
@@ -57,12 +58,13 @@ export default function Actions({ actions }: ActionsProps) {
       </Container>
     );
   }
+  console.log(actions);
   return (
     <Container p={0} m="1em 0 0 0">
       <Link dim onClick={() => expand((actionsExpanded = false))}>
         ⇨ actions ({actions.length})
       </Link>
-      <Container p="0 0 0 1em">{actions.map(action)}</Container>
+      <Container p="0 0 0 1em">{actions.map(actionUI)}</Container>
     </Container>
   );
 }

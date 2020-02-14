@@ -43,16 +43,12 @@ export enum What {
   STATE_CREATED = 'STATE_CREATED',
 }
 
-export type SnapshotAction = {
-  who: string;
-  what: What;
-  meta: { [key: string]: any } | null;
-};
-
 interface EntityInterface {
   id: string;
-  type: string;
+  rawId: string;
+  type: ItemType;
   name?: string;
+  children?: Entity[];
 }
 
 export type Channel = EntityInterface & {
@@ -74,8 +70,8 @@ export type State = EntityInterface & {
 };
 
 export type Riew = EntityInterface & {
-  type: 'RIEW';
-  viewDate?: { [key: string]: any };
+  type: ItemType.RIEW;
+  viewData?: { [key: string]: any };
   children?: (Channel | Routine | State)[];
 };
 
@@ -87,8 +83,14 @@ export type Entity = Channel | Routine | State | Riew | Unrecognized;
 
 export interface Snapshot {
   actions: SnapshotAction[];
-  state: (Riew | State | Channel | Routine)[];
+  state: Entity[];
 }
+
+export type SnapshotAction = {
+  who: Entity;
+  what: What;
+  meta: { [key: string]: any } | null;
+};
 
 export interface Event {
   id: number;

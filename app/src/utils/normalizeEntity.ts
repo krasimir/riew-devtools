@@ -1,19 +1,29 @@
 import { ChannelBuffers, ItemType, Entity } from '../types';
 
-export default function identify(id: string): Entity {
+export default function normalizeEntity({
+  id,
+  type,
+  ...restProps
+}: {
+  id: string;
+  type: ItemType;
+}): Entity {
   const parts = id.split('_');
 
-  if (parts[1] === 'riew') {
+  if (type === ItemType.RIEW) {
     return {
-      id,
-      type: ItemType.RIEW,
+      id: parts[2],
+      rawId: id,
+      type,
       name: parts[0],
+      ...restProps,
     };
   }
-  if (['ch', 'sliding', 'dropping', 'fixed'].includes(parts[0])) {
+  if (type === ItemType.CHANNEL) {
     return {
       id: parts[1],
-      type: ItemType.CHANNEL,
+      rawId: id,
+      type,
       name: 'channel',
       buffer: (function(str): ChannelBuffers {
         if (str === 'ch' || str === 'fixed') return ChannelBuffers.FIXED;
@@ -22,21 +32,32 @@ export default function identify(id: string): Entity {
         console.warn(`Unrecognized buffer type "${str}".`);
         return ChannelBuffers.UNRECOGNIZED;
       })(parts[0]),
+      ...restProps,
     };
   }
-  if (parts[0] === 'routine') {
+  if (type === ItemType.ROUTINE) {
     return {
-      id,
-      type: ItemType.ROUTINE,
+      id: parts[2],
+      rawId: id,
+      type,
       name: parts[1],
+      ...restProps,
     };
   }
-  if (parts[0] === 'state') {
+  if (type === ItemType.STATE) {
     return {
-      id,
-      type: ItemType.STATE,
+      id: parts[1],
+      rawId: id,
+      type,
       name: 'state',
+      ...restProps,
     };
   }
-  return { id, type: ItemType.UNRECOGNIZED, name: 'unknown' };
+  return {
+    id,
+    rawId: id,
+    type: ItemType.UNRECOGNIZED,
+    name: 'unknown',
+    ...restProps,
+  };
 }
