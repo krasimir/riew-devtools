@@ -31,10 +31,16 @@ function normalizeState(entities: Record<string, any>[]): void {
 function normalizeActions(event?: Record<string, any>): void {
   if (!event) return;
   event.snapshot.actions = event.snapshot.actions.map(
-    (action: { id: string; who: string | Entity }) => {
+    (action: { who: string | Entity; what: string }) => {
       const who = findWho(action.who as string, event.snapshot.state);
       if (who) {
         action.who = who;
+      } else {
+        console.log(
+          action.what,
+          action.who,
+          JSON.parse(JSON.stringify(event.snapshot.state))
+        );
       }
       return action;
     }

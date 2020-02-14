@@ -8,21 +8,13 @@ interface ExpanderProps {
 
 const cache: Record<string, boolean> = {};
 const listeners: Record<string, Function[]> = {};
-const listen = (id: string, callback: Function): Function => {
-  if (!listeners[id]) listeners[id] = [];
-  listeners[id].push(callback);
-  return () => {
-    listeners[id] = listeners[id].filter(l => l !== callback);
-  };
-};
 
 export default function Expander({ id, children }: ExpanderProps) {
   const [isExpanded, expand] = useState(!!cache[id]);
 
   useEffect(() => {
-    const unsubscribe = listen(id, () => {
-      expand(!isExpanded);
-      cache[id] = !isExpanded;
+    const unsubscribe = Expander.listen(id, (value: boolean) => {
+      expand(value);
     });
 
     return () => unsubscribe();
@@ -32,8 +24,16 @@ export default function Expander({ id, children }: ExpanderProps) {
 }
 
 Expander.toggle = (id: string) => {
+  cache[id] = !cache[id];
   if (listeners[id]) {
-    listeners[id].forEach(l => l());
+    listeners[id].forEach(l => l(cache[id]));
   }
 };
 Expander.isExpanded = (id: string): boolean => cache[id];
+Expander.listen = (id: string, callback: Function): Function => {
+  if (!listeners[id]) listeners[id] = [];
+  listeners[id].push(callback);
+  return () => {
+    listeners[id] = listeners[id].filter(l => l !== callback);
+  };
+};

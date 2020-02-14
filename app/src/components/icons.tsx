@@ -80,3 +80,20 @@ export const Database: React.FC<{ size?: number }> = ({ size }) => (
     <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
   </svg>
 );
+
+export const Minus: React.FC<{ size?: number }> = ({ size }) => (
+  <svg
+    style={{ transform: 'translateY(2px)' }}
+    width={size || 14}
+    height={size || 14}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-minus"
+  >
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+  </svg>
+);

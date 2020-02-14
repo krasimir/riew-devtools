@@ -29,7 +29,7 @@ function actionUI(action: SnapshotAction, idx: number) {
       </Container>
     );
   }
-
+  console.log(action);
   return (
     <Container key={key} p={0} m={0}>
       <Dim small>{what2HumanReadable(action.what)}</Dim>{' '}
