@@ -58,7 +58,7 @@ export default function Actions({ actions }: ActionsProps) {
       </Container>
     );
   }
-  console.log(actions);
+
   return (
     <Container p={0} m="1em 0 0 0">
       <Link dim onClick={() => expand((actionsExpanded = false))}>
