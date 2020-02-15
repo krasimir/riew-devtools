@@ -11,6 +11,8 @@ type LinkProps = {
 export type ContainerProps = {
   p?: string | 0;
   m?: string | 0;
+  display?: string;
+  columns?: string;
 };
 
 export type DimProps = {
@@ -26,6 +28,8 @@ export const COLORS = {
 export const Container = styled.div<ContainerProps>`
   padding: ${props => ('p' in props ? props.p : '1em')};
   margin: ${props => ('m' in props ? props.m : 0)};
+  display: ${props => ('display' in props ? props.display : 'block')};
+  grid-template-columns: ${props => ('columns' in props ? props.columns : '')};
 `;
 export const Line = styled.hr`
   border-top: none;
@@ -99,21 +103,8 @@ export const EventItemContainer = styled.div<{ indent?: number }>`
     color: white;
   }
 `;
-
-export const EventSeparator = styled.div<{ text: string; m?: string }>`
-  margin: ${props => (props.m ? props.m : 0)};
-  opacity: 0.2;
-  &::before {
-    content: "${props => props.text}";
-    font-size: 0.8em;
-    background: #242424;
-    display: block;
-  }
-  &::after {
-    content: " ";
-    display: block;
-    border-top: dotted 1px #4d4d4d;
-    width: 100%;
-    height: 2px;
-  }
+export const Separator = styled.hr`
+  border-top: none;
+  border-bottom: dotted 1px #333;
+  margin: 0.6em 0;
 `;

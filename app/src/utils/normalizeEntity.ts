@@ -26,7 +26,7 @@ export default function normalizeEntity({
       id: parts.length === 4 ? parts[3] : parts[1],
       rawId: id,
       type,
-      name: parts.length === 4 ? `${parts[1]}.${parts[2]}` : 'channel',
+      name: parts.length === 4 ? `${parts[2]}(${parts[1]})` : 'channel',
       buffer: (function(str): ChannelBuffers {
         if (str === 'ch' || str === 'fixed') return ChannelBuffers.FIXED;
         if (str === 'sliding') return ChannelBuffers.SLIDING;

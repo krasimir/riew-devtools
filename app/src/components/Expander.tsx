@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from '../utils/ui';
+import { Container } from './utils/ui';
 
 interface ExpanderProps {
   id: string;

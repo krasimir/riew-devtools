@@ -1,7 +1,7 @@
 import React from 'react';
 import { CPU } from '../utils/icons';
 import { ItemProps } from '../../types';
-import useExpander from './hooks/useExpander';
+import useExpander from '../hooks/useExpander';
 
 export default function ItemRoutine({ data }: ItemProps) {
   const [expanded] = useExpander(data.id);
