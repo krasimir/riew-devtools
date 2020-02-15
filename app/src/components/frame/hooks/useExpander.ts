@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Expander from '../event/Expander';
+import Expander from '../Expander';
 
 export default function useExpander(id: string) {
   const [isExpanded, setExpandedStatus] = useState<boolean>(

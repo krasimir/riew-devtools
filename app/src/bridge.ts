@@ -7,19 +7,13 @@ const isItDevTools =
 const DEBUG_ADD_EVENT_INTERVAL = 10;
 let ids = 0;
 
-function findWho(id: string, entities: Entity[]): Entity | undefined {
-  for (let i = 0; i < entities.length; i++) {
-    if (id === entities[i].rawId) {
-      return entities[i];
-    }
-    if (entities[i].children) {
-      const res = findWho(id, entities[i].children || []);
-      if (res) {
-        return res;
-      }
-    }
-  }
-}
+// declare global {
+//   interface Window {
+//     RIEW_DATA_COLLECTED: Record<string, any>[];
+//   }
+// }
+// window.RIEW_DATA_COLLECTED = [];
+
 function normalizeState(entities: Record<string, any>[]): void {
   for (let i = 0; i < entities.length; i++) {
     entities[i] = normalizeEntity(entities[i] as Entity);
@@ -28,29 +22,17 @@ function normalizeState(entities: Record<string, any>[]): void {
     }
   }
 }
-function normalizeActions(event?: Record<string, any>): void {
+function normalizeActions(actions: Record<string, any>[]): void {
   if (!event) return;
-  event.snapshot.actions = event.snapshot.actions.map(
-    (action: { who: string | Entity; what: string }) => {
-      const who = findWho(action.who as string, event.snapshot.state);
-      if (who) {
-        action.who = who;
-      } else {
-        console.log(
-          action.what,
-          action.who,
-          JSON.parse(JSON.stringify(event.snapshot.state))
-        );
-      }
-      return action;
-    }
-  );
+  for (let i = 0; i < actions.length; i++) {
+    actions[i].who = normalizeEntity(actions[i].who as Entity);
+  }
 }
 function normalizeEvent(event?: Record<string, any>): Event | undefined {
   if (!event) return;
   if (event.type === EventType.RIEW_NEW_SESSION) return event as Event;
   normalizeState(event.snapshot.state);
-  normalizeActions(event);
+  normalizeActions(event.snapshot.actions);
   return event as Event;
 }
 
@@ -58,6 +40,7 @@ export default async function bridge(callback: Function): Promise<void> {
   if (isItDevTools) {
     chrome.runtime.onMessage.addListener(function(event, sender, sendResponse) {
       event.id = ++ids;
+      // window.RIEW_DATA_COLLECTED.push(JSON.parse(JSON.stringify(event)));
       callback(normalizeEvent(event));
       sendResponse('received');
     });

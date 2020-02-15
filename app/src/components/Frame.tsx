@@ -1,30 +1,17 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
-import { Container } from '../ui';
-import Actions from './Actions';
-import ItemRiew from './ItemRiew';
-import ItemChannel from './ItemChannel';
-import ItemState from './ItemState';
-import ItemRoutine from './ItemRoutine';
-import ItemUnknown from './ItemUnknown';
-import NewSession from './NewSession';
-import Expander from './Expander';
+import { EventItemContainer, EventWrapper, EventSeparator } from './utils/ui';
+import Actions from './frame/Actions';
+import ItemRiew from './frame/ItemRiew';
+import ItemChannel from './frame/ItemChannel';
+import ItemState from './frame/ItemState';
+import ItemRoutine from './frame/ItemRoutine';
+import ItemUnknown from './frame/ItemUnknown';
+import NewSession from './frame/NewSession';
+import Expander from './frame/Expander';
 
-import { Event, EventType, ItemType, Entity, ItemProps } from '../../types';
-
-const EventWrapper = styled(Container)`
-  border: solid 2px #4d4d4d;
-`;
-const EventItemContainer = styled.div<{ indent?: number }>`
-  padding: 0.4em 0.6em 0.4em
-    ${props => (props.indent ? props.indent + 0.6 : 0.6)}em;
-  cursor: pointer;
-  &:hover {
-    color: white;
-  }
-`;
+import { Event, EventType, ItemType, Entity, ItemProps } from '../types';
 
 interface EventProps {
   event: Event;
@@ -61,12 +48,14 @@ function renderEntities(entities: Entity[], indent = 0): React.ReactNode {
   });
 }
 
-export default function EventUI({ event }: EventProps) {
+export default function Frame({ event }: EventProps) {
   if (event.snapshot) {
     const { state, actions } = event.snapshot;
     return (
       <EventWrapper>
+        <EventSeparator text="state" />
         {renderEntities(state)}
+        <EventSeparator text="actions" />
         <Actions actions={actions} />
       </EventWrapper>
     );
@@ -85,6 +74,6 @@ export default function EventUI({ event }: EventProps) {
   }
 }
 
-EventUI.propTypes = {
+Frame.propTypes = {
   event: PropTypes.object.isRequired,
 };

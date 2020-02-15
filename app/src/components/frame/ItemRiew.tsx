@@ -1,8 +1,8 @@
 import React from 'react';
-import { Box } from '../icons';
+import { Box } from '../utils/icons';
 import { ItemProps, Riew } from '../../types';
-import useExpander from '../hooks/useExpander';
-import { Dim } from '../ui';
+import useExpander from './hooks/useExpander';
+import { Dim } from '../utils/ui';
 
 function previewViewData(viewData: Riew['viewData']): string {
   if (viewData) {

@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import bridge from '../bridge';
 import Slider from './Slider';
 import reducer from '../reducer';
-import EventUI from './event/EventUI';
+import EventUI from './Frame';
 import Info from './Info';
-import { NavButton } from './ui';
+import { NavButton } from './utils/ui';
 import { Event } from '../types';
 
 const Nav = styled.div`

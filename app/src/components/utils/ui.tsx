@@ -75,3 +75,46 @@ export const Dim = styled.span<DimProps>`
   opacity: 0.5;
   font-size: ${props => (props.small ? '0.8em' : '1em')};
 `;
+export const EventWrapper = styled(Container)`
+  border: solid 2px #4d4d4d;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #242424;
+    border-radius: 20px;
+  }
+`;
+export const EventItemContainer = styled.div<{ indent?: number }>`
+  padding: 0.2em 0 0.2em ${props => (props.indent ? props.indent + 0.6 : 0)}em;
+  cursor: pointer;
+  &:hover {
+    color: white;
+  }
+`;
+
+export const EventSeparator = styled.div<{ text: string; m?: string }>`
+  margin: ${props => (props.m ? props.m : 0)};
+  &::before {
+    content: "${props => props.text}";
+    font-size: 0.8em;
+    opacity: 0.5;
+    background: #242424;
+    text-align: right;
+    display: block;
+  }
+  &::after {
+    content: " ";
+    display: block;
+    border-top: dotted 1px #4d4d4d;
+    width: 100%;
+    height: 2px;
+  }
+`;

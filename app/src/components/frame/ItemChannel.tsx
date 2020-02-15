@@ -1,5 +1,5 @@
 import React from 'react';
-import { Minus } from '../icons';
+import { Minus } from '../utils/icons';
 import { ItemProps } from '../../types';
 
 export default function ItemChannel({ data }: ItemProps) {

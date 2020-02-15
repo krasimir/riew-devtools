@@ -12,3 +12,8 @@ body, html {
 * {
 	box-sizing: border-box;
 }
+#container {
+	height: 100%;
+	display: grid;
+	grid-template-rows: 44px 28px 1fr;
+}

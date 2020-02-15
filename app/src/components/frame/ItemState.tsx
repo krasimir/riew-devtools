@@ -1,13 +1,13 @@
 import React from 'react';
-import { CPU } from '../icons';
+import { Database } from '../utils/icons';
 import { ItemProps } from '../../types';
-import useExpander from '../hooks/useExpander';
+import useExpander from './hooks/useExpander';
 
-export default function ItemRoutine({ data }: ItemProps) {
+export default function ItemState({ data }: ItemProps) {
   const [expanded] = useExpander(data.id);
   return (
     <>
-      <CPU /> {data.name}{' '}
+      <Database /> {data.name}{' '}
       {data.children && data.children.length && !expanded ? '…' : ''}
     </>
   );
