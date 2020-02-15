@@ -9,6 +9,8 @@ export default function normalizeEntity({
   type: ItemType;
 }): Entity {
   const parts = id.split('_');
+  // sliding_App_view_18
+  // sliding_13
 
   if (type === ItemType.RIEW) {
     return {
@@ -21,10 +23,10 @@ export default function normalizeEntity({
   }
   if (type === ItemType.CHANNEL) {
     return {
-      id: parts[1],
+      id: parts.length === 4 ? parts[3] : parts[1],
       rawId: id,
       type,
-      name: 'channel',
+      name: parts.length === 4 ? `${parts[1]}.${parts[2]}` : 'channel',
       buffer: (function(str): ChannelBuffers {
         if (str === 'ch' || str === 'fixed') return ChannelBuffers.FIXED;
         if (str === 'sliding') return ChannelBuffers.SLIDING;

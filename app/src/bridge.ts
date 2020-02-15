@@ -5,14 +5,15 @@ const isItDevTools =
   typeof chrome !== 'undefined' && typeof chrome.runtime !== 'undefined';
 
 const DEBUG_ADD_EVENT_INTERVAL = 10;
+const ECHO_EVENTS_TO_WINDOW = true;
 let ids = 0;
 
-// declare global {
-//   interface Window {
-//     RIEW_DATA_COLLECTED: Record<string, any>[];
-//   }
-// }
-// window.RIEW_DATA_COLLECTED = [];
+declare global {
+  interface Window {
+    RIEW_DATA_COLLECTED: Record<string, any>[];
+  }
+}
+window.RIEW_DATA_COLLECTED = [];
 
 function normalizeState(entities: Record<string, any>[]): void {
   for (let i = 0; i < entities.length; i++) {
@@ -23,7 +24,6 @@ function normalizeState(entities: Record<string, any>[]): void {
   }
 }
 function normalizeActions(actions: Record<string, any>[]): void {
-  if (!event) return;
   for (let i = 0; i < actions.length; i++) {
     actions[i].who = normalizeEntity(actions[i].who as Entity);
   }
@@ -40,7 +40,9 @@ export default async function bridge(callback: Function): Promise<void> {
   if (isItDevTools) {
     chrome.runtime.onMessage.addListener(function(event, sender, sendResponse) {
       event.id = ++ids;
-      // window.RIEW_DATA_COLLECTED.push(JSON.parse(JSON.stringify(event)));
+      if (ECHO_EVENTS_TO_WINDOW) {
+        window.RIEW_DATA_COLLECTED.push(JSON.parse(JSON.stringify(event)));
+      }
       callback(normalizeEvent(event));
       sendResponse('received');
     });

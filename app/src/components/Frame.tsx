@@ -55,7 +55,7 @@ export default function Frame({ event }: EventProps) {
       <EventWrapper>
         <EventSeparator text="state" />
         {renderEntities(state)}
-        <EventSeparator text="actions" />
+        <EventSeparator text="actions" m="1em 0 0 0" />
         <Actions actions={actions} />
       </EventWrapper>
     );

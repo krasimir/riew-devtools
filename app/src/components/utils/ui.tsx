@@ -102,12 +102,11 @@ export const EventItemContainer = styled.div<{ indent?: number }>`
 
 export const EventSeparator = styled.div<{ text: string; m?: string }>`
   margin: ${props => (props.m ? props.m : 0)};
+  opacity: 0.2;
   &::before {
     content: "${props => props.text}";
     font-size: 0.8em;
-    opacity: 0.5;
     background: #242424;
-    text-align: right;
     display: block;
   }
   &::after {
