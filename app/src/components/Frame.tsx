@@ -44,7 +44,10 @@ function renderEntities(entities: Entity[], indent = 0): React.ReactNode {
       <Fragment key={item.id}>
         <EventItemContainer
           indent={indent}
-          onClick={() => Expander.toggle(item.id)}
+          onClick={() => {
+            Expander.toggle(item.id);
+            Details.show(item);
+          }}
         >
           <Component data={item} />
         </EventItemContainer>
