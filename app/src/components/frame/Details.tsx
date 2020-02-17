@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container } from '../utils/ui';
+import { Container, DetailsWrapper, CloseLink } from '../utils/ui';
 import { Entity, ItemType, ItemProps } from '../../types';
 import ItemChannelDetails from './ItemChannelDetails';
 import ItemRiewDetails from './ItemRiewDetails';
@@ -17,7 +17,7 @@ const getComponent = (type: ItemType): React.FC<ItemProps> =>
     [ItemType.UNRECOGNIZED]: ItemUnknownDetails,
   }[type] || ItemUnknownDetails);
 
-const detailsItems: Entity[] = [];
+let detailsItems: Entity[] = [];
 let subscribers: Function[] = [];
 const listen = (callback: Function): Function => {
   subscribers.push(callback);
@@ -26,7 +26,26 @@ const listen = (callback: Function): Function => {
   };
 };
 
-export default function Details() {
+interface DetailsProps {
+  state: Entity[];
+}
+
+function doesItemExist(item: Entity, entities: Entity[]): boolean {
+  for (let i = 0; i < entities.length; i++) {
+    if (item.id === entities[i].id) {
+      return true;
+    }
+    if (entities[i].children) {
+      const found = doesItemExist(item, entities[i].children as Entity[]);
+      if (found) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+export default function Details({ state }: DetailsProps) {
   const [items, setItems] = useState<Entity[]>(detailsItems);
 
   useEffect(() => {
@@ -38,11 +57,18 @@ export default function Details() {
 
   return (
     <Container m={0} p={0}>
-      {items.map(item => {
-        const Component = getComponent(item.type);
+      {items
+        .filter(item => doesItemExist(item, state))
+        .map(item => {
+          const Component = getComponent(item.type);
 
-        return <Component data={item} key={item.rawId} />;
-      })}
+          return (
+            <DetailsWrapper key={item.rawId}>
+              <CloseLink onClick={() => Details.hide(item)}>✖</CloseLink>
+              <Component data={item} />
+            </DetailsWrapper>
+          );
+        })}
     </Container>
   );
 }
@@ -52,4 +78,8 @@ Details.show = (data: Entity) => {
     detailsItems.push(data);
     subscribers.forEach(fn => fn(detailsItems));
   }
+};
+Details.hide = (data: Entity) => {
+  detailsItems = detailsItems.filter(({ rawId }) => rawId !== data.rawId);
+  subscribers.forEach(fn => fn(detailsItems));
 };

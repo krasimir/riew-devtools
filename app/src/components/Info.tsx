@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Line, Link, EventWrapper } from './utils/ui';
+import { Line, Link, FramesWrapper } from './utils/ui';
 
 export default function Info() {
   return (
-    <EventWrapper>
+    <FramesWrapper>
       Riew is a reactive library that uses CSP concepts for managing data and
       application flow.
       <Line />
@@ -32,6 +32,6 @@ export default function Info() {
       >
         Author
       </Link>
-    </EventWrapper>
+    </FramesWrapper>
   );
 }

@@ -1,14 +1,14 @@
 import React from 'react';
+import JSONTree from 'react-json-tree';
+
 import { Box } from '../utils/icons';
-import { ItemProps } from '../../types';
-import useExpander from '../hooks/useExpander';
+import { ItemProps, Riew } from '../../types';
 
 export default function ItemDetails({ data }: ItemProps) {
-  const [expanded] = useExpander(data.id);
   return (
     <>
       <Box /> &lt;{data.name}&gt;
-      {data.children && data.children.length && !expanded ? '…' : ''}
+      <JSONTree data={(data as Riew).viewData as {}} />
     </>
   );
 }

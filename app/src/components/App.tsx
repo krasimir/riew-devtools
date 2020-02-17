@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import bridge from '../bridge';
 import Slider from './Slider';
 import reducer from '../reducer';
-import EventUI from './Frame';
+import Frames from './Frames';
 import Info from './Info';
 import { NavButton } from './utils/ui';
 import { Event } from '../types';
 
 const Nav = styled.div`
-  border-top: solid 1px #000;
+  border-bottom: solid 1px #000;
 `;
 const PageButton = styled(NavButton)<{ selected: boolean }>`
   opacity: ${props => (props.selected ? 1 : 0.4)};
@@ -17,7 +17,6 @@ const PageButton = styled(NavButton)<{ selected: boolean }>`
 
 export default function App() {
   const [events, addEvent] = useReducer(reducer, []);
-  const [current, setCurrent] = useState<Event | null>(null);
   const [page, changePage] = useState<'frames' | 'info'>('frames');
 
   useEffect(() => {
@@ -27,7 +26,7 @@ export default function App() {
   const Page: React.FC = () => {
     switch (page) {
       case 'frames':
-        return current ? <EventUI event={current} /> : null;
+        return events.length > 0 ? <Frames events={events} /> : null;
       case 'info':
         return <Info />;
       default:
@@ -37,18 +36,12 @@ export default function App() {
 
   return (
     <>
-      <Slider events={events} onChange={setCurrent} />
       <Nav>
         <PageButton
           selected={page === 'frames'}
           onClick={() => changePage('frames')}
         >
-          Frames{' '}
-          {current ? (
-            <small style={{ opacity: 0.4, lineHeight: 0 }}>#{current.id}</small>
-          ) : (
-            ''
-          )}
+          Frames
         </PageButton>
         <PageButton
           selected={page === 'info'}

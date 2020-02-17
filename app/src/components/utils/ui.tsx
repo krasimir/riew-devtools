@@ -69,6 +69,11 @@ export const Link = styled.a.attrs(props => ({
     content: ${props => (props.external ? '"⇱ "' : '')};
   }
 `;
+export const CloseLink = styled(Link)`
+  position: absolute;
+  top: 0;
+  right: 0.4em;
+`;
 export const Text = styled.p`
   margin: 0;
   & + p {
@@ -79,11 +84,14 @@ export const Dim = styled.span<DimProps>`
   opacity: 0.5;
   font-size: ${props => (props.small ? '0.8em' : '1em')};
 `;
-export const EventWrapper = styled(Container)`
-  border: solid 2px #4d4d4d;
+export const FramesWrapper = styled(Container)`
   height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
+  padding: 0;
+  & > div {
+    border: solid 1px #393939;
+  }
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -96,9 +104,11 @@ export const EventWrapper = styled(Container)`
     border-radius: 20px;
   }
 `;
-export const EventItemContainer = styled.div<{ indent?: number }>`
-  padding: 0.2em 0 0.2em ${props => (props.indent ? props.indent + 0.6 : 0)}em;
+export const FrameItemContainer = styled.div<{ indent?: number }>`
+  padding: 0.5em 0.5em 0.5em
+    ${props => (props.indent ? props.indent + 0.5 : 0.5)}em;
   cursor: pointer;
+  border-bottom: solid 1px #555;
   &:hover {
     color: white;
   }
@@ -107,4 +117,13 @@ export const Separator = styled.hr`
   border-top: none;
   border-bottom: dotted 1px #333;
   margin: 0.6em 0;
+`;
+export const DetailsWrapper = styled.div`
+  font-size: 0.8em;
+  position: relative;
+  border: dotted 1px #4d4d4d;
+  padding: 1em;
+  & + & {
+    margin-top: 0.4em;
+  }
 `;
