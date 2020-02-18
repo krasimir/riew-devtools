@@ -1,11 +1,11 @@
-import { Event, EventType, Entity } from '../../types';
+import { Event, EventType, Entity, GraphRowItem } from '../../types';
 
-export const initialState = { columns: [], rows: [], rowsKeys: {} };
+export const initialState = { columns: [], rows: [], rowsCache: {} };
 
 export type EventsState = {
   columns: Event[];
-  rows: Entity[];
-  rowsKeys: Record<string, boolean>;
+  rows: GraphRowItem[];
+  rowsCache: Record<string, any>;
 };
 
 export default function graphReducer(
@@ -15,14 +15,28 @@ export default function graphReducer(
   if (event.type === EventType.RIEW_NEW_SESSION) {
     return initialState;
   }
-  const rows = [...state.rows];
   const columns = [...state.columns, event];
+  let { rows } = state;
 
   event.snapshot.forEach(({ who }) => {
-    if (!state.rowsKeys[who.rawId]) {
-      state.rowsKeys[who.rawId] = true;
-      if (!who.parent || who.parent === null) {
-        rows.push(who);
+    if (!state.rowsCache[who.rawId]) {
+      const graphRow = { ...who, children: [] } as GraphRowItem;
+      state.rowsCache[who.rawId] = graphRow;
+      if (graphRow.parent && state.rowsCache[graphRow.parent]) {
+        state.rowsCache[graphRow.parent].children.push(graphRow);
+      } else {
+        rows.push(graphRow);
+      }
+      if (who.children && who.children.length > 0) {
+        who.children.forEach(child => {
+          rows = rows.filter(r => {
+            if (r.rawId === child.rawId) {
+              graphRow.children.push(r);
+              return false;
+            }
+            return true;
+          });
+        });
       }
     }
   });
@@ -30,6 +44,6 @@ export default function graphReducer(
   return {
     columns,
     rows,
-    rowsKeys: state.rowsKeys,
+    rowsCache: state.rowsCache,
   };
 }

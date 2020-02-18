@@ -102,3 +102,7 @@ export interface Event {
 export interface ItemProps {
   data: Entity;
 }
+
+export type GraphRowItem = EntityInterface & {
+  children: GraphRowItem[];
+};

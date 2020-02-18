@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { ChannelBuffers, ItemType, Entity } from '../types';
 
 export default function normalizeEntity({
@@ -23,7 +24,12 @@ export default function normalizeEntity({
     };
   } else if (type === ItemType.CHANNEL) {
     entity = {
-      id: parts.length === 4 ? parts[3] : parts[1],
+      id:
+        parts.length === 4
+          ? parts[3]
+          : parts.length === 3
+          ? parts[2]
+          : parts[1],
       rawId: id,
       type,
       name: parts.length === 4 ? `${parts[2]}(${parts[1]})` : 'channel',
