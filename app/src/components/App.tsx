@@ -2,7 +2,7 @@ import React, { useReducer, useEffect, useState } from 'react';
 import bridge from '../bridge';
 import Frames from './Frames';
 import Info from './Info';
-import { Nav, PageButton } from './utils/ui';
+import { Nav, PageButton, Container } from './utils/ui';
 import { Event } from '../types';
 import graphReducer, { initialState } from './reducers/graphReducer';
 
@@ -19,7 +19,9 @@ export default function App() {
       case 'frames':
         return graph.rows.length > 0 ? (
           <Frames rows={graph.rows} columns={graph.columns} />
-        ) : null;
+        ) : (
+          <Container>😕 No events yet...</Container>
+        );
       case 'info':
         return <Info />;
       default:
@@ -35,13 +37,13 @@ export default function App() {
           selected={page === 'frames'}
           onClick={() => changePage('frames')}
         >
-          Frames
+          » Frames
         </PageButton>
         <PageButton
           selected={page === 'info'}
           onClick={() => changePage('info')}
         >
-          Info
+          » Info
         </PageButton>
       </Nav>
     </>

@@ -1,23 +1,15 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { FrameItemContainer, FramesWrapper, Container } from './utils/ui';
+import { FrameItemContainer, FramesWrapper } from './utils/ui';
 import ItemRiew from './frame/ItemRiew';
 import ItemChannel from './frame/ItemChannel';
 import ItemState from './frame/ItemState';
 import ItemRoutine from './frame/ItemRoutine';
 import ItemUnknown from './frame/ItemUnknown';
-import NewSession from './frame/NewSession';
 import Expander from './Expander';
 
-import {
-  Event,
-  EventType,
-  ItemType,
-  Entity,
-  ItemProps,
-  GraphRowItem,
-} from '../types';
+import { Event, ItemType, Entity, ItemProps, GraphRowItem } from '../types';
 
 interface EventProps {
   columns: Event[];
@@ -37,9 +29,22 @@ const getComponent = (type: ItemType): React.FC<ItemProps> =>
     [ItemType.UNRECOGNIZED]: ItemUnknown,
   }[type] || ItemUnknown);
 
-function renderEntities(entities: GraphRowItem[], indent = 0): React.ReactNode {
+const getComponentRow = (type: ItemType): React.FC<ItemProps> =>
+  ({
+    [ItemType.RIEW]: ItemRiew,
+    [ItemType.CHANNEL]: ItemChannel,
+    [ItemType.STATE]: ItemState,
+    [ItemType.ROUTINE]: ItemRoutine,
+    [ItemType.UNRECOGNIZED]: ItemUnknown,
+  }[type] || ItemUnknown);
+
+function renderEntities(
+  entities: GraphRowItem[],
+  indent = 0,
+  componentResolver: Function = getComponent
+): React.ReactNode {
   return entities.map(item => {
-    const Component = getComponent(item.type);
+    const Component = componentResolver(item.type);
 
     return (
       <Fragment key={item.rawId}>
@@ -51,7 +56,7 @@ function renderEntities(entities: GraphRowItem[], indent = 0): React.ReactNode {
         </FrameItemContainer>
         {item.children && (
           <Expander id={item.id}>
-            {renderEntities(item.children, indent + 1)}
+            {renderEntities(item.children, indent + 1, componentResolver)}
           </Expander>
         )}
       </Fragment>
@@ -59,44 +64,13 @@ function renderEntities(entities: GraphRowItem[], indent = 0): React.ReactNode {
   });
 }
 
-function renderActions(events: Event[]): React.ReactNode {
-  const columns = [];
-  for (let i = 0; i < events.length; i++) {
-    columns.push(<div>{i}</div>);
-  }
-  return (
-    <Container
-      p={0}
-      m={0}
-      display="grid"
-      columns={`repeat(${columns.length}, 1fr)`}
-    >
-      {columns}
-    </Container>
-  );
-}
-
 export default function Frames({ rows, columns }: EventProps) {
-  console.log(rows);
   return (
     <FramesWrapper display="grid" columns="auto 1fr">
       <div>{renderEntities(rows)}</div>
-      <div>foo</div>
+      <div>{renderEntities(rows, 0, getComponentRow)}</div>
     </FramesWrapper>
   );
-  // switch (event.type) {
-  //   case EventType.RIEW_NEW_SESSION:
-  //     return (
-  //       <FramesWrapper display="grid" columns="auto 1fr">
-  //         <div>
-  //           <NewSession />
-  //         </div>
-  //         <div></div>
-  //       </FramesWrapper>
-  //     );
-  //   default:
-  //     return <FramesWrapper>{event.type}</FramesWrapper>;
-  // }
 }
 
 Frames.propTypes = {

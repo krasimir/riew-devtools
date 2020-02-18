@@ -1,4 +1,4 @@
-import { Event, EventType, Entity, GraphRowItem } from '../../types';
+import { Event, EventType, GraphRowItem } from '../../types';
 
 export const initialState = { columns: [], rows: [], rowsCache: {} };
 

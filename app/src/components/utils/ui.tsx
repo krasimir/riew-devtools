@@ -128,9 +128,10 @@ export const DetailsWrapper = styled.div`
   }
 `;
 
-export const Nav = styled.div`
-  border-top: solid 1px #000;
-`;
-export const PageButton = styled(NavButton)<{ selected: boolean }>`
+export const Nav = styled.div``;
+export const PageButton = styled(Link)<{ selected: boolean }>`
+  display: inline-block;
   opacity: ${props => (props.selected ? 1 : 0.4)};
+  margin-top: 0.2em;
+  margin-left: 1em;
 `;
