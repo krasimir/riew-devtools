@@ -9,20 +9,20 @@ export default function normalizeEntity({
   type: ItemType;
 }): Entity {
   const parts = id.split('_');
+  let entity: Entity;
   // sliding_App_view_18
   // sliding_13
 
   if (type === ItemType.RIEW) {
-    return {
+    entity = {
       id: parts[2],
       rawId: id,
       type,
       name: parts[0],
       ...restProps,
     };
-  }
-  if (type === ItemType.CHANNEL) {
-    return {
+  } else if (type === ItemType.CHANNEL) {
+    entity = {
       id: parts.length === 4 ? parts[3] : parts[1],
       rawId: id,
       type,
@@ -36,30 +36,34 @@ export default function normalizeEntity({
       })(parts[0]),
       ...restProps,
     };
-  }
-  if (type === ItemType.ROUTINE) {
-    return {
+  } else if (type === ItemType.ROUTINE) {
+    entity = {
       id: parts[2],
       rawId: id,
       type,
       name: parts[1],
       ...restProps,
     };
-  }
-  if (type === ItemType.STATE) {
-    return {
+  } else if (type === ItemType.STATE) {
+    entity = {
       id: parts[1],
       rawId: id,
       type,
       name: 'state',
       ...restProps,
     };
+  } else {
+    entity = {
+      id,
+      rawId: id,
+      type: ItemType.UNRECOGNIZED,
+      name: 'unknown',
+      ...restProps,
+    };
   }
-  return {
-    id,
-    rawId: id,
-    type: ItemType.UNRECOGNIZED,
-    name: 'unknown',
-    ...restProps,
-  };
+
+  if (entity.children && entity.children.length > 0) {
+    entity.children = entity.children.map(normalizeEntity);
+  }
+  return entity;
 }

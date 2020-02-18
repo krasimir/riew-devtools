@@ -1,22 +1,13 @@
 import React, { useReducer, useEffect, useState } from 'react';
-import styled from 'styled-components';
 import bridge from '../bridge';
-import Slider from './Slider';
-import reducer from '../reducer';
 import Frames from './Frames';
 import Info from './Info';
-import { NavButton } from './utils/ui';
+import { Nav, PageButton } from './utils/ui';
 import { Event } from '../types';
-
-const Nav = styled.div`
-  border-bottom: solid 1px #000;
-`;
-const PageButton = styled(NavButton)<{ selected: boolean }>`
-  opacity: ${props => (props.selected ? 1 : 0.4)};
-`;
+import graphReducer, { initialState } from './reducers/graphReducer';
 
 export default function App() {
-  const [events, addEvent] = useReducer(reducer, []);
+  const [graph, addEvent] = useReducer(graphReducer, initialState);
   const [page, changePage] = useState<'frames' | 'info'>('frames');
 
   useEffect(() => {
@@ -26,7 +17,9 @@ export default function App() {
   const Page: React.FC = () => {
     switch (page) {
       case 'frames':
-        return events.length > 0 ? <Frames events={events} /> : null;
+        return graph.rows.length > 0 ? (
+          <Frames rows={graph.rows} columns={graph.columns} />
+        ) : null;
       case 'info':
         return <Info />;
       default:
@@ -36,6 +29,7 @@ export default function App() {
 
   return (
     <>
+      <Page />
       <Nav>
         <PageButton
           selected={page === 'frames'}
@@ -50,7 +44,6 @@ export default function App() {
           Info
         </PageButton>
       </Nav>
-      <Page />
     </>
   );
 }

@@ -127,3 +127,10 @@ export const DetailsWrapper = styled.div`
     margin-top: 0.4em;
   }
 `;
+
+export const Nav = styled.div`
+  border-top: solid 1px #000;
+`;
+export const PageButton = styled(NavButton)<{ selected: boolean }>`
+  opacity: ${props => (props.selected ? 1 : 0.4)};
+`;

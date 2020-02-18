@@ -13,8 +13,13 @@ import Expander from './Expander';
 import { Event, EventType, ItemType, Entity, ItemProps } from '../types';
 
 interface EventProps {
-  events: Event[];
+  columns: Event[];
+  rows: Entity[];
 }
+
+type Row = Entity & {
+  indent?: 0;
+};
 
 const getComponent = (type: ItemType): React.FC<ItemProps> =>
   ({
@@ -64,41 +69,34 @@ function renderActions(events: Event[]): React.ReactNode {
   );
 }
 
-export default function Frames({ events }: EventProps) {
-  const [current, setCurrentFrame] = useState<number>(events.length - 1);
-  const [snapToTheEnd, snap] = useState<boolean>(true);
-  const event = events[current];
-
-  useEffect(() => {
-    if (snapToTheEnd) {
-      setCurrentFrame(events.length - 1);
-    }
-  }, [events, events.length, snapToTheEnd]);
-
-  if (event.snapshot) {
-    const { state } = event.snapshot;
-    return (
-      <FramesWrapper display="grid" columns="auto 1fr">
-        <div>{renderEntities(state)}</div>
-        <div>{renderActions(events)}</div>
-      </FramesWrapper>
-    );
-  }
-  switch (event.type) {
-    case EventType.RIEW_NEW_SESSION:
-      return (
-        <FramesWrapper display="grid" columns="auto 1fr">
-          <div>
-            <NewSession />
-          </div>
-          <div></div>
-        </FramesWrapper>
-      );
-    default:
-      return <FramesWrapper>{event.type}</FramesWrapper>;
-  }
+export default function Frames({ rows, columns }: EventProps) {
+  console.log(rows);
+  return <>foo</>;
+  // if (event.snapshot) {
+  //   const entities = event.snapshot;
+  //   return (
+  //     <FramesWrapper display="grid" columns="auto 1fr">
+  //       <div>{renderEntities(state)}</div>
+  //       <div>{renderActions(events)}</div>
+  //     </FramesWrapper>
+  //   );
+  // }
+  // switch (event.type) {
+  //   case EventType.RIEW_NEW_SESSION:
+  //     return (
+  //       <FramesWrapper display="grid" columns="auto 1fr">
+  //         <div>
+  //           <NewSession />
+  //         </div>
+  //         <div></div>
+  //       </FramesWrapper>
+  //     );
+  //   default:
+  //     return <FramesWrapper>{event.type}</FramesWrapper>;
+  // }
 }
 
 Frames.propTypes = {
-  events: PropTypes.array.isRequired,
+  rows: PropTypes.array.isRequired,
+  columns: PropTypes.array.isRequired,
 };

@@ -49,6 +49,7 @@ interface EntityInterface {
   type: ItemType;
   name?: string;
   children?: Entity[];
+  parent?: null | string;
 }
 
 export type Channel = EntityInterface & {
@@ -81,16 +82,13 @@ export type Unrecognized = EntityInterface & {
 
 export type Entity = Channel | Routine | State | Riew | Unrecognized;
 
-export interface Snapshot {
-  actions: SnapshotAction[];
-  state: Entity[];
-}
-
 export type SnapshotAction = {
   who: Entity;
   what: What;
   meta: { [key: string]: any } | null;
 };
+
+export type Snapshot = SnapshotAction[];
 
 export interface Event {
   id: number;
