@@ -16,9 +16,8 @@ export default function graphReducer(
     return initialState;
   }
   const rows = [...state.rows];
-  const columns = state.columns.concat([event]);
+  const columns = [...state.columns, event];
 
-  // adding entity as a row
   event.snapshot.forEach(({ who }) => {
     if (!state.rowsKeys[who.rawId]) {
       state.rowsKeys[who.rawId] = true;
