@@ -126,11 +126,3 @@ export const RowsContainer = styled(Container)`
   overflow: hidden;
   border-right: solid 1px #555;
 `;
-export const Truncate = styled.span<{ length?: number }>`
-  display: inline-block;
-  max-width: ${props => (props.length ? `${props.length}px` : '110px')};
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1em;
-`;

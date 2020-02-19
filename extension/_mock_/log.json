@@ -13,8 +13,8 @@
     "snapshot": [
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [],
           "puts": [],
@@ -26,7 +26,7 @@
       {
         "who": {
           "id": "sliding_App_props_19",
-          "parent": "App_riew_17",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [],
           "puts": [],
@@ -37,14 +37,14 @@
       },
       {
         "who": {
-          "id": "App_riew_17",
+          "id": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "name": "ApplicationWithSomeVeryLongNameHereForTesting",
           "type": "RIEW",
           "viewData": {},
           "children": [
             {
-              "id": "sliding_App_view_18",
-              "parent": "App_riew_17",
+              "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [],
               "puts": [],
@@ -52,7 +52,7 @@
             },
             {
               "id": "sliding_App_props_19",
-              "parent": "App_riew_17",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [],
               "puts": [],
@@ -66,7 +66,7 @@
       {
         "who": {
           "id": "sliding_App_props_19",
-          "parent": "App_riew_17",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [],
           "puts": [],
@@ -78,7 +78,7 @@
       {
         "who": {
           "id": "sliding_App_props_19",
-          "parent": "App_riew_17",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {}
@@ -92,7 +92,7 @@
       {
         "who": {
           "id": "sliding_App_props_19",
-          "parent": "App_riew_17",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {}
@@ -106,7 +106,7 @@
       {
         "who": {
           "id": "sliding_App_props_19",
-          "parent": "App_riew_17",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {}
@@ -119,8 +119,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [],
           "puts": [],
@@ -131,8 +131,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {}
@@ -145,8 +145,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {}
@@ -159,8 +159,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {}
@@ -188,7 +188,7 @@
           "id": "routine_nextStepRoutine_20",
           "type": "ROUTINE",
           "name": "nextStepRoutine",
-          "parent": "App_riew_17"
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
         },
         "what": "ROUTINE_STARTED",
         "meta": null
@@ -215,7 +215,7 @@
           "id": "routine_startOverRoutine_21",
           "type": "ROUTINE",
           "name": "startOverRoutine",
-          "parent": "App_riew_17"
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
         },
         "what": "ROUTINE_STARTED",
         "meta": null
@@ -265,8 +265,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {}
@@ -291,8 +291,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {}
@@ -317,8 +317,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -428,8 +428,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -475,8 +475,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -522,8 +522,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -562,8 +562,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -604,8 +604,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -646,8 +646,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -667,7 +667,7 @@
       },
       {
         "who": {
-          "id": "App_riew_17",
+          "id": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "name": "App",
           "type": "RIEW",
           "viewData": {
@@ -696,8 +696,8 @@
           },
           "children": [
             {
-              "id": "sliding_App_view_18",
-              "parent": "App_riew_17",
+              "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {
@@ -714,7 +714,7 @@
             },
             {
               "id": "sliding_App_props_19",
-              "parent": "App_riew_17",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {}
@@ -731,13 +731,13 @@
               "id": "routine_nextStepRoutine_20",
               "type": "ROUTINE",
               "name": "nextStepRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             },
             {
               "id": "routine_startOverRoutine_21",
               "type": "ROUTINE",
               "name": "startOverRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             }
           ]
         },
@@ -755,7 +755,7 @@
     "snapshot": [
       {
         "who": {
-          "id": "App_riew_17",
+          "id": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "name": "App",
           "type": "RIEW",
           "viewData": {
@@ -784,8 +784,8 @@
           },
           "children": [
             {
-              "id": "sliding_App_view_18",
-              "parent": "App_riew_17",
+              "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {
@@ -802,7 +802,7 @@
             },
             {
               "id": "sliding_App_props_19",
-              "parent": "App_riew_17",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {}
@@ -819,13 +819,13 @@
               "id": "routine_nextStepRoutine_20",
               "type": "ROUTINE",
               "name": "nextStepRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             },
             {
               "id": "routine_startOverRoutine_21",
               "type": "ROUTINE",
               "name": "startOverRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             }
           ]
         },
@@ -2842,8 +2842,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -2870,8 +2870,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -2898,8 +2898,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -3462,8 +3462,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -3509,8 +3509,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -3556,8 +3556,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -4665,7 +4665,7 @@
     "snapshot": [
       {
         "who": {
-          "id": "App_riew_17",
+          "id": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "name": "App",
           "type": "RIEW",
           "viewData": {
@@ -4694,8 +4694,8 @@
           },
           "children": [
             {
-              "id": "sliding_App_view_18",
-              "parent": "App_riew_17",
+              "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {
@@ -4731,7 +4731,7 @@
             },
             {
               "id": "sliding_App_props_19",
-              "parent": "App_riew_17",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {}
@@ -4748,13 +4748,13 @@
               "id": "routine_nextStepRoutine_20",
               "type": "ROUTINE",
               "name": "nextStepRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             },
             {
               "id": "routine_startOverRoutine_21",
               "type": "ROUTINE",
               "name": "startOverRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             }
           ]
         },
@@ -5640,8 +5640,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -5687,8 +5687,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -5734,8 +5734,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -6294,8 +6294,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -6341,8 +6341,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -6388,8 +6388,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -7497,7 +7497,7 @@
     "snapshot": [
       {
         "who": {
-          "id": "App_riew_17",
+          "id": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "name": "App",
           "type": "RIEW",
           "viewData": {
@@ -7526,8 +7526,8 @@
           },
           "children": [
             {
-              "id": "sliding_App_view_18",
-              "parent": "App_riew_17",
+              "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {
@@ -7563,7 +7563,7 @@
             },
             {
               "id": "sliding_App_props_19",
-              "parent": "App_riew_17",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {}
@@ -7580,13 +7580,13 @@
               "id": "routine_nextStepRoutine_20",
               "type": "ROUTINE",
               "name": "nextStepRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             },
             {
               "id": "routine_startOverRoutine_21",
               "type": "ROUTINE",
               "name": "startOverRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             }
           ]
         },
@@ -8611,8 +8611,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -8658,8 +8658,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -8705,8 +8705,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -9173,7 +9173,7 @@
           "id": "routine_nextStepRoutine_20",
           "type": "ROUTINE",
           "name": "nextStepRoutine",
-          "parent": "App_riew_17"
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
         },
         "what": "ROUTINE_RERUN",
         "meta": null
@@ -9338,7 +9338,7 @@
       },
       {
         "who": {
-          "id": "App_riew_17",
+          "id": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "name": "App",
           "type": "RIEW",
           "viewData": {
@@ -9367,8 +9367,8 @@
           },
           "children": [
             {
-              "id": "sliding_App_view_18",
-              "parent": "App_riew_17",
+              "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {
@@ -9390,7 +9390,7 @@
             },
             {
               "id": "sliding_App_props_19",
-              "parent": "App_riew_17",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {}
@@ -9407,13 +9407,13 @@
               "id": "routine_nextStepRoutine_20",
               "type": "ROUTINE",
               "name": "nextStepRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             },
             {
               "id": "routine_startOverRoutine_21",
               "type": "ROUTINE",
               "name": "startOverRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             }
           ]
         },
@@ -10280,8 +10280,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -10313,8 +10313,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -10346,8 +10346,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -10906,8 +10906,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -10953,8 +10953,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -11000,8 +11000,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -12109,7 +12109,7 @@
     "snapshot": [
       {
         "who": {
-          "id": "App_riew_17",
+          "id": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "name": "App",
           "type": "RIEW",
           "viewData": {
@@ -12138,8 +12138,8 @@
           },
           "children": [
             {
-              "id": "sliding_App_view_18",
-              "parent": "App_riew_17",
+              "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {
@@ -12175,7 +12175,7 @@
             },
             {
               "id": "sliding_App_props_19",
-              "parent": "App_riew_17",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {}
@@ -12192,13 +12192,13 @@
               "id": "routine_nextStepRoutine_20",
               "type": "ROUTINE",
               "name": "nextStepRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             },
             {
               "id": "routine_startOverRoutine_21",
               "type": "ROUTINE",
               "name": "startOverRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             }
           ]
         },
@@ -13223,8 +13223,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -13270,8 +13270,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -13317,8 +13317,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -13785,7 +13785,7 @@
           "id": "routine_nextStepRoutine_20",
           "type": "ROUTINE",
           "name": "nextStepRoutine",
-          "parent": "App_riew_17"
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
         },
         "what": "ROUTINE_RERUN",
         "meta": null
@@ -13950,7 +13950,7 @@
       },
       {
         "who": {
-          "id": "App_riew_17",
+          "id": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "name": "App",
           "type": "RIEW",
           "viewData": {
@@ -13979,8 +13979,8 @@
           },
           "children": [
             {
-              "id": "sliding_App_view_18",
-              "parent": "App_riew_17",
+              "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {
@@ -14002,7 +14002,7 @@
             },
             {
               "id": "sliding_App_props_19",
-              "parent": "App_riew_17",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {}
@@ -14019,13 +14019,13 @@
               "id": "routine_nextStepRoutine_20",
               "type": "ROUTINE",
               "name": "nextStepRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             },
             {
               "id": "routine_startOverRoutine_21",
               "type": "ROUTINE",
               "name": "startOverRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             }
           ]
         },
@@ -15044,7 +15044,7 @@
           "id": "routine_nextStepRoutine_20",
           "type": "ROUTINE",
           "name": "nextStepRoutine",
-          "parent": "App_riew_17"
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
         },
         "what": "ROUTINE_RERUN",
         "meta": null
@@ -15475,8 +15475,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -15508,8 +15508,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -15541,8 +15541,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -16101,8 +16101,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -16148,8 +16148,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -16195,8 +16195,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -17308,7 +17308,7 @@
     "snapshot": [
       {
         "who": {
-          "id": "App_riew_17",
+          "id": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "name": "App",
           "type": "RIEW",
           "viewData": {
@@ -17337,8 +17337,8 @@
           },
           "children": [
             {
-              "id": "sliding_App_view_18",
-              "parent": "App_riew_17",
+              "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {
@@ -17374,7 +17374,7 @@
             },
             {
               "id": "sliding_App_props_19",
-              "parent": "App_riew_17",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {}
@@ -17391,13 +17391,13 @@
               "id": "routine_nextStepRoutine_20",
               "type": "ROUTINE",
               "name": "nextStepRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             },
             {
               "id": "routine_startOverRoutine_21",
               "type": "ROUTINE",
               "name": "startOverRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             }
           ]
         },
@@ -18293,8 +18293,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -18335,8 +18335,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -18377,8 +18377,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -18413,7 +18413,7 @@
           "id": "routine_nextStepRoutine_20",
           "type": "ROUTINE",
           "name": "nextStepRoutine",
-          "parent": "App_riew_17"
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
         },
         "what": "ROUTINE_RERUN",
         "meta": null
@@ -18683,7 +18683,7 @@
       },
       {
         "who": {
-          "id": "App_riew_17",
+          "id": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "name": "App",
           "type": "RIEW",
           "viewData": {
@@ -18713,8 +18713,8 @@
           },
           "children": [
             {
-              "id": "sliding_App_view_18",
-              "parent": "App_riew_17",
+              "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {
@@ -18731,7 +18731,7 @@
             },
             {
               "id": "sliding_App_props_19",
-              "parent": "App_riew_17",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {}
@@ -18748,13 +18748,13 @@
               "id": "routine_nextStepRoutine_20",
               "type": "ROUTINE",
               "name": "nextStepRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             },
             {
               "id": "routine_startOverRoutine_21",
               "type": "ROUTINE",
               "name": "startOverRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             }
           ]
         },
@@ -19054,8 +19054,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -19082,8 +19082,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -19110,8 +19110,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -19388,8 +19388,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -19435,8 +19435,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -19482,8 +19482,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -20229,8 +20229,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -20276,8 +20276,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -20323,8 +20323,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -20657,8 +20657,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -20685,8 +20685,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -20713,8 +20713,8 @@
       },
       {
         "who": {
-          "id": "sliding_App_view_18",
-          "parent": "App_riew_17",
+          "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "type": "CHANNEL",
           "value": [
             {
@@ -20754,7 +20754,7 @@
           "id": "routine_startOverRoutine_21",
           "type": "ROUTINE",
           "name": "startOverRoutine",
-          "parent": "App_riew_17"
+          "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
         },
         "what": "ROUTINE_RERUN",
         "meta": null
@@ -20791,7 +20791,7 @@
     "snapshot": [
       {
         "who": {
-          "id": "App_riew_17",
+          "id": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
           "name": "App",
           "type": "RIEW",
           "viewData": {
@@ -20821,8 +20821,8 @@
           },
           "children": [
             {
-              "id": "sliding_App_view_18",
-              "parent": "App_riew_17",
+              "id": "sliding_ApplicationWithSomeVeryLongNameHereForTesting_view_18",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {
@@ -20839,7 +20839,7 @@
             },
             {
               "id": "sliding_App_props_19",
-              "parent": "App_riew_17",
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17",
               "type": "CHANNEL",
               "value": [
                 {}
@@ -20856,13 +20856,13 @@
               "id": "routine_nextStepRoutine_20",
               "type": "ROUTINE",
               "name": "nextStepRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             },
             {
               "id": "routine_startOverRoutine_21",
               "type": "ROUTINE",
               "name": "startOverRoutine",
-              "parent": "App_riew_17"
+              "parent": "ApplicationWithSomeVeryLongNameHereForTesting_riew_17"
             }
           ]
         },
