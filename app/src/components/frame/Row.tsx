@@ -1,11 +1,13 @@
 import React from 'react';
-import { Container, RowEventButton } from '../utils/ui';
+import { Container, RowEventButton, NoEventPlaceholder } from '../utils/ui';
+import { ArrowDownCircle } from '../utils/icons';
 import {
   Entity,
   SnapshotAction,
   Event,
   ItemType,
-  ItemProps,
+  EventButtonProps,
+  What,
 } from '../../types';
 
 export interface RowProps {
@@ -13,8 +15,23 @@ export interface RowProps {
   columns: Event[];
 }
 
-function RiewEventButton() {
-  return <RowEventButton color="#2a8778" />;
+function RiewEventButton({ data, what, meta }: EventButtonProps) {
+  let Icon = null;
+  switch (what) {
+    case What.RIEW_MOUNTED:
+      Icon = ArrowDownCircle;
+      break;
+    // case What.RIEW_RENDERED:
+    //   Icon = ArrowDownCircle;
+    //   break;
+    default:
+      break;
+  }
+  return (
+    <RowEventButton color="#2a8778">
+      {Icon && <Icon size={22} />}
+    </RowEventButton>
+  );
 }
 function ChannelEventButton() {
   return <RowEventButton color="#1e6a2d" />;
@@ -29,7 +46,7 @@ function UnknownEventButton() {
   return <RowEventButton />;
 }
 
-const getButton = (type: ItemType): React.FC<ItemProps> =>
+const getButton = (type: ItemType): React.FC<EventButtonProps> =>
   ({
     [ItemType.RIEW]: RiewEventButton,
     [ItemType.CHANNEL]: ChannelEventButton,
@@ -49,7 +66,6 @@ export default function Row({ data, columns }: RowProps) {
         columns={`repeat(${columns.length}, 35px)`}
         h={35}
         w={35 * columns.length}
-        bb="solid 1px #555"
       >
         {columns.map((event, idx) => {
           const matchedAction: SnapshotAction | undefined = event.snapshot.find(
@@ -58,11 +74,19 @@ export default function Row({ data, columns }: RowProps) {
           if (matchedAction) {
             return (
               <div key={idx}>
-                <Button data={data} />
+                <Button
+                  data={data}
+                  what={matchedAction.what}
+                  meta={matchedAction.meta}
+                />
               </div>
             );
           }
-          return <div key={idx}></div>;
+          return (
+            <div key={idx}>
+              <NoEventPlaceholder />
+            </div>
+          );
         })}
       </Container>
     </div>

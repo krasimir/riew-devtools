@@ -39,23 +39,6 @@ interface RenderColumnsType {
   columns: Event[];
 }
 
-function renderColumns(options: RenderColumnsType): React.ReactNode {
-  const { entities, columns } = options;
-  return entities.map(item => (
-    <Fragment key={item.rawId}>
-      <Row data={item as Entity} columns={columns} />
-      {item.children && (
-        <Expander id={item.id}>
-          {renderColumns({
-            entities: item.children,
-            columns,
-          })}
-        </Expander>
-      )}
-    </Fragment>
-  ));
-}
-
 function renderEntities(options: RenderEntitiesType): React.ReactNode {
   const { entities, indent } = options;
   return entities.map(item => {
@@ -80,6 +63,23 @@ function renderEntities(options: RenderEntitiesType): React.ReactNode {
       </Fragment>
     );
   });
+}
+
+function renderColumns(options: RenderColumnsType): React.ReactNode {
+  const { entities, columns } = options;
+  return entities.map(item => (
+    <Fragment key={item.rawId}>
+      <Row data={item as Entity} columns={columns} />
+      {item.children && (
+        <Expander id={item.id}>
+          {renderColumns({
+            entities: item.children,
+            columns,
+          })}
+        </Expander>
+      )}
+    </Fragment>
+  ));
 }
 
 export default function Frames({ rows, columns }: EventProps) {

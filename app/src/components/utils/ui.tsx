@@ -112,9 +112,16 @@ export const RowEventButton = styled.button`
   outline: none;
   background: ${props => (props.color ? props.color : 'white')};
   opacity: 0.8;
+  color: white;
+  line-height: 0;
   &:hover {
     opacity: 1;
   }
+`;
+export const NoEventPlaceholder = styled.div`
+  width: 100%;
+  height: 34px;
+  border: solid 1px #333;
 `;
 export const RowsContainer = styled(Container)`
   background: #242424;

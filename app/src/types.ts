@@ -43,6 +43,8 @@ export enum What {
   STATE_CREATED = 'STATE_CREATED',
 }
 
+export type Meta = { [key: string]: any } | null;
+
 interface EntityInterface {
   id: string;
   rawId: string;
@@ -85,7 +87,7 @@ export type Entity = Channel | Routine | State | Riew | Unrecognized;
 export type SnapshotAction = {
   who: Entity;
   what: What;
-  meta: { [key: string]: any } | null;
+  meta: Meta;
 };
 
 export type Snapshot = SnapshotAction[];
@@ -105,4 +107,9 @@ export interface ItemProps {
 
 export type GraphRowItem = EntityInterface & {
   children: GraphRowItem[];
+};
+
+export type EventButtonProps = ItemProps & {
+  what: What;
+  meta: Meta;
 };

@@ -133,3 +133,21 @@ export const GitCommit: React.FC<{ size?: number }> = ({ size }) => (
     <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
   </svg>
 );
+
+export const ArrowDownCircle: React.FC<{ size?: number }> = ({ size }) => (
+  <svg
+    width={size || 14}
+    height={size || 14}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-arrow-down-circle"
+  >
+    <circle cx="12" cy="12" r="10"></circle>
+    <polyline points="8 12 12 16 16 12"></polyline>
+    <line x1="12" y1="8" x2="12" y2="16"></line>
+  </svg>
+);
