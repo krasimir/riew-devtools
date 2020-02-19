@@ -13,7 +13,7 @@ export default function graphReducer(
   event: Event
 ): EventsState {
   if (event.type === EventType.RIEW_NEW_SESSION) {
-    return initialState;
+    return { columns: [], rows: [], rowsCache: {} };
   }
   const columns = [...state.columns, event];
   let { rows } = state;

@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { FrameItemContainer, FramesWrapper } from './utils/ui';
+import { FrameItemContainer, Container, RowsContainer } from './utils/ui';
 import ItemRiew from './frame/ItemRiew';
 import ItemChannel from './frame/ItemChannel';
 import ItemState from './frame/ItemState';
 import ItemRoutine from './frame/ItemRoutine';
 import ItemUnknown from './frame/ItemUnknown';
+import Row from './frame/Row';
 import Expander from './Expander';
 
 import { Event, ItemType, Entity, ItemProps, GraphRowItem } from '../types';
@@ -29,22 +30,36 @@ const getComponent = (type: ItemType): React.FC<ItemProps> =>
     [ItemType.UNRECOGNIZED]: ItemUnknown,
   }[type] || ItemUnknown);
 
-const getComponentRow = (type: ItemType): React.FC<ItemProps> =>
-  ({
-    [ItemType.RIEW]: ItemRiew,
-    [ItemType.CHANNEL]: ItemChannel,
-    [ItemType.STATE]: ItemState,
-    [ItemType.ROUTINE]: ItemRoutine,
-    [ItemType.UNRECOGNIZED]: ItemUnknown,
-  }[type] || ItemUnknown);
+interface RenderEntitiesType {
+  entities: GraphRowItem[];
+  indent: number;
+}
+interface RenderColumnsType {
+  entities: GraphRowItem[];
+  columns: Event[];
+}
 
-function renderEntities(
-  entities: GraphRowItem[],
-  indent = 0,
-  componentResolver: Function = getComponent
-): React.ReactNode {
+function renderColumns(options: RenderColumnsType): React.ReactNode {
+  const { entities, columns } = options;
+  return entities.map(item => (
+    <Fragment key={item.rawId}>
+      <Row data={item as Entity} columns={columns} />
+      {item.children && (
+        <Expander id={item.id}>
+          {renderColumns({
+            entities: item.children,
+            columns,
+          })}
+        </Expander>
+      )}
+    </Fragment>
+  ));
+}
+
+function renderEntities(options: RenderEntitiesType): React.ReactNode {
+  const { entities, indent } = options;
   return entities.map(item => {
-    const Component = componentResolver(item.type);
+    const Component = getComponent(item.type);
 
     return (
       <Fragment key={item.rawId}>
@@ -56,7 +71,10 @@ function renderEntities(
         </FrameItemContainer>
         {item.children && (
           <Expander id={item.id}>
-            {renderEntities(item.children, indent + 1, componentResolver)}
+            {renderEntities({
+              entities: item.children,
+              indent: indent + 1,
+            })}
           </Expander>
         )}
       </Fragment>
@@ -66,10 +84,17 @@ function renderEntities(
 
 export default function Frames({ rows, columns }: EventProps) {
   return (
-    <FramesWrapper display="grid" columns="auto 1fr">
-      <div>{renderEntities(rows)}</div>
-      <div>{renderEntities(rows, 0, getComponentRow)}</div>
-    </FramesWrapper>
+    <Container>
+      <RowsContainer>
+        {renderEntities({ entities: rows, indent: 0 })}
+      </RowsContainer>
+      <Container m="0 0 0 180px">
+        {renderColumns({
+          entities: rows,
+          columns,
+        })}
+      </Container>
+    </Container>
   );
 }
 

@@ -14,6 +14,16 @@ body, html {
 }
 #container {
 	height: 100%;
-	display: grid;
-	grid-template-rows: 1fr 28px;
+}
+body::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+body::-webkit-scrollbar-thumb {
+	background: #666;
+	border-radius: 20px;
+}
+body::-webkit-scrollbar-track {
+	background: #242424;
+	border-radius: 20px;
 }

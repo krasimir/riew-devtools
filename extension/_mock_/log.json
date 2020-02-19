@@ -38,7 +38,7 @@
       {
         "who": {
           "id": "App_riew_17",
-          "name": "App",
+          "name": "ApplicationWithSomeVeryLongNameHereForTesting",
           "type": "RIEW",
           "viewData": {},
           "children": [

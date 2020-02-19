@@ -11,8 +11,11 @@ type LinkProps = {
 export type ContainerProps = {
   p?: string | 0;
   m?: string | 0;
+  h?: number;
+  w?: number;
   display?: string;
   columns?: string;
+  bb?: string;
 };
 
 export type DimProps = {
@@ -26,9 +29,12 @@ export const COLORS = {
   selected: '#213651',
 };
 export const Container = styled.div<ContainerProps>`
-  padding: ${props => ('p' in props ? props.p : '1em')};
+  padding: ${props => ('p' in props ? props.p : '0')};
   margin: ${props => ('m' in props ? props.m : 0)};
+  height: ${props => ('h' in props ? `${props.h}px` : 'auto')};
+  width: ${props => ('w' in props ? `${props.w}px` : 'auto')};
   display: ${props => ('display' in props ? props.display : 'block')};
+  border-bottom: ${props => ('bb' in props ? props.bb : 'none')};
   grid-template-columns: ${props => ('columns' in props ? props.columns : '')};
 `;
 export const Line = styled.hr`
@@ -84,54 +90,47 @@ export const Dim = styled.span<DimProps>`
   opacity: 0.5;
   font-size: ${props => (props.small ? '0.8em' : '1em')};
 `;
-export const FramesWrapper = styled(Container)`
-  height: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding: 0;
-  & > div {
-    border: solid 1px #393939;
-  }
-  &::-webkit-scrollbar {
-    width: 10px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: #666;
-    border-radius: 20px;
-  }
-  &::-webkit-scrollbar-track {
-    background: #242424;
-    border-radius: 20px;
-  }
-`;
-export const FrameItemContainer = styled.div<{ indent?: number }>`
+export const FrameItemContainer = styled.div<{
+  indent?: number;
+  onClick?: Function;
+}>`
   padding: 0.5em 0.5em 0.5em
     ${props => (props.indent ? props.indent + 0.5 : 0.5)}em;
-  cursor: pointer;
+  cursor: ${props => (props.onClick ? 'pointer' : 'default')};
   border-bottom: solid 1px #555;
   &:hover {
-    color: white;
+    color: ${props => (props.onClick ? 'white' : 'inherit')};
   }
 `;
-export const Separator = styled.hr`
-  border-top: none;
-  border-bottom: dotted 1px #333;
-  margin: 0.6em 0;
-`;
-export const DetailsWrapper = styled.div`
-  font-size: 0.8em;
-  position: relative;
-  border: dotted 1px #4d4d4d;
-  padding: 1em;
-  & + & {
-    margin-top: 0.4em;
+export const RowEventButton = styled.button`
+  cursor: pointer;
+  border: solid 1px white;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 34px;
+  outline: none;
+  background: ${props => (props.color ? props.color : 'white')};
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
   }
 `;
-
-export const Nav = styled.div``;
-export const PageButton = styled(Link)<{ selected: boolean }>`
+export const RowsContainer = styled(Container)`
+  background: #242424;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 180px;
+  overflow: hidden;
+  border-right: solid 1px #555;
+`;
+export const Truncate = styled.span<{ length?: number }>`
   display: inline-block;
-  opacity: ${props => (props.selected ? 1 : 0.4)};
-  margin-top: 0.2em;
-  margin-left: 1em;
+  max-width: ${props => (props.length ? `${props.length}px` : '110px')};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1em;
 `;
