@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { FrameItemContainer, Container, RowsContainer } from './utils/ui';
@@ -83,6 +83,26 @@ function renderEntities(options: RenderEntitiesType): React.ReactNode {
 }
 
 export default function Frames({ rows, columns }: EventProps) {
+  const [snapScrolling, snap] = useState(true);
+  const { body } = document;
+
+  useEffect(() => {
+    body.addEventListener('scroll', () => {
+      snap(body.scrollLeft === body.scrollWidth - body.clientWidth);
+    });
+  }, [body]);
+
+  useEffect(() => {
+    if (snapScrolling) {
+      body.scrollLeft = body.scrollWidth - body.clientWidth;
+    }
+  }, [
+    body.clientWidth,
+    body.scrollLeft,
+    body.scrollWidth,
+    columns.length,
+    snapScrolling,
+  ]);
   return (
     <Container>
       <RowsContainer>

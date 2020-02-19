@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import bridge from '../bridge';
 import Frames from './Frames';
-import { Container } from './utils/ui';
+import { NoEvents, Code, Title } from './utils/ui';
 import { Event } from '../types';
 import graphReducer, { initialState } from './reducers/graphReducer';
 
@@ -15,6 +15,14 @@ export default function App() {
   return graph.rows.length > 0 ? (
     <Frames rows={graph.rows} columns={graph.columns} />
   ) : (
-    <Container>😕 No events yet...</Container>
+    <NoEvents>
+      <div>
+        <Title>😕 No Riew events yet...</Title>
+        <p>Or maybe you forgot to run the Riew inspector:</p>
+        <Code>{`import { inspector } from 'riew';
+
+inspector();`}</Code>
+      </div>
+    </NoEvents>
   );
 }

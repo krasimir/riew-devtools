@@ -126,3 +126,20 @@ export const RowsContainer = styled(Container)`
   overflow: hidden;
   border-right: solid 1px #555;
 `;
+export const NoEvents = styled(Container)`
+  display: inline-grid;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 2em;
+`;
+export const Title = styled.h1`
+  margin: 0 0 2em 0;
+`;
+export const Code = styled.pre`
+  border: solid 1px #555;
+  padding: 1em;
+  font-size: 0.9em;
+  border-radius: 4px;
+`;
