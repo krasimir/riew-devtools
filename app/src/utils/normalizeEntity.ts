@@ -1,4 +1,4 @@
-/* eslint-disable no-nested-ternary */
+/* eslint-disable no-nested-ternary, prefer-destructuring */
 import { ChannelBuffers, ItemType, Entity } from '../types';
 
 export default function normalizeEntity({
@@ -23,16 +23,23 @@ export default function normalizeEntity({
       ...restProps,
     };
   } else if (type === ItemType.CHANNEL) {
+    let normalizedId = '';
+    let normalizedName = '';
+    if (parts.length === 4) {
+      normalizedId = parts[3];
+      normalizedName = `${parts[2]}(${parts[1]})`;
+    } else if (parts.length === 3) {
+      normalizedId = parts[2];
+      normalizedName = parts[1];
+    } else if (parts.length === 2) {
+      normalizedId = parts[1];
+      normalizedName = `channel`;
+    }
     entity = {
-      id:
-        parts.length === 4
-          ? parts[3]
-          : parts.length === 3
-          ? parts[2]
-          : parts[1],
+      id: normalizedId,
       rawId: id,
       type,
-      name: parts.length === 4 ? `${parts[2]}(${parts[1]})` : 'channel',
+      name: normalizedName,
       buffer: (function(str): ChannelBuffers {
         if (str === 'ch' || str === 'fixed') return ChannelBuffers.FIXED;
         if (str === 'sliding') return ChannelBuffers.SLIDING;

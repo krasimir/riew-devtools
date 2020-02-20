@@ -5,7 +5,7 @@ const isItDevTools =
   typeof chrome !== 'undefined' && typeof chrome.runtime !== 'undefined';
 
 const DEBUG_ADD_EVENT_INTERVAL = 10;
-const ECHO_EVENTS_TO_WINDOW = false;
+const ECHO_EVENTS_TO_WINDOW = true;
 let ids = 0;
 
 declare global {
