@@ -1,46 +1,20 @@
 import React from 'react';
 import { Container, RowEventButton, NoEventPlaceholder } from '../utils/ui';
-import { ArrowDownCircle } from '../utils/icons';
 import {
   Entity,
   SnapshotAction,
   Event,
   ItemType,
   EventButtonProps,
-  What,
 } from '../../types';
+import RiewEventButton from './RiewEventButton';
+import ChannelEventButton from './ChannelEventButton';
+import StateEventButton from './StateEventButton';
+import RoutineEventButton from './RoutineEventButton';
 
 export interface RowProps {
   data: Entity;
   columns: Event[];
-}
-
-function RiewEventButton({ data, what, meta }: EventButtonProps) {
-  let Icon = null;
-  switch (what) {
-    case What.RIEW_MOUNTED:
-      Icon = ArrowDownCircle;
-      break;
-    // case What.RIEW_RENDERED:
-    //   Icon = ArrowDownCircle;
-    //   break;
-    default:
-      break;
-  }
-  return (
-    <RowEventButton color="#2a8778">
-      {Icon && <Icon size={22} />}
-    </RowEventButton>
-  );
-}
-function ChannelEventButton() {
-  return <RowEventButton color="#1e6a2d" />;
-}
-function StateEventButton() {
-  return <RowEventButton color="#634834" />;
-}
-function RoutineEventButton() {
-  return <RowEventButton color="#704040" />;
 }
 function UnknownEventButton() {
   return <RowEventButton />;
@@ -68,17 +42,13 @@ export default function Row({ data, columns }: RowProps) {
         w={35 * columns.length}
       >
         {columns.map((event, idx) => {
-          const matchedAction: SnapshotAction | undefined = event.snapshot.find(
+          const matchedActions: SnapshotAction[] = event.snapshot.filter(
             action => action.who.rawId === data.rawId
           );
-          if (matchedAction) {
+          if (matchedActions.length > 0) {
             return (
               <div key={idx}>
-                <Button
-                  data={data}
-                  what={matchedAction.what}
-                  meta={matchedAction.meta}
-                />
+                <Button data={data} actions={matchedActions} />
               </div>
             );
           }

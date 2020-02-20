@@ -109,10 +109,7 @@ export default function Frames({ rows, columns }: EventProps) {
         {renderEntities({ entities: rows, indent: 0 })}
       </RowsContainer>
       <Container m="0 0 0 180px">
-        {renderColumns({
-          entities: rows,
-          columns,
-        })}
+        {renderColumns({ entities: rows, columns })}
       </Container>
     </Container>
   );

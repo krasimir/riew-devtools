@@ -1,8 +1,13 @@
 import React from 'react';
+import { number, string } from 'prop-types';
 
-export const Box: React.FC<{ size?: number }> = ({ size }) => (
+interface IconProps {
+  size?: number;
+  style?: Record<string, any>;
+}
+
+export const Box: React.FC<IconProps> = ({ size }) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
     width={size || 14}
     height={size || 14}
     viewBox="0 0 24 24"
@@ -20,7 +25,7 @@ export const Box: React.FC<{ size?: number }> = ({ size }) => (
   </svg>
 );
 
-export const Channel: React.FC<{ size?: number }> = ({ size }) => (
+export const Channel: React.FC<IconProps> = ({ size }) => (
   <svg
     width={size || 14}
     height={size || 14}
@@ -36,7 +41,7 @@ export const Channel: React.FC<{ size?: number }> = ({ size }) => (
   </svg>
 );
 
-export const CPU: React.FC<{ size?: number }> = ({ size }) => (
+export const CPU: React.FC<IconProps> = ({ size }) => (
   <svg
     style={{ transform: 'translateY(2px)' }}
     width={size || 14}
@@ -62,7 +67,7 @@ export const CPU: React.FC<{ size?: number }> = ({ size }) => (
   </svg>
 );
 
-export const Database: React.FC<{ size?: number }> = ({ size }) => (
+export const Database: React.FC<IconProps> = ({ size }) => (
   <svg
     style={{ transform: 'translateY(2px)' }}
     width={size || 14}
@@ -81,7 +86,7 @@ export const Database: React.FC<{ size?: number }> = ({ size }) => (
   </svg>
 );
 
-export const Minus: React.FC<{ size?: number }> = ({ size }) => (
+export const Minus: React.FC<IconProps> = ({ size }) => (
   <svg
     style={{ transform: 'translateY(2px)' }}
     width={size || 14}
@@ -98,7 +103,7 @@ export const Minus: React.FC<{ size?: number }> = ({ size }) => (
   </svg>
 );
 
-export const Tool: React.FC<{ size?: number }> = ({ size }) => (
+export const Tool: React.FC<IconProps> = ({ size }) => (
   <svg
     style={{ transform: 'translateY(2px)' }}
     width={size || 14}
@@ -115,7 +120,7 @@ export const Tool: React.FC<{ size?: number }> = ({ size }) => (
   </svg>
 );
 
-export const GitCommit: React.FC<{ size?: number }> = ({ size }) => (
+export const GitCommit: React.FC<IconProps> = ({ size }) => (
   <svg
     style={{ transform: 'translateY(2px)' }}
     width={size || 14}
@@ -134,10 +139,11 @@ export const GitCommit: React.FC<{ size?: number }> = ({ size }) => (
   </svg>
 );
 
-export const ArrowDownCircle: React.FC<{ size?: number }> = ({ size }) => (
+export const ArrowDownCircle: React.FC<IconProps> = ({ size, style }) => (
   <svg
-    width={size || 14}
-    height={size || 14}
+    style={style}
+    width={size || 22}
+    height={size || 22}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -146,8 +152,231 @@ export const ArrowDownCircle: React.FC<{ size?: number }> = ({ size }) => (
     strokeLinejoin="round"
     className="feather feather-arrow-down-circle"
   >
-    <circle cx="12" cy="12" r="10"></circle>
+    <circle cx="12" cy="12" r="10" fill="#555"></circle>
     <polyline points="8 12 12 16 16 12"></polyline>
     <line x1="12" y1="8" x2="12" y2="16"></line>
+  </svg>
+);
+
+export const Chrome: React.FC<IconProps> = ({ size, style }) => (
+  <svg
+    style={style}
+    width={size || 22}
+    height={size || 22}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-chrome"
+  >
+    <circle cx="12" cy="12" r="10" fill="#555"></circle>
+    <circle cx="12" cy="12" r="4"></circle>
+    <line x1="21.17" y1="8" x2="12" y2="8"></line>
+    <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+    <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+  </svg>
+);
+
+export const ArrowUpCircle: React.FC<IconProps> = ({ size, style }) => (
+  <svg
+    style={style}
+    width={size || 22}
+    height={size || 22}
+    viewBox="0 0 24 24"
+    fill="#555"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-arrow-up-circle"
+  >
+    <circle cx="12" cy="12" r="10"></circle>
+    <polyline points="16 12 12 8 8 12"></polyline>
+    <line x1="12" y1="16" x2="12" y2="8"></line>
+  </svg>
+);
+
+export const CirclePlus: React.FC<IconProps> = ({ size, style }) => (
+  <svg
+    style={style}
+    width={size || 22}
+    height={size || 22}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-plus-circle"
+  >
+    <circle cx="12" cy="12" r="10" fill="#555"></circle>
+    <line x1="12" y1="8" x2="12" y2="16"></line>
+    <line x1="8" y1="12" x2="16" y2="12"></line>
+  </svg>
+);
+
+export const ArrowRightCircle: React.FC<IconProps> = ({ size, style }) => (
+  <svg
+    style={style}
+    width={size || 22}
+    height={size || 22}
+    viewBox="0 0 24 24"
+    fill="#555"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-arrow-right-circle"
+  >
+    <circle cx="12" cy="12" r="10"></circle>
+    <polyline points="12 16 16 12 12 8"></polyline>
+    <line x1="8" y1="12" x2="16" y2="12"></line>
+  </svg>
+);
+
+export const ArrowRight: React.FC<IconProps> = ({ size, style }) => (
+  <svg
+    style={style}
+    width={size || 22}
+    height={size || 22}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-arrow-right"
+  >
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+  </svg>
+);
+
+export const ArrowUp: React.FC<IconProps> = ({ size, style }) => (
+  <svg
+    style={style}
+    width={size || 22}
+    height={size || 22}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-arrow-up"
+  >
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+);
+
+export const XCircle: React.FC<IconProps> = ({ size, style }) => (
+  <svg
+    style={style}
+    width={size || 22}
+    height={size || 22}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-x-circle"
+  >
+    <circle cx="12" cy="12" r="10" fill="#555"></circle>
+    <line x1="15" y1="9" x2="9" y2="15"></line>
+    <line x1="9" y1="9" x2="15" y2="15"></line>
+  </svg>
+);
+
+export const Circle: React.FC<IconProps> = ({ size, style }) => (
+  <svg
+    style={style}
+    width={size || 22}
+    height={size || 22}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-circle"
+  >
+    <circle cx="12" cy="12" r="10" fill="#555"></circle>
+  </svg>
+);
+
+export const PlayCircle: React.FC<IconProps> = ({ size, style }) => (
+  <svg
+    style={style}
+    width={size || 22}
+    height={size || 22}
+    viewBox="0 0 24 24"
+    fill="#555"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-play-circle"
+  >
+    <circle cx="12" cy="12" r="10"></circle>
+    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+  </svg>
+);
+
+export const StopCircle: React.FC<IconProps> = ({ size, style }) => (
+  <svg
+    style={style}
+    width={size || 22}
+    height={size || 22}
+    viewBox="0 0 24 24"
+    fill="#555"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-stop-circle"
+  >
+    <circle cx="12" cy="12" r="10"></circle>
+    <rect x="9" y="9" width="6" height="6"></rect>
+  </svg>
+);
+
+export const AlertCircle: React.FC<IconProps> = ({ size, style }) => (
+  <svg
+    style={style}
+    width={size || 22}
+    height={size || 22}
+    viewBox="0 0 24 24"
+    fill="#555"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-alert-circle"
+  >
+    <circle cx="12" cy="12" r="10"></circle>
+    <line x1="12" y1="8" x2="12" y2="12"></line>
+    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+  </svg>
+);
+
+export const CheckCircle: React.FC<IconProps> = ({ size, style }) => (
+  <svg
+    style={style}
+    width={size || 22}
+    height={size || 22}
+    viewBox="0 0 24 24"
+    fill="#555"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="feather feather-check-circle"
+  >
+    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+    <polyline points="22 4 12 14.01 9 11.01"></polyline>
   </svg>
 );

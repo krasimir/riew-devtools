@@ -110,6 +110,5 @@ export type GraphRowItem = EntityInterface & {
 };
 
 export type EventButtonProps = ItemProps & {
-  what: What;
-  meta: Meta;
+  actions: SnapshotAction[];
 };

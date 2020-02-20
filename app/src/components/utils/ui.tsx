@@ -103,8 +103,12 @@ export const FrameItemContainer = styled.div<{
   }
 `;
 export const RowEventButton = styled.button`
+  position: relative;
+  overflow: hidden;
   cursor: pointer;
-  border: solid 1px white;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, 1);
   padding: 0;
   margin: 0;
   width: 100%;
@@ -113,15 +117,20 @@ export const RowEventButton = styled.button`
   background: ${props => (props.color ? props.color : 'white')};
   opacity: 0.8;
   color: white;
-  line-height: 0;
   &:hover {
     opacity: 1;
+  }
+  svg {
+    position: absolute;
+    top: 5px;
+    left: 6px;
   }
 `;
 export const NoEventPlaceholder = styled.div`
   width: 100%;
   height: 34px;
-  border: solid 1px #333;
+  border-right: solid 1px #2a2a2a;
+  border-bottom: solid 1px #2a2a2a;
 `;
 export const RowsContainer = styled(Container)`
   background: #242424;
