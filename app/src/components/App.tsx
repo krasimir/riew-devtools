@@ -2,6 +2,8 @@ import React, { useReducer, useEffect } from 'react';
 import bridge from '../bridge';
 import Frames from './Frames';
 import { NoEvents, Code, Title } from './utils/ui';
+import Tooltip from './Tooltip';
+import { Sad } from './utils/icons';
 import { Event } from '../types';
 import graphReducer, { initialState } from './reducers/graphReducer';
 
@@ -13,11 +15,16 @@ export default function App() {
   }, []);
 
   return graph.rows.length > 0 ? (
-    <Frames rows={graph.rows} columns={graph.columns} />
+    <>
+      <Frames rows={graph.rows} columns={graph.columns} />
+      <Tooltip />
+    </>
   ) : (
     <NoEvents>
       <div>
-        <Title>😕 No Riew events yet...</Title>
+        <Title>
+          <Sad /> No events yet...
+        </Title>
         <p>Or maybe you forgot to run the Riew inspector:</p>
         <Code>{`import { inspector } from 'riew';
 

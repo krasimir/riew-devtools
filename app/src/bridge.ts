@@ -4,7 +4,7 @@ import normalizeEntity from './utils/normalizeEntity';
 const isItDevTools =
   typeof chrome !== 'undefined' && typeof chrome.runtime !== 'undefined';
 
-const DEBUG_ADD_EVENT_INTERVAL = 10;
+const DEBUG_ADD_EVENT_INTERVAL = 1;
 const ECHO_EVENTS_TO_WINDOW = true;
 let ids = 0;
 

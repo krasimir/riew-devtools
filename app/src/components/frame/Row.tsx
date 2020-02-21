@@ -1,5 +1,11 @@
 import React from 'react';
-import { Container, RowEventButton, NoEventPlaceholder } from '../utils/ui';
+import {
+  RowEventButton,
+  NoEventPlaceholder,
+  TR,
+  TD,
+  FRAME_HEIGHT,
+} from '../utils/ui';
 import {
   Entity,
   SnapshotAction,
@@ -32,33 +38,24 @@ const getButton = (type: ItemType): React.FC<EventButtonProps> =>
 export default function Row({ data, columns }: RowProps) {
   const Button = getButton(data.type);
   return (
-    <div>
-      <Container
-        p={0}
-        m={0}
-        display="grid"
-        columns={`repeat(${columns.length}, 35px)`}
-        h={35}
-        w={35 * columns.length}
-      >
-        {columns.map((event, idx) => {
-          const matchedActions: SnapshotAction[] = event.snapshot.filter(
-            action => action.who.rawId === data.rawId
-          );
-          if (matchedActions.length > 0) {
-            return (
-              <div key={idx}>
-                <Button data={data} actions={matchedActions} />
-              </div>
-            );
-          }
+    <TR h={FRAME_HEIGHT}>
+      {columns.map((event, idx) => {
+        const matchedActions: SnapshotAction[] = event.snapshot.filter(
+          action => action.who.rawId === data.rawId
+        );
+        if (matchedActions.length > 0) {
           return (
-            <div key={idx}>
-              <NoEventPlaceholder />
-            </div>
+            <TD key={idx}>
+              <Button data={data} actions={event.snapshot} />
+            </TD>
           );
-        })}
-      </Container>
-    </div>
+        }
+        return (
+          <TD key={idx} br="solid 1px #2a2a2a">
+            <NoEventPlaceholder />
+          </TD>
+        );
+      })}
+    </TR>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Container } from './utils/ui';
 
 interface ExpanderProps {
@@ -20,7 +20,7 @@ export default function Expander({ id, children }: ExpanderProps) {
     return () => unsubscribe();
   }, [id, isExpanded]);
 
-  return <Container p={0}>{isExpanded && children}</Container>;
+  return <Fragment>{isExpanded && children}</Fragment>;
 }
 
 Expander.toggle = (id: string) => {

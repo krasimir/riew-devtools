@@ -1,7 +1,12 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { FrameItemContainer, Container, RowsContainer } from './utils/ui';
+import {
+  FrameItemContainer,
+  Container,
+  RowsContainer,
+  Table,
+} from './utils/ui';
 import ItemRiew from './frame/ItemRiew';
 import ItemChannel from './frame/ItemChannel';
 import ItemState from './frame/ItemState';
@@ -95,6 +100,8 @@ export default function Frames({ rows, columns }: EventProps) {
   useEffect(() => {
     if (snapScrolling) {
       body.scrollLeft = body.scrollWidth - body.clientWidth;
+    } else if (body.scrollLeft === body.scrollWidth - body.clientWidth) {
+      snap(true);
     }
   }, [
     body.clientWidth,
@@ -108,9 +115,9 @@ export default function Frames({ rows, columns }: EventProps) {
       <RowsContainer>
         {renderEntities({ entities: rows, indent: 0 })}
       </RowsContainer>
-      <Container m="0 0 0 180px">
-        {renderColumns({ entities: rows, columns })}
-      </Container>
+      <Table m="0 0 0 180px">
+        <tbody>{renderColumns({ entities: rows, columns })}</tbody>
+      </Table>
     </Container>
   );
 }

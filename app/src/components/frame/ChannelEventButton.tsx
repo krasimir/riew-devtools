@@ -1,46 +1,82 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import React from 'react';
-import { RowEventButton } from '../utils/ui';
-import {
-  CirclePlus,
-  ArrowUpCircle,
-  ArrowRightCircle,
-  XCircle,
-  Circle,
-} from '../utils/icons';
+import { RowEventButton, EventColumnIdx, Container } from '../utils/ui';
+import { LogIn, Upload, XCircle, Circle, CirclePlus } from '../utils/icons';
 import { EventButtonProps, What } from '../../types';
+import Tooltip from '../Tooltip';
 
 export default function ChannelEventButton({
   data,
   actions,
 }: EventButtonProps) {
-  const icons = actions.map(({ what, meta }, idx) => {
-    const style = { left: `${6 + idx * 10}px`, color: 'black' };
-    switch (what) {
-      case What.CHANNEL_PUT_INITIATED:
-        return (
-          <ArrowRightCircle key={idx} style={{ ...style, fill: '#242424' }} />
-        );
-      case What.CHANNEL_PUT_RESOLVED:
-        return <ArrowRightCircle key={idx} style={style} />;
-      case What.CHANNEL_TAKE_INITIATED:
-        return (
-          <ArrowUpCircle key={idx} style={{ ...style, fill: '#242424' }} />
-        );
-      case What.CHANNEL_TAKE_RESOLVED:
-        return <ArrowUpCircle key={idx} style={style} />;
-      case What.CHANNEL_CREATED:
-        return <CirclePlus key={idx} style={style} />;
-      case What.CHANNEL_CLOSED:
-        return <XCircle key={idx} style={style} />;
-      case What.CHANNEL_RESET:
-        return <Circle key={idx} style={style} />;
-      default:
-        return null;
-    }
-  });
+  const icons = actions
+    .map(({ what, meta, who }, idx) => {
+      if (who.rawId !== data.rawId) return null;
+      const style = { color: 'black' };
+      switch (what) {
+        case What.CHANNEL_PUT_INITIATED:
+          return (
+            <Container key={idx}>
+              <EventColumnIdx>{idx + 1}</EventColumnIdx>
+              <LogIn style={{ ...style, opacity: 0.4 }} />
+            </Container>
+          );
+        case What.CHANNEL_PUT_RESOLVED:
+          return (
+            <Container key={idx}>
+              <EventColumnIdx>{idx + 1}</EventColumnIdx>
+              <LogIn style={style} />
+            </Container>
+          );
+        case What.CHANNEL_TAKE_INITIATED:
+          return (
+            <Container key={idx}>
+              <EventColumnIdx>{idx + 1}</EventColumnIdx>
+              <Upload style={{ ...style, opacity: 0.4 }} />
+            </Container>
+          );
+        case What.CHANNEL_TAKE_RESOLVED:
+          return (
+            <Container key={idx}>
+              <EventColumnIdx>{idx + 1}</EventColumnIdx>
+              <Upload style={style} />
+            </Container>
+          );
+        case What.CHANNEL_CREATED:
+          return (
+            <Container key={idx}>
+              <EventColumnIdx>{idx + 1}</EventColumnIdx>
+              <CirclePlus style={style} />
+            </Container>
+          );
+        case What.CHANNEL_CLOSED:
+          return (
+            <Container key={idx}>
+              <EventColumnIdx>{idx + 1}</EventColumnIdx>
+              <XCircle style={style} />
+            </Container>
+          );
+        case What.CHANNEL_RESET:
+          return (
+            <Container key={idx}>
+              <EventColumnIdx>{idx + 1}</EventColumnIdx>
+              <Circle style={style} />
+            </Container>
+          );
+        default:
+          return null;
+      }
+    })
+    .filter(i => i);
 
   return (
-    <RowEventButton color="#1e6a2d" data-id={data.rawId}>
+    <RowEventButton
+      color="#1e6a2d"
+      data-id={data.rawId}
+      columns={`repeat(${icons.length}, 1fr)`}
+      onMouseOver={() => Tooltip.show(data)}
+      onMouseOut={() => Tooltip.hide()}
+    >
       {icons.length > 0 && icons}
     </RowEventButton>
   );

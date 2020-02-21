@@ -2,6 +2,8 @@
 
 import styled from 'styled-components';
 
+export const FRAME_HEIGHT = 35;
+
 type LinkProps = {
   block?: boolean;
   dim?: boolean;
@@ -29,6 +31,7 @@ export const COLORS = {
   selected: '#213651',
 };
 export const Container = styled.div<ContainerProps>`
+  position: relative;
   padding: ${props => ('p' in props ? props.p : '0')};
   margin: ${props => ('m' in props ? props.m : 0)};
   height: ${props => ('h' in props ? `${props.h}px` : 'auto')};
@@ -102,39 +105,41 @@ export const FrameItemContainer = styled.div<{
     color: ${props => (props.onClick ? 'white' : 'inherit')};
   }
 `;
-export const RowEventButton = styled.button`
+export const RowEventButton = styled(Container)`
+  display: grid;
+  column-gap: 6px;
+  padding: 0 4px;
   position: relative;
-  overflow: hidden;
-  cursor: pointer;
   border: none;
   border-radius: 2px;
   box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, 1);
-  padding: 0;
-  margin: 0;
   width: 100%;
-  height: 34px;
-  outline: none;
+  height: 100%;
   background: ${props => (props.color ? props.color : 'white')};
-  opacity: 0.8;
   color: white;
-  &:hover {
-    opacity: 1;
-  }
+  justify-items: center;
   svg {
-    position: absolute;
-    top: 5px;
-    left: 6px;
+    display: inline-block;
+    margin: 4px 0;
+    transition: transform 200ms ease-out;
+    transform: translateY(2px);
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+  }
+  svg:hover {
+    transform: translateY(2px) scale(1.3);
   }
 `;
 export const NoEventPlaceholder = styled.div`
   width: 100%;
-  height: 34px;
-  border-right: solid 1px #2a2a2a;
+  height: ${FRAME_HEIGHT}px;
+  border-top: solid 1px #2a2a2a;
   border-bottom: solid 1px #2a2a2a;
 `;
 export const RowsContainer = styled(Container)`
   background: #242424;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 10;
@@ -158,4 +163,43 @@ export const Code = styled.pre`
   padding: 1em;
   font-size: 0.9em;
   border-radius: 4px;
+`;
+export const Table = styled.table<ContainerProps>`
+  border: 0;
+  border-spacing: 0;
+  border-collapse: separate;
+  margin: ${props => ('m' in props ? props.m : 0)};
+  table-layout: auto;
+  white-space: nowrap;
+`;
+export const TR = styled.tr<ContainerProps>`
+  height: ${props => ('h' in props ? `${props.h}px` : 'auto')};
+`;
+export const TD = styled.td<ContainerProps & { br?: string }>`
+  padding: 0;
+  height: ${props => ('h' in props ? `${props.h}px` : 'auto')};
+  border-right: ${props => ('br' in props ? props.br : 'none')};
+`;
+export const EventColumnIdx = styled.span`
+  position: absolute;
+  bottom: 5px;
+  left: calc(50% - 5px);
+  font-size: 0.6em;
+  text-align: center;
+  width: 10px;
+  height: 10px;
+  color: black;
+  display: none;
+`;
+export const TooltipContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 30px;
+  min-height: 30px;
+  max-width: 200px;
+  background: white;
+  padding: 0.8em;
+  z-index: 11;
+  color: #242424;
 `;
