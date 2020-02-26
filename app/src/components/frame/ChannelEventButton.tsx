@@ -74,8 +74,8 @@ export default function ChannelEventButton({
       color="#1e6a2d"
       data-id={data.rawId}
       columns={`repeat(${icons.length}, 1fr)`}
-      onMouseOver={() => Tooltip.show(data)}
-      onMouseOut={() => Tooltip.hide()}
+      onMouseEnter={() => Tooltip.show(data)}
+      onMouseLeave={() => Tooltip.hide()}
     >
       {icons.length > 0 && icons}
     </RowEventButton>

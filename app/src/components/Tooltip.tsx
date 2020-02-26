@@ -33,6 +33,7 @@ export default function Tooltip() {
       }
     };
     toggle = (v, data) => {
+      console.log(data);
       setVisibility(v);
     };
   }, [visible]);

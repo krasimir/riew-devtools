@@ -128,7 +128,7 @@ export const RowEventButton = styled(Container)`
     height: 16px;
   }
   svg:hover {
-    transform: translateY(2px) scale(1.3);
+    stroke: white;
   }
 `;
 export const NoEventPlaceholder = styled.div`
