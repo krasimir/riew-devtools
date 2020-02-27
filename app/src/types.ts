@@ -112,3 +112,7 @@ export type GraphRowItem = EntityInterface & {
 export type EventButtonProps = ItemProps & {
   actions: SnapshotAction[];
 };
+
+export type TooltipContentProps = {
+  data: SnapshotAction;
+};

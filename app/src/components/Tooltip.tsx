@@ -1,16 +1,33 @@
 /* eslint-disable @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, FC } from 'react';
 import { TooltipContainer } from './utils/ui';
-import { Entity } from '../types';
+import { ItemType, SnapshotAction, TooltipContentProps } from '../types';
+import ChannelTooltip from './frame/ChannelTooltip';
 
 const TOOLTIP_WIDTH = 200;
 
-let toggle = (v: boolean, data?: Entity): void => {};
+let toggle = (v: boolean, data?: SnapshotAction): void => {};
+
+const getContent = (type: ItemType): React.FC<TooltipContentProps> =>
+  ({
+    [ItemType.RIEW]: ChannelTooltip,
+    [ItemType.CHANNEL]: ChannelTooltip,
+    [ItemType.STATE]: ChannelTooltip,
+    [ItemType.ROUTINE]: ChannelTooltip,
+    [ItemType.UNRECOGNIZED]: ChannelTooltip,
+  }[type] || ChannelTooltip);
+
+const Content = ({ data }: { data: SnapshotAction }) => {
+  const C = getContent(data.who.type);
+
+  return <C data={data} />;
+};
 
 export default function Tooltip() {
   const [visible, setVisibility] = useState(false);
   const [top, setTop] = useState(0);
   const [left, setLeft] = useState(0);
+  const [actionData, setActionData] = useState<SnapshotAction | null>(null);
 
   useEffect(() => {
     document.onmousemove = function(e) {
@@ -33,8 +50,10 @@ export default function Tooltip() {
       }
     };
     toggle = (v, data) => {
-      console.log(data);
       setVisibility(v);
+      if (data) {
+        setActionData(data);
+      }
     };
   }, [visible]);
 
@@ -43,12 +62,12 @@ export default function Tooltip() {
       style={{ top: `${top}px`, left: `${left}px` }}
       id="tooltip"
     >
-      Foo bar foo bar is the longest phrase that I can think of.
+      {actionData !== null ? <Content data={actionData} /> : null}
     </TooltipContainer>
   ) : null;
 }
 
-Tooltip.show = (data: Entity) => {
+Tooltip.show = (data: SnapshotAction) => {
   toggle(true, data);
 };
 Tooltip.hide = () => {

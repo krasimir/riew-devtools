@@ -7,11 +7,11 @@ import {
   RowsContainer,
   Table,
 } from './utils/ui';
-import ItemRiew from './frame/ItemRiew';
-import ItemChannel from './frame/ItemChannel';
-import ItemState from './frame/ItemState';
-import ItemRoutine from './frame/ItemRoutine';
-import ItemUnknown from './frame/ItemUnknown';
+import RiewItem from './frame/RiewItem';
+import ChannelItem from './frame/ChannelItem';
+import StateItem from './frame/StateItem';
+import RoutineItem from './frame/RoutineItem';
+import UnknownItem from './frame/UnknownItem';
 import Row from './frame/Row';
 import Expander from './Expander';
 
@@ -28,12 +28,12 @@ type Row = Entity & {
 
 const getComponent = (type: ItemType): React.FC<ItemProps> =>
   ({
-    [ItemType.RIEW]: ItemRiew,
-    [ItemType.CHANNEL]: ItemChannel,
-    [ItemType.STATE]: ItemState,
-    [ItemType.ROUTINE]: ItemRoutine,
-    [ItemType.UNRECOGNIZED]: ItemUnknown,
-  }[type] || ItemUnknown);
+    [ItemType.RIEW]: RiewItem,
+    [ItemType.CHANNEL]: ChannelItem,
+    [ItemType.STATE]: StateItem,
+    [ItemType.ROUTINE]: RoutineItem,
+    [ItemType.UNRECOGNIZED]: UnknownItem,
+  }[type] || UnknownItem);
 
 interface RenderEntitiesType {
   entities: GraphRowItem[];

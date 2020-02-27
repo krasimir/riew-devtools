@@ -1,6 +1,6 @@
 /* eslint-disable no-script-url */
 
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const FRAME_HEIGHT = 35;
 
@@ -191,6 +191,14 @@ export const EventColumnIdx = styled.span`
   color: black;
   display: none;
 `;
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 export const TooltipContainer = styled.div`
   position: absolute;
   top: 0;
@@ -202,4 +210,5 @@ export const TooltipContainer = styled.div`
   padding: 0.8em;
   z-index: 11;
   color: #242424;
+  animation: ${fadeIn} 500ms ease-out;
 `;

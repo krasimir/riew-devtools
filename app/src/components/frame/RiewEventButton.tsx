@@ -8,44 +8,67 @@ import {
   CirclePlus,
 } from '../utils/icons';
 import { EventButtonProps, What } from '../../types';
+import Tooltip from '../Tooltip';
 
 export default function RiewEventButton({ data, actions }: EventButtonProps) {
   const icons = actions
-    .map(({ what, meta, who }, idx) => {
+    .map((action, idx) => {
+      const { what, meta, who } = action;
+
       if (who.rawId !== data.rawId) return null;
       const style = { color: 'black' };
       switch (what) {
         case What.RIEW_RENDERED:
           return (
-            <Container key={idx}>
+            <Container
+              key={idx}
+              onMouseEnter={() => Tooltip.show(action)}
+              onMouseLeave={() => Tooltip.hide()}
+            >
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Image style={style} />
             </Container>
           );
         case What.RIEW_MOUNTED:
           return (
-            <Container key={idx}>
+            <Container
+              key={idx}
+              onMouseEnter={() => Tooltip.show(action)}
+              onMouseLeave={() => Tooltip.hide()}
+            >
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Download style={style} />
             </Container>
           );
         case What.RIEW_UNMOUNTED:
           return (
-            <Container key={idx}>
+            <Container
+              key={idx}
+              onMouseEnter={() => Tooltip.show(action)}
+              onMouseLeave={() => Tooltip.hide()}
+            >
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Upload style={style} />
             </Container>
           );
         case What.RIEW_UPDATED:
           return (
-            <Container key={idx}>
+            <Container
+              key={idx}
+              onMouseEnter={() => Tooltip.show(action)}
+              onMouseLeave={() => Tooltip.hide()}
+            >
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <ArrowRightCircle style={style} />
             </Container>
           );
         case What.RIEW_CREATED:
           return (
-            <Container key={idx}>
+            <Container
+              key={idx}
+              onMouseEnter={() => Tooltip.show(action)}
+              onMouseLeave={() => Tooltip.hide()}
+            >
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <CirclePlus style={style} />
             </Container>

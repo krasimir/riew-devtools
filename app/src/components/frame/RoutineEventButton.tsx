@@ -9,61 +9,92 @@ import {
   Loading,
 } from '../utils/icons';
 import { EventButtonProps, What } from '../../types';
+import Tooltip from '../Tooltip';
 
 export default function RoutineEventButton({
   data,
   actions,
 }: EventButtonProps) {
   const icons = actions
-    .map(({ what, meta, who }, idx) => {
+    .map((action, idx) => {
+      const { what, meta, who } = action;
+
       if (who.rawId !== data.rawId) return null;
       const style = { color: 'black' };
       switch (what) {
         case What.ROUTINE_STOPPED:
           return (
-            <Container key={idx}>
+            <Container
+              key={idx}
+              onMouseEnter={() => Tooltip.show(action)}
+              onMouseLeave={() => Tooltip.hide()}
+            >
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <StopCircle style={style} />
             </Container>
           );
         case What.ROUTINE_RERUN:
           return (
-            <Container key={idx}>
+            <Container
+              key={idx}
+              onMouseEnter={() => Tooltip.show(action)}
+              onMouseLeave={() => Tooltip.hide()}
+            >
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <PlayCircle style={style} />
             </Container>
           );
         case What.ROUTINE_END:
           return (
-            <Container key={idx}>
+            <Container
+              key={idx}
+              onMouseEnter={() => Tooltip.show(action)}
+              onMouseLeave={() => Tooltip.hide()}
+            >
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <X style={style} />
             </Container>
           );
         case What.ROUTINE_ASYNC_BEGIN:
           return (
-            <Container key={idx}>
+            <Container
+              key={idx}
+              onMouseEnter={() => Tooltip.show(action)}
+              onMouseLeave={() => Tooltip.hide()}
+            >
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Loading style={style} />
             </Container>
           );
         case What.ROUTINE_ASYNC_END:
           return (
-            <Container key={idx}>
+            <Container
+              key={idx}
+              onMouseEnter={() => Tooltip.show(action)}
+              onMouseLeave={() => Tooltip.hide()}
+            >
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Play style={style} />
             </Container>
           );
         case What.ROUTINE_ASYNC_ERROR:
           return (
-            <Container key={idx}>
+            <Container
+              key={idx}
+              onMouseEnter={() => Tooltip.show(action)}
+              onMouseLeave={() => Tooltip.hide()}
+            >
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <AlertCircle style={style} />
             </Container>
           );
         case What.ROUTINE_STARTED:
           return (
-            <Container key={idx}>
+            <Container
+              key={idx}
+              onMouseEnter={() => Tooltip.show(action)}
+              onMouseLeave={() => Tooltip.hide()}
+            >
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Play style={style} />
             </Container>
