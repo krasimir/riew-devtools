@@ -38,11 +38,11 @@ export default async function bridge(callback: Function): Promise<void> {
       sendResponse('received');
     });
   } else {
-    let mockData: Array<Event> = await fetch('_mock_/log.json').then(res =>
+    const mockData: Array<Event> = await fetch('_mock_/log.json').then(res =>
       res.json()
     );
 
-    mockData = mockData.filter((_, i) => i < 10);
+    // mockData = mockData.filter((_, i) => i < 10);
 
     (function push(): void {
       if (mockData.length > 0) {

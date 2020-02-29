@@ -204,18 +204,21 @@ export const TooltipContainer = styled.div`
   top: 0;
   left: 0;
   width: 200px;
+  max-height: 200px;
   background: white;
-  padding: 0.8em;
   z-index: 11;
   color: #242424;
   animation: ${fadeIn} 500ms ease-out;
   word-break: break-word;
   font-size: 0.9em;
   line-height: 1.2em;
+  border: solid 10px white;
+  overflow: hidden;
   pre {
     margin: 0;
     padding: 0;
     font-size: 0.9em;
     line-height: 1.2em;
+    overflow: hidden;
   }
 `;

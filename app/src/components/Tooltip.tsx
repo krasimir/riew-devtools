@@ -3,6 +3,10 @@ import React, { useState, useEffect, useRef, FC } from 'react';
 import { TooltipContainer } from './utils/ui';
 import { ItemType, SnapshotAction, TooltipContentProps } from '../types';
 import ChannelTooltip from './frame/ChannelTooltip';
+import RiewTooltip from './frame/RiewTooltip';
+import RoutineTooltip from './frame/RoutineTooltip';
+import StateTooltip from './frame/StateTooltip';
+import UnknownTooltip from './frame/UnknownTooltip';
 
 const TOOLTIP_WIDTH = 200;
 
@@ -10,12 +14,12 @@ let toggle = (v: boolean, data?: SnapshotAction): void => {};
 
 const getContent = (type: ItemType): React.FC<TooltipContentProps> =>
   ({
-    [ItemType.RIEW]: ChannelTooltip,
+    [ItemType.RIEW]: RiewTooltip,
     [ItemType.CHANNEL]: ChannelTooltip,
-    [ItemType.STATE]: ChannelTooltip,
-    [ItemType.ROUTINE]: ChannelTooltip,
-    [ItemType.UNRECOGNIZED]: ChannelTooltip,
-  }[type] || ChannelTooltip);
+    [ItemType.STATE]: StateTooltip,
+    [ItemType.ROUTINE]: RoutineTooltip,
+    [ItemType.UNRECOGNIZED]: UnknownTooltip,
+  }[type] || UnknownTooltip);
 
 const Content = ({ data }: { data: SnapshotAction }) => {
   const C = getContent(data.who.type);
