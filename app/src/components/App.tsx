@@ -1,8 +1,9 @@
 import React, { useReducer, useEffect } from 'react';
 import bridge from '../bridge';
 import Frames from './Frames';
-import { NoEvents, Code, Title } from './utils/ui';
+import { NoEvents, Code, Title, AppContainer, AppArea } from './utils/ui';
 import Tooltip from './Tooltip';
+import Details from './Details';
 import { Sad } from './utils/icons';
 import { Event } from '../types';
 import graphReducer, { initialState } from './reducers/graphReducer';
@@ -15,10 +16,15 @@ export default function App() {
   }, []);
 
   return graph.rows.length > 0 ? (
-    <>
-      <Frames rows={graph.rows} columns={graph.columns} />
-      <Tooltip />
-    </>
+    <AppContainer>
+      <AppArea>
+        <Frames rows={graph.rows} columns={graph.columns} />
+        <Tooltip />
+      </AppArea>
+      <AppArea>
+        <Details />
+      </AppArea>
+    </AppContainer>
   ) : (
     <NoEvents>
       <div>

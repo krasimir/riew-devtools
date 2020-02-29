@@ -17,6 +17,7 @@ export type ContainerProps = {
   w?: number;
   display?: string;
   columns?: string;
+  rows?: string;
   bb?: string;
 };
 
@@ -39,12 +40,40 @@ export const Container = styled.div<ContainerProps>`
   display: ${props => ('display' in props ? props.display : 'block')};
   border-bottom: ${props => ('bb' in props ? props.bb : 'none')};
   grid-template-columns: ${props => ('columns' in props ? props.columns : '')};
+  grid-template-rows: ${props => ('rows' in props ? props.rows : '')};
 `;
+
+export const AppContainer = styled(Container)`
+  display: grid;
+  grid-template-rows: 60% 40%;
+  height: 100%;
+`;
+
+export const AppArea = styled(Container)`
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #242424;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-corner {
+    background: #242424;
+  }
+`;
+
 export const Line = styled.hr`
   border-top: none;
   border-bottom: solid 1px #434242;
   margin: 0.8em 0;
 `;
+
 export const Button = styled.button`
   display: inline-block;
   border: none;
@@ -78,9 +107,9 @@ export const Link = styled.a.attrs(props => ({
     content: ${props => (props.external ? '"⇱ "' : '')};
   }
 `;
-export const CloseLink = styled(Link)`
+export const CloseLink = styled(Link)<{ top?: string }>`
   position: absolute;
-  top: 0;
+  top: ${props => ('top' in props ? props.top : 0)};
   right: 0.4em;
 `;
 export const Text = styled.p`
@@ -220,5 +249,29 @@ export const TooltipContainer = styled.div`
     font-size: 0.9em;
     line-height: 1.2em;
     overflow: hidden;
+  }
+`;
+export const DetailsContainer = styled.div`
+  background: #242424;
+  z-index: 12;
+  color: white;
+  animation: ${fadeIn} 200ms ease-out;
+  word-break: break-word;
+  font-size: 1em;
+  line-height: 1.2em;
+  border: solid 10px #242424;
+  overflow: auto;
+  padding: 1em;
+  pre {
+    font-size: 0.9em;
+    border-top: solid 2px #2a2a2a;
+    margin: 0;
+    padding: 0.5em;
+    font-size: 0.9em;
+    line-height: 1.2em;
+    color: #999;
+    strong {
+      color: white;
+    }
   }
 `;

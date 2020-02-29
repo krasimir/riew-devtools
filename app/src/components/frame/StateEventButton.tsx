@@ -1,49 +1,37 @@
 import React from 'react';
-import { RowEventButton, EventColumnIdx, Container } from '../utils/ui';
+import { RowEventButton, EventColumnIdx } from '../utils/ui';
 import { XCircle, Download, CirclePlus } from '../utils/icons';
 import { EventButtonProps, What } from '../../types';
-import Tooltip from '../Tooltip';
+import EventButtonIcon from '../utils/EventButtonIcon';
 
 export default function StateEventButton({ data, actions }: EventButtonProps) {
   const icons = actions
     .map((action, idx) => {
-      const { what, meta, who } = action;
+      const { what, who } = action;
 
       if (who.rawId !== data.rawId) return null;
       const style = { color: 'black' };
       switch (what) {
         case What.STATE_VALUE_SET:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Download style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.STATE_DESTROYED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <XCircle style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.STATE_CREATED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <CirclePlus style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         default:
           return null;

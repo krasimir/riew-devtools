@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import React from 'react';
-import { RowEventButton, EventColumnIdx, Container } from '../utils/ui';
+import { RowEventButton, EventColumnIdx } from '../utils/ui';
 import { LogIn, Upload, XCircle, Circle, CirclePlus } from '../utils/icons';
 import { EventButtonProps, What } from '../../types';
-import Tooltip from '../Tooltip';
+import EventButtonIcon from '../utils/EventButtonIcon';
 
 export default function ChannelEventButton({
   data,
@@ -11,83 +11,59 @@ export default function ChannelEventButton({
 }: EventButtonProps) {
   const icons = actions
     .map((action, idx) => {
-      const { what, meta, who } = action;
+      const { what, who } = action;
 
       if (who.rawId !== data.rawId) return null;
       const style = { color: 'black' };
       switch (what) {
         case What.CHANNEL_PUT_INITIATED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <LogIn style={{ ...style, opacity: 0.4 }} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.CHANNEL_PUT_RESOLVED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <LogIn style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.CHANNEL_TAKE_INITIATED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Upload style={{ ...style, opacity: 0.4 }} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.CHANNEL_TAKE_RESOLVED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Upload style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.CHANNEL_CREATED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <CirclePlus style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.CHANNEL_CLOSED:
           return (
-            <Container key={idx}>
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <XCircle style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.CHANNEL_RESET:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Circle style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         default:
           return null;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { RowEventButton, EventColumnIdx, Container } from '../utils/ui';
+import { RowEventButton, EventColumnIdx } from '../utils/ui';
 import {
   Download,
   Upload,
@@ -8,70 +8,50 @@ import {
   CirclePlus,
 } from '../utils/icons';
 import { EventButtonProps, What } from '../../types';
-import Tooltip from '../Tooltip';
+import EventButtonIcon from '../utils/EventButtonIcon';
 
 export default function RiewEventButton({ data, actions }: EventButtonProps) {
   const icons = actions
     .map((action, idx) => {
-      const { what, meta, who } = action;
+      const { what, who } = action;
 
       if (who.rawId !== data.rawId) return null;
       const style = { color: 'black' };
       switch (what) {
         case What.RIEW_RENDERED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Image style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.RIEW_MOUNTED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Download style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.RIEW_UNMOUNTED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Upload style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.RIEW_UPDATED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <ArrowRightCircle style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.RIEW_CREATED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <CirclePlus style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         default:
           return null;

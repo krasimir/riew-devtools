@@ -7,15 +7,11 @@ import {
   RowsContainer,
   Table,
 } from './utils/ui';
-import RiewItem from './frame/RiewItem';
-import ChannelItem from './frame/ChannelItem';
-import StateItem from './frame/StateItem';
-import RoutineItem from './frame/RoutineItem';
-import UnknownItem from './frame/UnknownItem';
+import getEntityComponent from './utils/getEntityComponent';
 import Row from './frame/Row';
 import Expander from './Expander';
 
-import { Event, ItemType, Entity, ItemProps, GraphRowItem } from '../types';
+import { Event, Entity, GraphRowItem } from '../types';
 
 interface EventProps {
   columns: Event[];
@@ -25,15 +21,6 @@ interface EventProps {
 type Row = Entity & {
   indent?: 0;
 };
-
-const getComponent = (type: ItemType): React.FC<ItemProps> =>
-  ({
-    [ItemType.RIEW]: RiewItem,
-    [ItemType.CHANNEL]: ChannelItem,
-    [ItemType.STATE]: StateItem,
-    [ItemType.ROUTINE]: RoutineItem,
-    [ItemType.UNRECOGNIZED]: UnknownItem,
-  }[type] || UnknownItem);
 
 interface RenderEntitiesType {
   entities: GraphRowItem[];
@@ -47,7 +34,7 @@ interface RenderColumnsType {
 function renderEntities(options: RenderEntitiesType): React.ReactNode {
   const { entities, indent } = options;
   return entities.map(item => {
-    const Component = getComponent(item.type);
+    const Component = getEntityComponent(item.type);
 
     return (
       <Fragment key={item.rawId}>

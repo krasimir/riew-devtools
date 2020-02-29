@@ -1,5 +1,5 @@
 import React from 'react';
-import { RowEventButton, EventColumnIdx, Container } from '../utils/ui';
+import { RowEventButton, EventColumnIdx } from '../utils/ui';
 import {
   PlayCircle,
   StopCircle,
@@ -9,7 +9,7 @@ import {
   Loading,
 } from '../utils/icons';
 import { EventButtonProps, What } from '../../types';
-import Tooltip from '../Tooltip';
+import EventButtonIcon from '../utils/EventButtonIcon';
 
 export default function RoutineEventButton({
   data,
@@ -17,87 +17,59 @@ export default function RoutineEventButton({
 }: EventButtonProps) {
   const icons = actions
     .map((action, idx) => {
-      const { what, meta, who } = action;
+      const { what, who } = action;
 
       if (who.rawId !== data.rawId) return null;
       const style = { color: 'black' };
       switch (what) {
         case What.ROUTINE_STOPPED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <StopCircle style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.ROUTINE_RERUN:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <PlayCircle style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.ROUTINE_END:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <X style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.ROUTINE_ASYNC_BEGIN:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Loading style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.ROUTINE_ASYNC_END:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Play style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.ROUTINE_ASYNC_ERROR:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <AlertCircle style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         case What.ROUTINE_STARTED:
           return (
-            <Container
-              key={idx}
-              onMouseEnter={() => Tooltip.show(action)}
-              onMouseLeave={() => Tooltip.hide()}
-            >
+            <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
               <Play style={style} />
-            </Container>
+            </EventButtonIcon>
           );
         default:
           return null;
