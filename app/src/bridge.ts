@@ -31,6 +31,7 @@ export default async function bridge(callback: Function): Promise<void> {
   if (isItDevTools) {
     chrome.runtime.onMessage.addListener(function(event, sender, sendResponse) {
       event.id = ++ids;
+      console.log(event);
       if (ECHO_EVENTS_TO_WINDOW) {
         window.RIEW_DATA_COLLECTED.push(JSON.parse(JSON.stringify(event)));
       }

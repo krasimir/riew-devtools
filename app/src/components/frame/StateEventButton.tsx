@@ -4,7 +4,11 @@ import { XCircle, Download, CirclePlus } from '../utils/icons';
 import { EventButtonProps, What } from '../../types';
 import EventButtonIcon from '../utils/EventButtonIcon';
 
-export default function StateEventButton({ data, actions }: EventButtonProps) {
+export default function StateEventButton({
+  data,
+  actions,
+  columns,
+}: EventButtonProps) {
   const icons = actions
     .map((action, idx) => {
       const { what, who } = action;
@@ -43,7 +47,7 @@ export default function StateEventButton({ data, actions }: EventButtonProps) {
     <RowEventButton
       color="#6d8039"
       data-id={data.rawId}
-      columns={`repeat(${icons.length}, 1fr)`}
+      columns={`repeat(${columns || icons.length}, 1fr)`}
     >
       {icons.length > 0 && icons}
     </RowEventButton>

@@ -8,6 +8,7 @@ import EventButtonIcon from '../utils/EventButtonIcon';
 export default function ChannelEventButton({
   data,
   actions,
+  columns,
 }: EventButtonProps) {
   const icons = actions
     .map((action, idx) => {
@@ -75,7 +76,7 @@ export default function ChannelEventButton({
     <RowEventButton
       color="#1e6a2d"
       data-id={data.rawId}
-      columns={`repeat(${icons.length}, 1fr)`}
+      columns={`repeat(${columns || icons.length}, 1fr)`}
     >
       {icons.length > 0 && icons}
     </RowEventButton>

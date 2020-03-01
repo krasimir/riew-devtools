@@ -9,7 +9,6 @@ const PROPS_TO_IGNORE = ['children', 'rawId', 'type', 'puts', 'takes'];
 const PROPS_WITH_NO_LABEL = ['what', 'meta'];
 
 let toggle = (v: boolean, data?: SnapshotAction): void => {};
-const current: Function[] = [];
 
 const Content = ({ data }: { data: SnapshotAction }) => {
   const Who = getEntityComponent(data.who.type);
@@ -96,41 +95,18 @@ export default function Details() {
     <DetailsContainer id="tooltip">
       {actionData !== null ? <Content data={actionData} /> : null}
       <Container m="1em 0 0 0">{detailsContent}</Container>
-      <CloseLink onClick={() => Details.hide()} top="1em">
+      <CloseLink onClick={() => Details.hide()} top="1em" right="1.4em">
         <X />
       </CloseLink>
     </DetailsContainer>
-  ) : null;
+  ) : (
+    <DetailsContainer bgpattern />
+  );
 }
 
 Details.show = (data: SnapshotAction) => {
   toggle(true, data);
-  current.forEach(f => f(data));
 };
 Details.hide = () => {
   toggle(false);
 };
-
-export function IsCurrent({
-  action,
-  children,
-}: {
-  action: SnapshotAction;
-  children: Function;
-}) {
-  const [isCurrent, setIsCurrent] = useState<boolean>(false);
-  useEffect(() => {
-    current.push((currentAction: SnapshotAction) => {
-      if (currentAction.who.rawId === action.who.rawId) {
-        console.log(currentAction, action);
-      }
-      setIsCurrent(currentAction === action);
-    });
-    const idx = current.length - 1;
-    return () => {
-      current.splice(idx, 1);
-    };
-  }, [action, children]);
-
-  return children(isCurrent);
-}

@@ -14,6 +14,7 @@ import EventButtonIcon from '../utils/EventButtonIcon';
 export default function RoutineEventButton({
   data,
   actions,
+  columns,
 }: EventButtonProps) {
   const icons = actions
     .map((action, idx) => {
@@ -81,7 +82,7 @@ export default function RoutineEventButton({
     <RowEventButton
       color="#704040"
       data-id={data.rawId}
-      columns={`repeat(${icons.length}, 1fr)`}
+      columns={`repeat(${columns || icons.length}, 1fr)`}
     >
       {icons.length > 0 && icons}
     </RowEventButton>

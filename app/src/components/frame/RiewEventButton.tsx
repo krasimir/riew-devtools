@@ -10,7 +10,11 @@ import {
 import { EventButtonProps, What } from '../../types';
 import EventButtonIcon from '../utils/EventButtonIcon';
 
-export default function RiewEventButton({ data, actions }: EventButtonProps) {
+export default function RiewEventButton({
+  data,
+  actions,
+  columns,
+}: EventButtonProps) {
   const icons = actions
     .map((action, idx) => {
       const { what, who } = action;
@@ -63,7 +67,7 @@ export default function RiewEventButton({ data, actions }: EventButtonProps) {
     <RowEventButton
       color="#2a8778"
       data-id={data.rawId}
-      columns={`repeat(${icons.length}, 1fr)`}
+      columns={`repeat(${columns || icons.length}, 1fr)`}
     >
       {icons.length > 0 && icons}
     </RowEventButton>

@@ -17,7 +17,7 @@ export default function App() {
 
   return graph.rows.length > 0 ? (
     <AppContainer>
-      <AppArea>
+      <AppArea bb="solid 4px #2a2a2a">
         <Frames rows={graph.rows} columns={graph.columns} />
         <Tooltip />
       </AppArea>

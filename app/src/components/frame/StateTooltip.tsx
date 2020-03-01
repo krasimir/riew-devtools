@@ -1,5 +1,5 @@
 import React from 'react';
-import { SnapshotAction, What, State } from '../../types';
+import { SnapshotAction, What } from '../../types';
 import Truncate from '../Truncate';
 
 export default function StateTooltip({ data }: { data: SnapshotAction }) {
@@ -22,12 +22,9 @@ export default function StateTooltip({ data }: { data: SnapshotAction }) {
   }
   if (data.what === What.STATE_CREATED) {
     return (
-      <>
-        <strong>
-          <Truncate>{data.who.name}</Truncate>: Create
-        </strong>
-        <pre>{JSON.stringify((data.who as State).value, null, 2)}</pre>
-      </>
+      <strong>
+        <Truncate>{data.who.name}</Truncate>: Create
+      </strong>
     );
   }
   return <span>{data.what}</span>;

@@ -33,7 +33,11 @@ export default function ChannelTooltip({ data }: { data: SnapshotAction }) {
     );
   }
   if (data.what === What.CHANNEL_TAKE_INITIATED) {
-    return <strong>Take initiated</strong>;
+    return (
+      <strong>
+        <Truncate>{channel.name}</Truncate>#{channel.id}: Take initiated
+      </strong>
+    );
   }
   if (data.what === What.CHANNEL_TAKE_RESOLVED) {
     return (

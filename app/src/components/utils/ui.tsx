@@ -107,10 +107,10 @@ export const Link = styled.a.attrs(props => ({
     content: ${props => (props.external ? '"⇱ "' : '')};
   }
 `;
-export const CloseLink = styled(Link)<{ top?: string }>`
+export const CloseLink = styled(Link)<{ top?: string; right?: string }>`
   position: absolute;
   top: ${props => ('top' in props ? props.top : 0)};
-  right: 0.4em;
+  right: ${props => ('right' in props ? props.right : '0.4em')};
 `;
 export const Text = styled.p`
   margin: 0;
@@ -251,15 +251,20 @@ export const TooltipContainer = styled.div`
     overflow: hidden;
   }
 `;
-export const DetailsContainer = styled.div`
-  background: #242424;
+export const DetailsContainer = styled.div<{ bgpattern?: boolean }>`
+  background-color: #242424;
+  background-image: ${props =>
+    props.bgpattern
+      ? 'repeating-linear-gradient(45deg, transparent, transparent 35px, #2a2a2a 35px, #2a2a2a 70px)'
+      : ''};
   z-index: 12;
+  height: ${props => (props.bgpattern ? '100%' : 'auto')};
   color: white;
   animation: ${fadeIn} 200ms ease-out;
   word-break: break-word;
   font-size: 1em;
   line-height: 1.2em;
-  border: solid 10px #242424;
+  border: ${props => (props.bgpattern ? '' : 'solid 10px #242424')};
   overflow: auto;
   padding: 1em;
   pre {

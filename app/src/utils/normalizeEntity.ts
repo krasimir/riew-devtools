@@ -11,7 +11,7 @@ export default function normalizeEntity({
 }): Entity {
   const parts = id.split('_');
   let entity: Entity;
-  // sliding_App_view_18
+  // sliding_App_18
   // sliding_13
 
   if (type === ItemType.RIEW) {
@@ -19,27 +19,19 @@ export default function normalizeEntity({
       id: parts[2],
       rawId: id,
       type,
-      name: parts[0],
       ...restProps,
     };
   } else if (type === ItemType.CHANNEL) {
     let normalizedId = '';
-    let normalizedName = '';
-    if (parts.length === 4) {
-      normalizedId = parts[3];
-      normalizedName = `${parts[2]}(${parts[1]})`;
-    } else if (parts.length === 3) {
+    if (parts.length === 3) {
       normalizedId = parts[2];
-      normalizedName = parts[1];
     } else if (parts.length === 2) {
       normalizedId = parts[1];
-      normalizedName = `channel`;
     }
     entity = {
       id: normalizedId,
       rawId: id,
       type,
-      name: normalizedName,
       buffer: (function(str): ChannelBuffers {
         if (str === 'ch' || str === 'fixed') return ChannelBuffers.FIXED;
         if (str === 'sliding') return ChannelBuffers.SLIDING;
@@ -54,7 +46,6 @@ export default function normalizeEntity({
       id: parts[2],
       rawId: id,
       type,
-      name: parts[1],
       ...restProps,
     };
   } else if (type === ItemType.STATE) {
@@ -62,7 +53,6 @@ export default function normalizeEntity({
       id: parts[1],
       rawId: id,
       type,
-      name: 'state',
       ...restProps,
     };
   } else {
@@ -70,7 +60,6 @@ export default function normalizeEntity({
       id,
       rawId: id,
       type: ItemType.UNRECOGNIZED,
-      name: 'unknown',
       ...restProps,
     };
   }

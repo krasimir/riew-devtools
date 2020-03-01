@@ -40,13 +40,25 @@ export default function Row({ data, columns }: RowProps) {
   return (
     <TR h={FRAME_HEIGHT}>
       {columns.map((event, idx) => {
+        const counts: number[] = Object.values(
+          event.snapshot.reduce((res: any, action) => {
+            if (!res[action.who.rawId]) res[action.who.rawId] = 0;
+            res[action.who.rawId] += 1;
+            return res;
+          }, {})
+        );
+        const maxActionsNum = Math.max(...counts);
         const matchedActions: SnapshotAction[] = event.snapshot.filter(
           action => action.who.rawId === data.rawId
         );
         if (matchedActions.length > 0) {
           return (
             <TD key={idx}>
-              <Button data={data} actions={event.snapshot} />
+              <Button
+                data={data}
+                actions={event.snapshot}
+                columns={maxActionsNum}
+              />
             </TD>
           );
         }
