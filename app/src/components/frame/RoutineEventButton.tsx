@@ -33,28 +33,28 @@ export default function RoutineEventButton({
           return (
             <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
-              <StopCircle style={style} />
+              <img src="./img/app_routine_stopped.jpg" />
             </EventButtonIcon>
           );
         case What.ROUTINE_RERUN:
           return (
             <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
-              <PlayCircle style={style} />
+              <img src="./img/app_routine_rerun.jpg" />
             </EventButtonIcon>
           );
         case What.ROUTINE_END:
           return (
             <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
-              <X style={style} />
+              <img src="./img/app_routine_end.jpg" />
             </EventButtonIcon>
           );
         case What.ROUTINE_ASYNC_BEGIN:
           return (
             <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
-              <Loading style={style} />
+              <img src="./img/app_routine_async_begin.jpg" />
             </EventButtonIcon>
           );
         case What.ROUTINE_ASYNC_END:
@@ -62,14 +62,14 @@ export default function RoutineEventButton({
           return (
             <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
-              <Play style={style} />
+              <img src="./img/app_routine_async_end.jpg" />
             </EventButtonIcon>
           );
         case What.ROUTINE_ASYNC_ERROR:
           return (
             <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
-              <AlertCircle style={style} />
+              <img src="./img/app_routine_error.jpg" />
             </EventButtonIcon>
           );
         case What.ROUTINE_STARTED:
