@@ -1,4 +1,4 @@
-import { Event, EventType, Entity, SnapshotAction } from './types';
+import { Event, EventType, Entity, SnapshotAction, What } from './types';
 import normalizeEntity from './utils/normalizeEntity';
 
 const isItDevTools =
@@ -15,15 +15,16 @@ declare global {
 }
 window.RIEW_DATA_COLLECTED = [];
 
-function normalizeActions(actions: SnapshotAction[]): void {
-  for (let i = 0; i < actions.length; i++) {
-    actions[i].who = normalizeEntity(actions[i].who as Entity);
-  }
+function normalizeActions(actions: SnapshotAction[]): SnapshotAction[] {
+  return actions.map(action => {
+    action.who = normalizeEntity(action.who as Entity);
+    return action;
+  });
 }
 function normalizeEvent(event?: Event): Event | undefined {
   if (!event) return;
   if (event.type === EventType.RIEW_NEW_SESSION) return event as Event;
-  normalizeActions(event.snapshot);
+  event.snapshot = normalizeActions(event.snapshot);
   return event as Event;
 }
 

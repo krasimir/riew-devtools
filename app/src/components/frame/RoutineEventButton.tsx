@@ -14,13 +14,19 @@ import EventButtonIcon from '../utils/EventButtonIcon';
 export default function RoutineEventButton({
   data,
   actions,
-  columns,
 }: EventButtonProps) {
+  let created = false;
   const icons = actions
     .map((action, idx) => {
       const { what, who } = action;
 
-      if (who.rawId !== data.rawId) return null;
+      if (who.rawId !== data.rawId)
+        return (
+          <img
+            key={idx}
+            src={created ? './img/app_routine_0.jpg' : './img/app_empty.jpg'}
+          />
+        );
       const style = { color: 'black' };
       switch (what) {
         case What.ROUTINE_STOPPED:
@@ -52,6 +58,7 @@ export default function RoutineEventButton({
             </EventButtonIcon>
           );
         case What.ROUTINE_ASYNC_END:
+          created = false;
           return (
             <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
@@ -66,23 +73,28 @@ export default function RoutineEventButton({
             </EventButtonIcon>
           );
         case What.ROUTINE_STARTED:
+          created = true;
           return (
             <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
-              <Play style={style} />
+              <img src="./img/app_routine_started.jpg" />
             </EventButtonIcon>
           );
         default:
-          return null;
+          return (
+            <img
+              key={idx}
+              src={created ? './img/app_routine_0.jpg' : './img/app_empty.jpg'}
+            />
+          );
       }
     })
     .filter(i => i);
 
   return (
     <RowEventButton
-      color="#704040"
       data-id={data.rawId}
-      columns={`repeat(${columns || icons.length}, 1fr)`}
+      columns={`repeat(${actions.length}, 1fr)`}
     >
       {icons.length > 0 && icons}
     </RowEventButton>

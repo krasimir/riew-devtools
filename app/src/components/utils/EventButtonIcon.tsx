@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SnapshotAction } from '../../types';
-import { Container } from './ui';
-import Tooltip from '../Tooltip';
-import Details from '../Details';
+import { Container, TooltipContainer, FRAME_HEIGHT } from './ui';
+import Details, { toFriendlyWhat } from '../Details';
 
 export default function EventButtonIcon({
   action,
@@ -11,12 +10,17 @@ export default function EventButtonIcon({
   action: SnapshotAction;
   children: JSX.Element[];
 }) {
+  const [tooltip, setTooltip] = useState<SnapshotAction | null>(null);
   return (
     <Container
-      onMouseEnter={() => Tooltip.show(action)}
-      onMouseLeave={() => Tooltip.hide()}
+      onMouseEnter={() => setTooltip(action)}
+      onMouseLeave={() => setTooltip(null)}
       onClick={() => Details.show(action)}
+      h={FRAME_HEIGHT}
     >
+      {tooltip && (
+        <TooltipContainer>{toFriendlyWhat(tooltip.what)}</TooltipContainer>
+      )}
       {children}
     </Container>
   );

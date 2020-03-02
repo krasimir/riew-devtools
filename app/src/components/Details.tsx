@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { DetailsContainer, CloseLink, Container } from './utils/ui';
 import { SnapshotAction, What } from '../types';
 import getEntityComponent from './utils/getEntityComponent';
-import { X } from './utils/icons';
+import { X, ArrowRight } from './utils/icons';
 
 const PROPS_TO_IGNORE = ['children', 'rawId', 'type', 'puts', 'takes'];
 const PROPS_WITH_NO_LABEL = ['what', 'meta'];
@@ -13,19 +13,20 @@ let toggle = (v: boolean, data?: SnapshotAction): void => {};
 const Content = ({ data }: { data: SnapshotAction }) => {
   const Who = getEntityComponent(data.who.type);
 
-  return <Who data={data.who} />;
+  return <Who data={data.who} expandable={false} />;
 };
 
-const toFriendlyWhat = (str: What): string => {
-  if (str === What.RIEW_RENDERED) return 'Rendered with';
-  if (str === What.RIEW_MOUNTED) return 'Mounted with';
+export const toFriendlyWhat = (str: What): string => {
+  if (str === What.RIEW_RENDERED) return 'Rendered';
+  if (str === What.RIEW_MOUNTED) return 'Mounted';
   if (str === What.RIEW_UNMOUNTED) return 'Unmounted';
-  if (str === What.RIEW_UPDATED) return 'Updated with';
+  if (str === What.RIEW_UPDATED) return 'Updated';
   if (str === What.RIEW_CREATED) return 'Created';
   if (str === What.CHANNEL_PUT_INITIATED) return 'Put initiated';
   if (str === What.CHANNEL_PUT_RESOLVED) return 'Put successfully';
   if (str === What.CHANNEL_TAKE_INITIATED) return 'Take initiated';
   if (str === What.CHANNEL_TAKE_RESOLVED) return 'Take successfully';
+  if (str === What.CHANNEL_LISTEN) return 'Listening';
   if (str === What.CHANNEL_CREATED) return 'Created';
   if (str === What.CHANNEL_CLOSED) return 'Closed';
   if (str === What.CHANNEL_RESET) return 'Reset';
@@ -38,7 +39,7 @@ const toFriendlyWhat = (str: What): string => {
   if (str === What.ROUTINE_STARTED) return 'Start';
   if (str === What.STATE_VALUE_SET) return 'New value';
   if (str === What.STATE_DESTROYED) return 'Destroyed';
-  if (str === What.STATE_CREATED) return 'Created with';
+  if (str === What.STATE_CREATED) return 'Created';
   return str;
 };
 
@@ -65,7 +66,7 @@ export default function Details() {
 
   const fields = actionData
     ? {
-        [toFriendlyWhat(actionData.what)]: actionData.meta,
+        meta: actionData.meta,
         ...actionData.who,
       }
     : {};
@@ -93,7 +94,8 @@ export default function Details() {
 
   return visible ? (
     <DetailsContainer id="tooltip">
-      {actionData !== null ? <Content data={actionData} /> : null}
+      {actionData !== null ? <Content data={actionData} /> : null} 👉🏼{' '}
+      {actionData && toFriendlyWhat(actionData.what)}
       <Container m="1em 0 0 0">{detailsContent}</Container>
       <CloseLink onClick={() => Details.hide()} top="1em" right="1.4em">
         <X />

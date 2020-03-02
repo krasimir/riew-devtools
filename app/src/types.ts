@@ -27,6 +27,7 @@ export enum What {
   CHANNEL_PUT_INITIATED = 'CHANNEL_PUT_INITIATED',
   CHANNEL_PUT_RESOLVED = 'CHANNEL_PUT_RESOLVED',
   CHANNEL_TAKE_INITIATED = 'CHANNEL_TAKE_INITIATED',
+  CHANNEL_LISTEN = 'CHANNEL_LISTEN',
   CHANNEL_TAKE_RESOLVED = 'CHANNEL_TAKE_RESOLVED',
   CHANNEL_CREATED = 'CHANNEL_CREATED',
   CHANNEL_CLOSED = 'CHANNEL_CLOSED',
@@ -103,7 +104,7 @@ export interface Event {
 
 export interface ItemProps {
   data: Entity;
-  columns?: number;
+  expandable?: boolean;
 }
 
 export type GraphRowItem = EntityInterface & {

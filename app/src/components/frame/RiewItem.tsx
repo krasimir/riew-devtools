@@ -4,12 +4,12 @@ import { ItemProps } from '../../types';
 import useExpander from '../hooks/useExpander';
 import Truncate from '../Truncate';
 
-export default function ItemRiew({ data }: ItemProps) {
+export default function ItemRiew({ data, expandable }: ItemProps) {
   const [expanded] = useExpander(data.id);
   return (
     <>
       <Box /> &lt;<Truncate>{data.name}</Truncate>&gt;{' '}
-      {data.children && data.children.length && !expanded ? (
+      {expandable && data.children && data.children.length && !expanded ? (
         <MoreHorizontal />
       ) : (
         ''
@@ -17,3 +17,7 @@ export default function ItemRiew({ data }: ItemProps) {
     </>
   );
 }
+
+ItemRiew.defaultProps = {
+  expandable: true,
+};

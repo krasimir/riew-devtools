@@ -31,6 +31,10 @@ export const COLORS = {
   grey2: '#2a2a2a',
   selected: '#213651',
 };
+
+const BG_PATTERN =
+  'repeating-linear-gradient(45deg, transparent, transparent 35px, #2a2a2a 35px, #2a2a2a 70px)';
+
 export const Container = styled.div<ContainerProps>`
   position: relative;
   padding: ${props => ('p' in props ? props.p : '0')};
@@ -136,35 +140,29 @@ export const FrameItemContainer = styled.div<{
 `;
 export const RowEventButton = styled(Container)`
   display: grid;
-  column-gap: 6px;
-  padding: 0 4px;
+  column-gap: 0;
+  padding: 0;
   position: relative;
   border: none;
   border-radius: 2px;
-  box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, 1);
   width: 100%;
   height: 100%;
-  background: ${props => (props.color ? props.color : 'white')};
   color: white;
   justify-items: center;
-  svg {
+  height: ${FRAME_HEIGHT}px;
+  border-bottom: solid 2px #2a2a2a;
+  img {
     display: inline-block;
-    margin: 4px 0;
-    transition: transform 200ms ease-out;
-    transform: translateY(2px);
     cursor: pointer;
-    width: 16px;
-    height: 16px;
   }
-  svg:hover {
-    stroke: white;
+  img:hover {
+    opacity: 0.5;
   }
 `;
 export const NoEventPlaceholder = styled.div`
   width: 100%;
   height: ${FRAME_HEIGHT}px;
-  border-top: solid 1px #2a2a2a;
-  border-bottom: solid 1px #2a2a2a;
+  border-bottom: solid 2px #2a2a2a;
 `;
 export const RowsContainer = styled(Container)`
   background: #242424;
@@ -183,6 +181,8 @@ export const NoEvents = styled(Container)`
   height: 100%;
   width: 100%;
   padding: 2em;
+  background-color: #242424;
+  background-image: ${BG_PATTERN};
 `;
 export const Title = styled.h1`
   margin: 0 0 2em 0;
@@ -230,33 +230,34 @@ const fadeIn = keyframes`
 `;
 export const TooltipContainer = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  max-height: 200px;
+  top: 32px;
+  right: 4px;
   background: white;
   z-index: 11;
   color: #242424;
-  animation: ${fadeIn} 500ms ease-out;
+  animation: ${fadeIn} 200ms ease-out;
   word-break: break-word;
   font-size: 0.9em;
   line-height: 1.2em;
-  border: solid 10px white;
-  overflow: hidden;
-  pre {
-    margin: 0;
-    padding: 0;
-    font-size: 0.9em;
-    line-height: 1.2em;
-    overflow: hidden;
+  padding: 0.4em;
+  text-align: center;
+  border-radius: 2px;
+  &::before {
+    position: absolute;
+    content: ' ';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ffffff;
+    top: -7px;
+    right: 5px;
   }
 `;
 export const DetailsContainer = styled.div<{ bgpattern?: boolean }>`
   background-color: #242424;
-  background-image: ${props =>
-    props.bgpattern
-      ? 'repeating-linear-gradient(45deg, transparent, transparent 35px, #2a2a2a 35px, #2a2a2a 70px)'
-      : ''};
+  background-image: ${props => (props.bgpattern ? BG_PATTERN : '')};
   z-index: 12;
   height: ${props => (props.bgpattern ? '100%' : 'auto')};
   color: white;

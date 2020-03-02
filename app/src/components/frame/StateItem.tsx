@@ -4,12 +4,12 @@ import { ItemProps } from '../../types';
 import useExpander from '../hooks/useExpander';
 import Truncate from '../Truncate';
 
-export default function ItemState({ data }: ItemProps) {
+export default function ItemState({ data, expandable }: ItemProps) {
   const [expanded] = useExpander(data.id);
   return (
     <>
       <Database /> <Truncate>{data.name}</Truncate>{' '}
-      {data.children && data.children.length && !expanded ? (
+      {expandable && data.children && data.children.length && !expanded ? (
         <MoreHorizontal />
       ) : (
         ''
@@ -17,3 +17,7 @@ export default function ItemState({ data }: ItemProps) {
     </>
   );
 }
+
+ItemState.defaultProps = {
+  expandable: true,
+};
