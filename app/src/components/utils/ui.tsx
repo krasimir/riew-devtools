@@ -204,17 +204,6 @@ export const TD = styled.td<ContainerProps & { br?: string }>`
   height: ${props => ('h' in props ? `${props.h}px` : 'auto')};
   border-right: ${props => ('br' in props ? props.br : 'none')};
 `;
-export const EventColumnIdx = styled.span`
-  position: absolute;
-  bottom: 5px;
-  left: calc(50% - 5px);
-  font-size: 0.6em;
-  text-align: center;
-  width: 10px;
-  height: 10px;
-  color: black;
-  display: none;
-`;
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -275,4 +264,30 @@ export const DetailsContainer = styled.div<{ bgpattern?: boolean }>`
       color: white;
     }
   }
+`;
+
+export const Empty = styled.div<{
+  created: boolean | undefined;
+  color: string;
+}>`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  &::before {
+    content: ' ';
+    display: ${props => (props.created ? 'block' : 'none')};
+    background: ${props => props.color};
+    height: 4px;
+    width: 100%;
+    margin-top: 14px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`;
+
+export const CIconContainer = styled.div`
+  width: 22px;
+  transform: translateY(5px);
+  cursor: pointer;
 `;

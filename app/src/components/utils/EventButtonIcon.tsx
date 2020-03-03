@@ -8,7 +8,7 @@ export default function EventButtonIcon({
   children,
 }: {
   action: SnapshotAction;
-  children: JSX.Element[];
+  children: JSX.Element;
 }) {
   const [tooltip, setTooltip] = useState<SnapshotAction | null>(null);
   return (

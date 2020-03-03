@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 
 module.exports = {
-  // entry: ['regenerator-runtime/runtime', './src/index.js'],
   entry: ['./src/index.tsx'],
   devtool: 'inline-source-map',
   module: {
@@ -13,7 +12,14 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+            },
+          },
+        ],
         exclude: /node_modules/,
       },
     ],
@@ -25,6 +31,7 @@ module.exports = {
     path: `${__dirname}/../extension`,
     publicPath: '/',
     filename: 'riew.js',
+    pathinfo: false,
   },
   watch: true,
   plugins: [
@@ -32,4 +39,9 @@ module.exports = {
       __DEV__: true,
     }),
   ],
+  optimization: {
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    splitChunks: false,
+  },
 };

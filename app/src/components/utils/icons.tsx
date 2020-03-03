@@ -1,9 +1,16 @@
 import React from 'react';
+import { CIconContainer } from './ui';
 
 interface IconProps {
   size?: number;
   style?: Record<string, any>;
 }
+
+export const CIcon = ({ type }: { type: string }) => (
+  <CIconContainer>
+    <i className={`gg-${type}`}></i>
+  </CIconContainer>
+);
 
 export const Box: React.FC<IconProps> = ({ size }) => (
   <svg

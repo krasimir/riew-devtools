@@ -1,7 +1,10 @@
 import React from 'react';
-import { RowEventButton, EventColumnIdx } from '../utils/ui';
+import { RowEventButton, Empty } from '../utils/ui';
+import { CIcon } from '../utils/icons';
 import { EventButtonProps, What } from '../../types';
 import EventButtonIcon from '../utils/EventButtonIcon';
+
+const COLOR = '#abd21f';
 
 export default function StateEventButton({
   data,
@@ -13,58 +16,35 @@ export default function StateEventButton({
       const { what, who } = action;
 
       if (who.rawId !== data.rawId)
-        return (
-          <img
-            key={idx}
-            src={
-              created && created[idx]
-                ? './img/app_state_0.jpg'
-                : './img/app_empty.jpg'
-            }
-          />
-        );
+        return <Empty created={created && created[idx]} color={COLOR} />;
+
       switch (what) {
         case What.STATE_VALUE_SET:
           return (
             <EventButtonIcon action={action} key={idx}>
-              <EventColumnIdx>{idx + 1}</EventColumnIdx>
-              <img src="./img/app_state_value_set.jpg" />
+              <CIcon type="push-down" />
             </EventButtonIcon>
           );
         case What.STATE_DESTROYED:
           return (
             <EventButtonIcon action={action} key={idx}>
-              <EventColumnIdx>{idx + 1}</EventColumnIdx>
-              <img src="./img/app_state_destroyed.jpg" />
+              <CIcon type="close" />
             </EventButtonIcon>
           );
         case What.STATE_CREATED:
           return (
             <EventButtonIcon action={action} key={idx}>
-              <EventColumnIdx>{idx + 1}</EventColumnIdx>
-              <img src="./img/app_state_created.jpg" />
+              <CIcon type="add" />
             </EventButtonIcon>
           );
         default:
-          return (
-            <img
-              key={idx}
-              src={
-                created && created[idx]
-                  ? './img/app_state_0.jpg'
-                  : './img/app_empty.jpg'
-              }
-            />
-          );
+          return <Empty created={created && created[idx]} color={COLOR} />;
       }
     })
     .filter(i => i);
 
   return (
-    <RowEventButton
-      data-id={data.rawId}
-      columns={`repeat(${actions.length}, 1fr)`}
-    >
+    <RowEventButton columns={`repeat(${actions.length}, 1fr)`}>
       {icons.length > 0 && icons}
     </RowEventButton>
   );
