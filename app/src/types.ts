@@ -42,6 +42,7 @@ export enum What {
   STATE_VALUE_SET = 'STATE_VALUE_SET',
   STATE_DESTROYED = 'STATE_DESTROYED',
   STATE_CREATED = 'STATE_CREATED',
+  UNRECOGNIZED = 'UNRECOGNIZED',
 }
 
 export type Meta = { [key: string]: any } | null;
@@ -113,6 +114,7 @@ export type GraphRowItem = EntityInterface & {
 
 export type EventButtonProps = ItemProps & {
   actions: SnapshotAction[];
+  created?: boolean[];
 };
 
 export type TooltipContentProps = {

@@ -3,8 +3,11 @@ import { RowEventButton, EventColumnIdx } from '../utils/ui';
 import { EventButtonProps, What } from '../../types';
 import EventButtonIcon from '../utils/EventButtonIcon';
 
-export default function StateEventButton({ data, actions }: EventButtonProps) {
-  let created = false;
+export default function StateEventButton({
+  data,
+  actions,
+  created,
+}: EventButtonProps) {
   const icons = actions
     .map((action, idx) => {
       const { what, who } = action;
@@ -13,7 +16,11 @@ export default function StateEventButton({ data, actions }: EventButtonProps) {
         return (
           <img
             key={idx}
-            src={created ? './img/app_state_0.jpg' : './img/app_empty.jpg'}
+            src={
+              created && created[idx]
+                ? './img/app_state_0.jpg'
+                : './img/app_empty.jpg'
+            }
           />
         );
       switch (what) {
@@ -25,7 +32,6 @@ export default function StateEventButton({ data, actions }: EventButtonProps) {
             </EventButtonIcon>
           );
         case What.STATE_DESTROYED:
-          created = false;
           return (
             <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
@@ -33,7 +39,6 @@ export default function StateEventButton({ data, actions }: EventButtonProps) {
             </EventButtonIcon>
           );
         case What.STATE_CREATED:
-          created = true;
           return (
             <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
@@ -44,7 +49,11 @@ export default function StateEventButton({ data, actions }: EventButtonProps) {
           return (
             <img
               key={idx}
-              src={created ? './img/app_state_0.jpg' : './img/app_empty.jpg'}
+              src={
+                created && created[idx]
+                  ? './img/app_state_0.jpg'
+                  : './img/app_empty.jpg'
+              }
             />
           );
       }

@@ -1,4 +1,4 @@
-import { Event, EventType, Entity, SnapshotAction, What } from './types';
+import { Event, EventType, Entity, SnapshotAction } from './types';
 import normalizeEntity from './utils/normalizeEntity';
 
 const isItDevTools =
@@ -32,7 +32,6 @@ export default async function bridge(callback: Function): Promise<void> {
   if (isItDevTools) {
     chrome.runtime.onMessage.addListener(function(event, sender, sendResponse) {
       event.id = ++ids;
-      console.log(event);
       if (ECHO_EVENTS_TO_WINDOW) {
         window.RIEW_DATA_COLLECTED.push(JSON.parse(JSON.stringify(event)));
       }
@@ -40,11 +39,11 @@ export default async function bridge(callback: Function): Promise<void> {
       sendResponse('received');
     });
   } else {
-    let mockData: Array<Event> = await fetch('_mock_/log.json').then(res =>
+    const mockData: Array<Event> = await fetch('_mock_/log.json').then(res =>
       res.json()
     );
 
-    mockData = mockData.filter((_, i) => i < 10);
+    // mockData = mockData.filter((_, i) => i < 10);
 
     (function push(): void {
       if (mockData.length > 0) {

@@ -7,19 +7,24 @@ import EventButtonIcon from '../utils/EventButtonIcon';
 export default function ChannelEventButton({
   data,
   actions,
+  created,
 }: EventButtonProps) {
-  let created = false;
   const icons = actions
     .map((action, idx) => {
       const { what, who } = action;
 
-      if (who.rawId !== data.rawId)
+      if (who.rawId !== data.rawId) {
         return (
           <img
             key={idx}
-            src={created ? './img/app_channel_0.jpg' : './img/app_empty.jpg'}
+            src={
+              created && created[idx]
+                ? './img/app_channel_0.jpg'
+                : './img/app_empty.jpg'
+            }
           />
         );
+      }
       switch (what) {
         case What.CHANNEL_PUT_INITIATED:
           return (
@@ -50,7 +55,6 @@ export default function ChannelEventButton({
             </EventButtonIcon>
           );
         case What.CHANNEL_CREATED:
-          created = true;
           return (
             <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
@@ -58,7 +62,6 @@ export default function ChannelEventButton({
             </EventButtonIcon>
           );
         case What.CHANNEL_CLOSED:
-          created = false;
           return (
             <EventButtonIcon action={action} key={idx}>
               <EventColumnIdx>{idx + 1}</EventColumnIdx>
@@ -83,7 +86,11 @@ export default function ChannelEventButton({
           return (
             <img
               key={idx}
-              src={created ? './img/app_channel_0.jpg' : './img/app_empty.jpg'}
+              src={
+                created && created[idx]
+                  ? './img/app_channel_0.jpg'
+                  : './img/app_empty.jpg'
+              }
             />
           );
       }

@@ -159,11 +159,6 @@ export const RowEventButton = styled(Container)`
     opacity: 0.5;
   }
 `;
-export const NoEventPlaceholder = styled.div`
-  width: 100%;
-  height: ${FRAME_HEIGHT}px;
-  border-bottom: solid 2px #2a2a2a;
-`;
 export const RowsContainer = styled(Container)`
   background: #242424;
   position: absolute;

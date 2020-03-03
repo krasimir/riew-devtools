@@ -20,7 +20,10 @@ export default function graphReducer(
 
   event.snapshot.forEach(({ who }) => {
     if (!state.rowsCache[who.rawId]) {
-      const graphRow = { ...who, children: [] } as GraphRowItem;
+      const graphRow = {
+        ...who,
+        children: [],
+      } as GraphRowItem;
       state.rowsCache[who.rawId] = graphRow;
       if (graphRow.parent && state.rowsCache[graphRow.parent]) {
         state.rowsCache[graphRow.parent].children.push(graphRow);
