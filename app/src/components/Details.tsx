@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { DetailsContainer, CloseLink, Container } from './utils/ui';
 import { SnapshotAction, What } from '../types';
 import getEntityComponent from './utils/getEntityComponent';
-import { X, ArrowRight } from './utils/icons';
 
 const PROPS_TO_IGNORE = ['children', 'rawId', 'type', 'puts', 'takes'];
 const PROPS_WITH_NO_LABEL = ['what', 'meta'];
@@ -98,7 +97,7 @@ export default function Details() {
       {actionData && toFriendlyWhat(actionData.what)}
       <Container m="1em 0 0 0">{detailsContent}</Container>
       <CloseLink onClick={() => Details.hide()} top="1em" right="1.4em">
-        <X />
+        close
       </CloseLink>
     </DetailsContainer>
   ) : (

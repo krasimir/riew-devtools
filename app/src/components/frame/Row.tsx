@@ -1,20 +1,20 @@
 import React from 'react';
-import { RowEventButton, TR, TD, FRAME_HEIGHT } from '../utils/ui';
-import { Entity, Event, ItemType, EventButtonProps, What } from '../../types';
-import RiewEventButton from './RiewEventButton';
-import ChannelEventButton from './ChannelEventButton';
-import StateEventButton from './StateEventButton';
-import RoutineEventButton from './RoutineEventButton';
+import { EntityFrameContainer, Container, FRAME_HEIGHT } from '../utils/ui';
+import { Entity, Event, ItemType, EntityFrameProps, What } from '../../types';
+import RiewEventButton from './RiewItem';
+import ChannelEventButton from './ChannelItem';
+import StateEventButton from './StateItem';
+import RoutineEventButton from './RoutineItem';
 
 export interface RowProps {
-  data: Entity;
-  columns: Event[];
+  entity: Entity;
+  frames: Event[];
 }
 function UnknownEventButton() {
-  return <RowEventButton />;
+  return <EntityFrameContainer />;
 }
 
-const getButton = (type: ItemType): React.FC<EventButtonProps> =>
+const getButton = (type: ItemType): React.FC<EntityFrameProps> =>
   ({
     [ItemType.RIEW]: RiewEventButton,
     [ItemType.CHANNEL]: ChannelEventButton,
@@ -59,19 +59,18 @@ const isCreated = (data: Entity, idx: number, frames: Event[]): boolean[] => {
   return [];
 };
 
-export default function Row({ data, columns }: RowProps) {
-  const Button = getButton(data.type);
+export default function Row({ entity, frames }: RowProps) {
+  const Button = getButton(entity.type);
   return (
-    <TR h={FRAME_HEIGHT}>
-      {columns.map((frame, idx) => (
-        <TD key={idx}>
-          <Button
-            data={data}
-            actions={frame.snapshot}
-            created={isCreated(data, idx, columns)}
-          />
-        </TD>
+    <Container h={FRAME_HEIGHT} data-entity={entity.rawId}>
+      {frames.map((frame, idx) => (
+        <Button
+          key={idx}
+          data={entity}
+          actions={frame.snapshot}
+          created={isCreated(entity, idx, frames)}
+        />
       ))}
-    </TR>
+    </Container>
   );
 }

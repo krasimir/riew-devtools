@@ -108,11 +108,7 @@ export interface ItemProps {
   expandable?: boolean;
 }
 
-export type GraphRowItem = EntityInterface & {
-  children: GraphRowItem[];
-};
-
-export type EventButtonProps = ItemProps & {
+export type EntityFrameProps = ItemProps & {
   actions: SnapshotAction[];
   created?: boolean[];
 };

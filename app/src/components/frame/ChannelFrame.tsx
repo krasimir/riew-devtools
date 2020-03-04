@@ -1,23 +1,25 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import React from 'react';
-import { RowEventButton, Empty } from '../utils/ui';
+import { Empty } from '../utils/ui';
 import { CIcon } from '../utils/icons';
-import { EventButtonProps, What } from '../../types';
+import { EntityFrameProps, What } from '../../types';
 import EventButtonIcon from '../utils/EventButtonIcon';
 
 const COLOR = '#429dd6';
 
-export default function ChannelEventButton({
+export default function ChannelFrame({
   data,
   actions,
   created,
-}: EventButtonProps) {
+}: EntityFrameProps) {
   const icons = actions
     .map((action, idx) => {
       const { what, who } = action;
 
       if (who.rawId !== data.rawId) {
-        return <Empty created={created && created[idx]} color={COLOR} />;
+        return (
+          <Empty created={created && created[idx]} color={COLOR} key={idx} />
+        );
       }
       switch (what) {
         case What.CHANNEL_PUT_INITIATED:
@@ -69,14 +71,12 @@ export default function ChannelEventButton({
             </EventButtonIcon>
           );
         default:
-          return <Empty created={created && created[idx]} color={COLOR} />;
+          return (
+            <Empty created={created && created[idx]} color={COLOR} key={idx} />
+          );
       }
     })
     .filter(i => i);
 
-  return (
-    <RowEventButton columns={`repeat(${actions.length}, 1fr)`}>
-      {icons.length > 0 && icons}
-    </RowEventButton>
-  );
+  return <>{icons}</>;
 }

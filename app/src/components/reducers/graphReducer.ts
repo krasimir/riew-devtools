@@ -1,10 +1,10 @@
-import { Event, EventType, GraphRowItem } from '../../types';
+import { Event, EventType, Entity } from '../../types';
 
-export const initialState = { columns: [], rows: [], rowsCache: {} };
+export const initialState = { frames: [], entities: [], rowsCache: {} };
 
 export type EventsState = {
-  columns: Event[];
-  rows: GraphRowItem[];
+  frames: Event[];
+  entities: Entity[];
   rowsCache: Record<string, any>;
 };
 
@@ -13,28 +13,28 @@ export default function graphReducer(
   event: Event
 ): EventsState {
   if (event.type === EventType.RIEW_NEW_SESSION) {
-    return { columns: [], rows: [], rowsCache: {} };
+    return { frames: [], entities: [], rowsCache: {} };
   }
-  const columns = [...state.columns, event];
-  let { rows } = state;
+  const frames = [...state.frames, event];
+  let { entities } = state;
 
   event.snapshot.forEach(({ who }) => {
     if (!state.rowsCache[who.rawId]) {
-      const graphRow = {
+      const graphEntity = {
         ...who,
         children: [],
-      } as GraphRowItem;
-      state.rowsCache[who.rawId] = graphRow;
-      if (graphRow.parent && state.rowsCache[graphRow.parent]) {
-        state.rowsCache[graphRow.parent].children.push(graphRow);
+      } as Entity;
+      state.rowsCache[who.rawId] = graphEntity;
+      if (graphEntity.parent && state.rowsCache[graphEntity.parent]) {
+        state.rowsCache[graphEntity.parent].children.push(graphEntity);
       } else {
-        rows.push(graphRow);
+        entities.push(graphEntity);
       }
       if (who.children && who.children.length > 0) {
         who.children.forEach(child => {
-          rows = rows.filter(r => {
+          entities = entities.filter(r => {
             if (r.rawId === child.rawId) {
-              graphRow.children.push(r);
+              if (graphEntity.children) graphEntity.children.push(r);
               return false;
             }
             return true;
@@ -45,8 +45,8 @@ export default function graphReducer(
   });
 
   return {
-    columns,
-    rows,
+    frames,
+    entities,
     rowsCache: state.rowsCache,
   };
 }

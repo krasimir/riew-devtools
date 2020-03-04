@@ -138,34 +138,16 @@ export const FrameItemContainer = styled.div<{
     color: ${props => (props.onClick ? 'white' : 'inherit')};
   }
 `;
-export const RowEventButton = styled(Container)`
-  display: grid;
-  column-gap: 0;
+export const EntityFrameContainer = styled(Container)`
   padding: 0;
   position: relative;
-  border: none;
-  border-radius: 2px;
-  width: 100%;
-  height: 100%;
   color: white;
-  justify-items: center;
   height: ${FRAME_HEIGHT}px;
   border-bottom: solid 2px #2a2a2a;
-  img {
-    display: inline-block;
-    cursor: pointer;
-  }
-  img:hover {
-    opacity: 0.5;
-  }
+  max-width: 300px;
 `;
-export const RowsContainer = styled(Container)`
+export const EntitiesList = styled(Container)`
   background: #242424;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  width: 180px;
   overflow: hidden;
   border-right: solid 1px #555;
 `;

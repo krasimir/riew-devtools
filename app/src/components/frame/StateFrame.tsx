@@ -1,22 +1,24 @@
 import React from 'react';
-import { RowEventButton, Empty } from '../utils/ui';
+import { Empty } from '../utils/ui';
 import { CIcon } from '../utils/icons';
-import { EventButtonProps, What } from '../../types';
+import { EntityFrameProps, What } from '../../types';
 import EventButtonIcon from '../utils/EventButtonIcon';
 
 const COLOR = '#abd21f';
 
-export default function StateEventButton({
+export default function StateFrame({
   data,
   actions,
   created,
-}: EventButtonProps) {
+}: EntityFrameProps) {
   const icons = actions
     .map((action, idx) => {
       const { what, who } = action;
 
       if (who.rawId !== data.rawId)
-        return <Empty created={created && created[idx]} color={COLOR} />;
+        return (
+          <Empty created={created && created[idx]} color={COLOR} key={idx} />
+        );
 
       switch (what) {
         case What.STATE_VALUE_SET:
@@ -38,14 +40,12 @@ export default function StateEventButton({
             </EventButtonIcon>
           );
         default:
-          return <Empty created={created && created[idx]} color={COLOR} />;
+          return (
+            <Empty created={created && created[idx]} color={COLOR} key={idx} />
+          );
       }
     })
     .filter(i => i);
 
-  return (
-    <RowEventButton columns={`repeat(${actions.length}, 1fr)`}>
-      {icons.length > 0 && icons}
-    </RowEventButton>
-  );
+  return <>{icons}</>;
 }
