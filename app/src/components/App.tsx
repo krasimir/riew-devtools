@@ -16,7 +16,7 @@ export default function App() {
   return graph.entities.length > 0 ? (
     <AppContainer>
       <AppArea bb="solid 4px #2a2a2a">
-        <Graph />
+        <Graph entities={graph.entities} />
       </AppArea>
       <AppArea>
         <Details />

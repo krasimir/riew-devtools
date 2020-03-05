@@ -19,12 +19,12 @@ export default function graphReducer(
   let { entities } = state;
 
   event.snapshot.forEach(({ who }) => {
-    if (!state.rowsCache[who.rawId]) {
+    if (!state.rowsCache[who.id]) {
       const graphEntity = {
         ...who,
         children: [],
       } as Entity;
-      state.rowsCache[who.rawId] = graphEntity;
+      state.rowsCache[who.id] = graphEntity;
       if (graphEntity.parent && state.rowsCache[graphEntity.parent]) {
         state.rowsCache[graphEntity.parent].children.push(graphEntity);
       } else {
@@ -33,7 +33,7 @@ export default function graphReducer(
       if (who.children && who.children.length > 0) {
         who.children.forEach(child => {
           entities = entities.filter(r => {
-            if (r.rawId === child.rawId) {
+            if (r.id === child.id) {
               if (graphEntity.children) graphEntity.children.push(r);
               return false;
             }

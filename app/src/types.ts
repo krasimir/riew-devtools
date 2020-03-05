@@ -49,7 +49,6 @@ export type Meta = { [key: string]: any } | null;
 
 interface EntityInterface {
   id: string;
-  rawId: string;
   type: ItemType;
   name?: string;
   children?: Entity[];

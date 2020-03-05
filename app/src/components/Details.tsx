@@ -4,7 +4,7 @@ import { DetailsContainer, CloseLink, Container } from './utils/ui';
 import { SnapshotAction, What } from '../types';
 import getEntityComponent from './utils/getEntityComponent';
 
-const PROPS_TO_IGNORE = ['children', 'rawId', 'type', 'puts', 'takes'];
+const PROPS_TO_IGNORE = ['children', 'id', 'type', 'puts', 'takes'];
 const PROPS_WITH_NO_LABEL = ['what', 'meta'];
 
 let toggle = (v: boolean, data?: SnapshotAction): void => {};

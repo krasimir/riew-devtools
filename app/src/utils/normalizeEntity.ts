@@ -9,28 +9,17 @@ export default function normalizeEntity({
   id: string;
   type: ItemType;
 }): Entity {
-  const parts = id.split('_');
   let entity: Entity;
-  // sliding_App_18
-  // sliding_13
 
   if (type === ItemType.RIEW) {
     entity = {
-      id: parts[2],
-      rawId: id,
+      id,
       type,
       ...restProps,
     };
   } else if (type === ItemType.CHANNEL) {
-    let normalizedId = '';
-    if (parts.length === 3) {
-      normalizedId = parts[2];
-    } else if (parts.length === 2) {
-      normalizedId = parts[1];
-    }
     entity = {
-      id: normalizedId,
-      rawId: id,
+      id,
       type,
       buffer: (function(str): ChannelBuffers {
         if (str === 'ch' || str === 'fixed') return ChannelBuffers.FIXED;
@@ -38,27 +27,24 @@ export default function normalizeEntity({
         if (str === 'dropping') return ChannelBuffers.DROPPING;
         console.warn(`Unrecognized buffer type "${str}".`);
         return ChannelBuffers.UNRECOGNIZED;
-      })(parts[0]),
+      })(id.split('_')[0]),
       ...restProps,
     };
   } else if (type === ItemType.ROUTINE) {
     entity = {
-      id: parts[2],
-      rawId: id,
+      id,
       type,
       ...restProps,
     };
   } else if (type === ItemType.STATE) {
     entity = {
-      id: parts[1],
-      rawId: id,
+      id,
       type,
       ...restProps,
     };
   } else {
     entity = {
       id,
-      rawId: id,
       type: ItemType.UNRECOGNIZED,
       ...restProps,
     };
